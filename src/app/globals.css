@@ -50,3 +50,8 @@ a {
 button {
   cursor: pointer;
 }
+
+ul,
+li {
+  list-style-type: none;
+}

@@ -10,6 +10,13 @@ export const TextBase = ({
   return <span className={`${styles.common} ${cssprop}`}>{children}</span>;
 };
 
+export const TextTitle01 = ({
+  // font-size : 24
+  ...rest
+}: ITextCommonProps): JSX.Element => {
+  return <TextBase {...rest} cssprop={styles.title01} />;
+};
+
 export const TextBody01 = ({
   // font-size : 18
   ...rest

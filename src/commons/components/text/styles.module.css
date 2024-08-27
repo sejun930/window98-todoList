@@ -2,6 +2,11 @@
   font-weight: 400;
 }
 
+.title01 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+}
+
 .body01 {
   font-size: 1.125rem; /* 18px */
 }

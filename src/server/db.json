@@ -2,77 +2,77 @@
   "todoLists": [
     {
       "id": 1,
-      "title": "todo-list 데이터 조회",
+      "title": "데이터 조회",
       "contents": "10개씩 데이터 조회하기",
       "checked": false,
       "createdAt": "2024-08-27T12:49:18.203Z"
     },
     {
       "id": 2,
-      "title": "todo-list 데이터 mapping",
+      "title": "데이터 mapping",
       "contents": "화면에 리스트 출력하기",
       "checked": false,
       "createdAt": "2024-08-27T12:49:41.567Z"
     },
     {
       "id": 3,
-      "title": "todo-list 완료 toggle",
+      "title": "완료 toggle",
       "contents": "완료 여부 toggle 기능 추가하기",
       "checked": false,
       "createdAt": "2024-08-27T12:51:20.567Z"
     },
     {
       "id": 4,
-      "title": "todo-list 데이터 수정 모달 구현",
+      "title": "데이터 수정 모달 구현",
       "contents": "update 버튼 클릭시 수정 모달 노출하기",
       "checked": false,
       "createdAt": "2024-08-27T12:52:17.567Z"
     },
     {
       "id": 5,
-      "title": "todo-list 데이터 수정 이탈 감지",
+      "title": "데이터 수정 이탈 감지",
       "contents": "수정에서 글 수정 후 닫기 시, 이탈 감지하는 모달 노출하기",
       "checked": false,
       "createdAt": "2024-08-27T12:53:53.567Z"
     },
     {
       "id": 6,
-      "title": "todo-list 수정된 목록 리패치",
+      "title": "수정된 목록 리패치",
       "contents": "수정 완료시 수정된 내용으로 내용 리패치하기",
       "checked": false,
       "createdAt": "2024-08-27T12:55:33.567Z"
     },
     {
       "id": 7,
-      "title": "todo-list 목록 삭제",
+      "title": "목록 삭제",
       "contents": "해당하는 목록 삭제하기",
       "checked": false,
       "createdAt": "2024-08-27T12:58:33.567Z"
     },
     {
       "id": 8,
-      "title": "todo-list 목록 삭제 후 리패치",
+      "title": "목록 삭제 후 리패치",
       "contents": "목록 삭제 후 전체 목록 최신화하기",
       "checked": false,
       "createdAt": "2024-08-27T13:02:31.567Z"
     },
     {
       "id": 9,
-      "title": "todo-list 상세 페이지 구현",
+      "title": "상세 페이지 구현",
       "contents": "목록 제목 및 내용 클릭시 상세 페이지로 이동하기",
       "checked": false,
       "createdAt": "2024-08-27T13:05:33.567Z"
     },
     {
       "id": 10,
-      "title": "todo-list 상세 페이지의 수정, 삭제 버튼 추가",
+      "title": "상세 페이지의 수정, 삭제 버튼 추가",
       "contents": "상세 페이지 내에 수정 및 삭제 버튼 UI 추가하기",
       "checked": false,
       "createdAt": "2024-08-27T13:07:33.567Z"
     },
     {
       "id": 11,
-      "title": "todo-list 상세 페이지의 수정 페이지 구현",
+      "title": "상세 페이지의 수정 페이지 구현",
       "contents": "상세 페이지 안에서 수정 클릭시 수정 페이지 구현하기",
       "checked": false,
       "createdAt": "2024-08-27T13:10:33.567Z"

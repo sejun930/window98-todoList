@@ -17,6 +17,8 @@ export default async function TodoListPage() {
   // 서버 사이드에서 가져온 데이터 추출
   const infos = dehydratedState?.queries?.[0]?.state?.data ?? {};
 
+  console.log(infos);
+
   return (
     <div>
       <TodoListsList infos={infos as IFetchTodoInfo} />

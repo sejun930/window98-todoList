@@ -6,7 +6,6 @@ interface IFetchAllTodoListsProps {
 
 // 전체 목록 조회
 export const fetchAllTodoLists = async ({ _page }: IFetchAllTodoListsProps) => {
-  console.log(_page);
   const data = await axios.get(`http://localhost:5010/todoLists`, {
     params: {
       _page,

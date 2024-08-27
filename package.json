@@ -4,14 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev\" \"yarn json-server\"",
-    "build": "next build",
-    "start": "yarn lint && yarn build && concurrently \"next start\" \"yarn json-server\" ",
+    "build": "yarn lint && concurrently \"yarn json-server\" sleep 1 \"next build\"",
+    "start": "next start -p 3001 ",
     "lint": "next lint",
     "json-server": "json-server --watch src/server/db.json --port 5010"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.11",
-    "@tanstack/react-query-devtools": "^5.51.11",
     "axios": "^1.7.5",
     "json-server": "^1.0.0-beta.2",
     "next": "14.2.6",
@@ -19,13 +18,13 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.51.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
     "concurrently": "^8.2.2",
-    "eslint": "^8",
+    "eslint": "8.57.0",
     "eslint-config-next": "14.2.6",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
