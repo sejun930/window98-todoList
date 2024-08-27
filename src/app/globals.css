@@ -2,17 +2,26 @@
   --black: #000000;
   --desktop: #008080;
 
-  --beige: #f0f0f0;
   --white: #ffffff;
 
+  --gray-10: #f0f0f0;
   --gray-20: #f4f4f4;
+  --gray-30: #efefef;
+  --gray-35: #ededed;
   --gray-40: #dfdfdf;
+  --gray-50: #c6c6c6;
   --gray-60: #c0c0c0;
+  --gray-90: #7f7f7f;
   --gray: #808080;
 
+  --gray-200: #404040;
+
   --grey: grey;
+  --sliver: #c0c0c0;
 
   --violet-60: #674188;
+
+  --blue-80: #000080;
 }
 
 * {
@@ -35,4 +44,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
 }

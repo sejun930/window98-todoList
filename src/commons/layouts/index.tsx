@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 
 import LayoutsDesktop from "./desktop";
 import StartBar from "./startbar";
+import LayoutsContents from "./contents";
 
 interface ILayoutsProps {
   children: React.ReactNode;
@@ -11,11 +12,14 @@ interface ILayoutsProps {
 export default function Layouts({ children }: ILayoutsProps) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.contents}>
+      <div className={styles.top__layout}>
         <LayoutsDesktop />
-        <main>{children}</main>
+        <LayoutsContents>{children}</LayoutsContents>
       </div>
-      <StartBar />
+
+      <div className={styles.bottom__layout}>
+        <StartBar />
+      </div>
     </div>
   );
 }

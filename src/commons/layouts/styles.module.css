@@ -4,7 +4,12 @@
   height: 100%;
 }
 
-.contents {
+.top__layout {
   display: flex;
   height: 100%;
+}
+
+.bottom__layout {
+  display: flex;
+  width: 100%;
 }

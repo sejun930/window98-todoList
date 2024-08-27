@@ -1,4 +1,6 @@
 .footer {
+  width: 100%;
+  z-index: 1000;
   display: flex;
   align-items: center;
   padding: 0.125rem;
@@ -62,7 +64,7 @@
   font-size: 0.75rem;
   border-right: 0.0625rem solid var(--white);
   border-bottom: 0.0625rem solid var(--white);
-  background-color: var(--beige);
+  background-color: var(--gray-20);
   cursor: pointer;
 }
 

@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 export default function StartBar() {
   const pathname = usePathname();
   // 현재 페이지 경로가 "/todoList" 경로인지 확인
-  const isTodoList = pathname === "/todoList";
+  const isTodoList = pathname.includes("/todoList");
 
   return (
     <footer className={styles.footer}>
