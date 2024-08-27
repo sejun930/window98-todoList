@@ -3,8 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // 개발용 react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-// QueryClient 인스턴스 생성
-const queryClient = new QueryClient();
+import { useState } from "react";
 
 interface ISettingsReactQueryProps {
   children: JSX.Element;
@@ -14,6 +13,9 @@ interface ISettingsReactQueryProps {
 export default function SettingsReactQuery({
   children,
 }: ISettingsReactQueryProps) {
+  // QueryClient 인스턴스 생성
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <QueryClientProvider client={queryClient}>
       {children}
