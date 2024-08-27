@@ -26,7 +26,6 @@
   height: 2rem;
 }
 
-.app p {
-  font-size: 0.75rem;
+.app span {
   color: var(--white);
 }

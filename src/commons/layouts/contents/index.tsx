@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import styles from "./styles.module.css";
 import { usePathname, useRouter } from "next/navigation";
+import { TextBody03 } from "@/commons/components/text";
 
 interface ILayoutsContentsProps {
   children: ReactNode;
@@ -30,7 +31,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
     <div>
       <div className={styles.contents__wrapper}>
         <header className={styles.contents__header}>
-          <span>Todo-List</span>
+          <TextBody03>Todo-List</TextBody03>
           <button className={styles.close} onClick={closeContents} />
         </header>
         <div className={styles.contents__item}>

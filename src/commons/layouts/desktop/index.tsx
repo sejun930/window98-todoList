@@ -4,6 +4,7 @@ import type { IWithLinkProps } from "./types";
 
 import Image from "next/image";
 import Link from "next/link";
+import { TextBody04 } from "@/commons/components/text";
 
 // 레이아웃의 왼쪽 영역 아이콘들
 export default function LayoutsDesktop() {
@@ -31,7 +32,7 @@ export default function LayoutsDesktop() {
                     <Image src={`/icons/${src}.png`} alt={name} layout="fill" />
                   </div>
 
-                  <p>{name}</p>
+                  <TextBody04>{name}</TextBody04>
                 </div>
               ),
               href,
