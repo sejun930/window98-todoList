@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Layouts from "@/commons/layouts";
+import SettingsReactQuery from "@/commons/settings/react-query";
 
 export const metadata: Metadata = {
   title: "Window 98 Todo-list",
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Layouts>{children}</Layouts>
+        <SettingsReactQuery>
+          <Layouts>{children}</Layouts>
+        </SettingsReactQuery>
       </body>
     </html>
   );

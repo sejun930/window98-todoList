@@ -7,13 +7,15 @@
     "build": "next build",
     "start": "yarn lint && yarn build && concurrently \"next start\" \"yarn json-server\" ",
     "lint": "next lint",
-    "json-server": "json-server --watch db.json --port 5010"
+    "json-server": "json-server --watch src/server/db.json --port 5010"
   },
   "dependencies": {
     "json-server": "^1.0.0-beta.2",
     "next": "14.2.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query-devtools": "^5.51.11"
   },
   "devDependencies": {
     "@types/node": "^20",
