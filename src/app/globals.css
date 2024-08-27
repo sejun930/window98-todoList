@@ -1,5 +1,14 @@
 :root {
+  --black: #000000;
+  --white: #ffffff;
   --desktop: #008080;
+
+  --gray-20: #f4f4f4;
+  --gray-40: #dfdfdf;
+  --gray-60: #c0c0c0;
+  --gray: #808080;
+
+  --violet-60: #674188;
 }
 
 * {
