@@ -4,14 +4,15 @@
 import Link from "next/link";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { TextBody04 } from "@/commons/components/text";
+
+import { useUtillsRouter } from "@/commons/utills";
 
 // 레이아웃의 하단 영역
 export default function StartBar() {
-  const pathname = usePathname();
+  const { isTodoListPage } = useUtillsRouter();
   // 현재 페이지 경로가 "/todoList" 경로인지 확인
-  const isTodoList = pathname.includes("/todoList");
+  const isTodoList = isTodoListPage();
 
   return (
     <footer className={styles.footer}>
