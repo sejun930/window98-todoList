@@ -11,7 +11,7 @@ import { useUtillsRouter } from "@/commons/utills";
 // 레이아웃의 하단 영역
 export default function StartBar() {
   const { isTodoListPage } = useUtillsRouter();
-  // 현재 페이지 경로가 "/todoList" 경로인지 확인
+  // 현재 페이지 경로가 "/todo-list" 경로인지 확인
   const isTodoList = isTodoListPage();
 
   return (

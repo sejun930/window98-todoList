@@ -10,9 +10,9 @@ interface IUseUtillsRouterReturn {
 export const useUtillsRouter = (): IUseUtillsRouterReturn => {
   const pathname = usePathname();
 
-  // 현재 페이지가 "/todoList" 페이지인지 검증
+  // 현재 페이지가 "/todo-list" 페이지인지 검증
   const isTodoListPage = () => {
-    return pathname.includes("/todoList") ?? false;
+    return pathname.includes("/todo-list") ?? false;
   };
 
   return {

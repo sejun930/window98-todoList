@@ -20,5 +20,5 @@ export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
     href: "https://github.com/sejun930/front-assignment",
     isBlank: true,
   },
-  { name: "Todo-List", src: "documents", href: "/todoList" },
+  { name: "Todo-List", src: "documents", href: "/todo-list" },
 ];
