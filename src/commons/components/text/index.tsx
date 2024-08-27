@@ -16,6 +16,12 @@ export const TextTitle01 = ({
 }: ITextCommonProps): JSX.Element => {
   return <TextBase {...rest} cssprop={styles.title01} />;
 };
+export const TextTitle02 = ({
+  // font-size : 20
+  ...rest
+}: ITextCommonProps): JSX.Element => {
+  return <TextBase {...rest} cssprop={styles.title02} />;
+};
 
 export const TextBody01 = ({
   // font-size : 18

@@ -1,10 +1,11 @@
 "use client";
 
-import { TextBody03, TextBody04, TextTitle01 } from "@/commons/components/text";
+import { TextBody03, TextBody04, TextTitle02 } from "@/commons/components/text";
 import styles from "./styles.module.css";
 import { Checkbox } from "@/commons/components/checkbox";
 import type { ITodoListsListProps } from "./types";
 import { useTodoListsList } from "./hook";
+import { ButtonPrimaryS } from "@/commons/components/button";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoListsList({ infos }: ITodoListsListProps) {
@@ -33,7 +34,16 @@ export default function TodoListsList({ infos }: ITodoListsListProps) {
               <div className={styles.title__wrapper}>
                 <div className={styles.title__item}>
                   <Checkbox id={uuid} isChecked={checked ?? false} />
-                  <TextTitle01>{title}</TextTitle01>
+                  <TextTitle02>{title}</TextTitle02>
+                </div>
+                <div className={styles.options}>
+                  <ButtonPrimaryS>
+                    <TextBody04>수정</TextBody04>
+                  </ButtonPrimaryS>
+
+                  <ButtonPrimaryS>
+                    <TextBody04>삭제</TextBody04>
+                  </ButtonPrimaryS>
                 </div>
               </div>
 

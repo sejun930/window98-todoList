@@ -36,9 +36,17 @@
 .title__wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-right: 0.25rem;
 }
 .title__item {
   display: flex;
   align-items: center;
   gap: 0 0.5rem;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 0 0.75rem;
 }

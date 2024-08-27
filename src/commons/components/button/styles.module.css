@@ -1,0 +1,32 @@
+.common {
+}
+
+.primary {
+  box-shadow:
+    inset 0.0625rem 0.0625rem var(--gray-40),
+    0.0625rem 0 var(--black),
+    0 0.0625rem var(--black),
+    0.0625rem 0.0625rem var(--black);
+  border-top: 0.0625rem solid var(--white);
+  border-left: 0.0625rem solid var(--white);
+  border-right: 0.0625rem solid var(--gray);
+  border-bottom: 0.0625rem solid var(--gray);
+}
+
+.fit {
+  width: auto;
+  height: auto;
+}
+.s {
+  width: auto;
+  height: 1.5rem;
+  padding: 0.25rem;
+}
+.m {
+  width: auto;
+  height: 1.5rem;
+}
+.l {
+  width: auto;
+  height: 2rem;
+}

@@ -33,7 +33,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
       <div className={styles.contents__wrapper}>
         <header className={styles.contents__header}>
           <TextBody03>Todo-List</TextBody03>
-          <button className={styles.close} onClick={closeContents} />
+          <button onClick={closeContents} />
         </header>
         <div className={styles.contents__item}>
           <div className={styles.contents__outline}>

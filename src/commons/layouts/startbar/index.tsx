@@ -7,6 +7,7 @@ import Image from "next/image";
 import { TextBody04 } from "@/commons/components/text";
 
 import { useUtillsRouter } from "@/commons/utills";
+import { ButtonPrimary } from "@/commons/components/button";
 
 // 레이아웃의 하단 영역
 export default function StartBar() {
@@ -17,8 +18,10 @@ export default function StartBar() {
   return (
     <footer className={styles.footer}>
       <div className={styles.start}>
-        <Image src="/icons/window.webp" alt="start" width={0} height={0} />
-        <TextBody04>시작</TextBody04>
+        <ButtonPrimary>
+          <Image src="/icons/window.webp" alt="start" width={0} height={0} />
+          <TextBody04>시작</TextBody04>
+        </ButtonPrimary>
       </div>
 
       <div className={styles.items}>
