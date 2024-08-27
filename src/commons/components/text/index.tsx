@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 export const TextBase = ({
   children,
   cssprop,
-  isLoading = false,
+  // isLoading = false,
 }: ITextBaseProps): JSX.Element => {
   return <span className={`${styles.common} ${cssprop}`}>{children}</span>;
 };

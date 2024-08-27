@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"yarn json-server\"",
     "build": "next build",
-    "start": "yarn lint && yarn build && next start",
-    "lint": "next lint"
+    "start": "yarn lint && yarn build && concurrently \"next start\" \"yarn json-server\" ",
+    "lint": "next lint",
+    "json-server": "json-server --watch db.json --port 5010"
   },
   "dependencies": {
+    "json-server": "^1.0.0-beta.2",
     "next": "14.2.6",
     "react": "^18",
     "react-dom": "^18"
@@ -19,6 +21,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
+    "concurrently": "^8.2.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
     "eslint-config-prettier": "^9.1.0",
