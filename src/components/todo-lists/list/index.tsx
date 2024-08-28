@@ -5,7 +5,8 @@ import styles from "./styles.module.css";
 import { Checkbox } from "@/commons/components/checkbox";
 import type { ITodoListsListProps } from "./types";
 import { useTodoListsList } from "./hook";
-import { ButtonPrimaryS } from "@/commons/components/button";
+import { ButtonPrimaryM, ButtonPrimary } from "@/commons/components/button";
+import Image from "next/image";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoListsList({ infos }: ITodoListsListProps) {
@@ -18,6 +19,15 @@ export default function TodoListsList({ infos }: ITodoListsListProps) {
     <section className={styles.section}>
       <div className={styles.option__wrapper}>
         <TextBody04>TOTAL : {allData}</TextBody04>
+        <ButtonPrimaryM>
+          <Image
+            src="/icons/new-file-small.png"
+            alt="등록"
+            width={0}
+            height={0}
+          />{" "}
+          <TextBody04>새 파일</TextBody04>
+        </ButtonPrimaryM>
       </div>
       <ul className={styles.list__wrappre}>
         {items?.map(({ id, title, contents, createdAt, checked }, idx) => {
@@ -37,13 +47,25 @@ export default function TodoListsList({ infos }: ITodoListsListProps) {
                   <TextTitle02>{title}</TextTitle02>
                 </div>
                 <div className={styles.options}>
-                  <ButtonPrimaryS>
+                  <ButtonPrimary>
+                    <Image
+                      src="/icons/update-small.png"
+                      alt="수정"
+                      width={0}
+                      height={0}
+                    />
                     <TextBody04>수정</TextBody04>
-                  </ButtonPrimaryS>
+                  </ButtonPrimary>
 
-                  <ButtonPrimaryS>
+                  <ButtonPrimary>
+                    <Image
+                      src="/icons/recycle-small.png"
+                      alt="수정"
+                      width={0}
+                      height={0}
+                    />
                     <TextBody04>삭제</TextBody04>
-                  </ButtonPrimaryS>
+                  </ButtonPrimary>
                 </div>
               </div>
 
