@@ -1,15 +1,17 @@
 "use client";
 
-import { TextBody04 } from "@/commons/components/text";
 import styles from "./styles.module.css";
+import Image from "next/image";
+
+import { TextBody04 } from "@/commons/components/text";
 import type { ITodoListsListProps } from "./types";
 import { useTodoLists } from "./hook";
 import { ButtonPrimaryM } from "@/commons/components/button";
-import Image from "next/image";
 import TodoListsList from "./list";
 import InfiniteScroll from "@/commons/hocs/infinite-scroll";
 import { MutableRefObject, useRef } from "react";
 import Dialog from "@/commons/components/dialog";
+import TodolistsWrite from "./write";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists({ infos }: ITodoListsListProps) {
@@ -73,7 +75,7 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
         }}
         isOpen={openDialog}
       >
-        등록 페이지에요
+        <TodolistsWrite />
       </Dialog>
     </section>
   );

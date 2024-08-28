@@ -1,4 +1,3 @@
-import { TextBody03 } from "../text";
 import WindowsHeader from "../windows/header";
 import styles from "./styles.module.css";
 import { IDialogProps } from "./types";

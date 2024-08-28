@@ -7,9 +7,11 @@ export const ButtonBase = ({
   theme,
   size,
   onClick,
+  disable,
   // isLoading = false,
 }: IButtonBaseProps): JSX.Element => {
-  const classNames = `${styles.common} ${styles[theme]} ${styles[size]}`;
+  let classNames = `${styles.common} ${styles[theme]} ${styles[size]}`;
+  if (disable) classNames += ` ${styles.disable}`;
 
   return (
     <button type="button" className={classNames} onClick={onClick}>

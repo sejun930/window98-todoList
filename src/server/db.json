@@ -4,7 +4,7 @@
       "id": "1",
       "title": "데이터 조회",
       "contents": "10개씩 데이터 조회하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T12:49:18.203Z",
       "createdAtTime": 1724762958203
     },

@@ -41,7 +41,9 @@ export default function InfiniteScroll({
 
     if (hasTargetRef) {
       // 지정된 영역이 있다면, 전체가 아닌 해당 영역을 참조
-      docHeight = targetRef?.current.scrollHeight ?? 0;
+      docHeight =
+        (targetRef?.current.scrollHeight ?? 0) -
+        (targetRef?.current.clientHeight ?? 0);
       scrollResult = targetRef?.current.scrollTop ?? 0;
     }
 
@@ -50,8 +52,8 @@ export default function InfiniteScroll({
     // 이동된 스크롤의 퍼센트율
     movePercent = scrollResult / docHeightPercent;
 
-    // 전체 스크롤에서 55% 이상 내려갔는지 감지
-    const isOver = movePercent >= 55; // moreLoadPercent;
+    // 전체 스크롤에서 80% 이상 내려갔는지 감지
+    const isOver = movePercent >= 80; // moreLoadPercent;
 
     // 스크롤이 페이지 하단에 도달했는지 확인
     if (isOver) {
