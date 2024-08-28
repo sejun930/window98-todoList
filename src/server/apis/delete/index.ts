@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface IDeleteTodolist {
-  id: number;
+  id: string;
 }
 
 // todo-list 삭제

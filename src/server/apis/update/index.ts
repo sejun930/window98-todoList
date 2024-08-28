@@ -1,7 +1,7 @@
 import axios from "axios";
 
 interface IUpdateTodolistChecked {
-  id: number;
+  id: string;
   checked: boolean;
 }
 

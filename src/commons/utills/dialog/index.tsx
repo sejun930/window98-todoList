@@ -22,14 +22,6 @@ export const useUtillDialog = (): IUseUtillDialogReturn => {
 
   // Dialog 종료
   const closeDialog = () => {
-    // // 제목이 기입되어 있는지
-    // const title =
-    //   (document.getElementById("write-title") as HTMLInputElement)?.value ?? "";
-    // // 내용이 기입되어 있는지
-    // const textarea =
-    //   (document.getElementById("write-contents") as HTMLTextAreaElement)
-    //     ?.value ?? "";
-
     setDialogInfo({
       isOpenDialog: false,
       children: <></>,

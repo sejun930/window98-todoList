@@ -7,9 +7,14 @@ import {
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { deleteTodolist } from "@/server/apis/delete";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseTodoListsListDelete } from "./types";
+import {
+  IUseTodoListsListDeleteProps,
+  IUseTodoListsListDeleteReturn,
+} from "./types";
 
-export const useTodoListsListDelete = ({ info }: IUseTodoListsListDelete) => {
+export const useTodoListsListDelete = ({
+  info,
+}: IUseTodoListsListDeleteProps): IUseTodoListsListDeleteReturn => {
   const queryClient = useQueryClient();
 
   const id = info?.id ?? "";

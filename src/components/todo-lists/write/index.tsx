@@ -6,16 +6,33 @@ import { ITodolistsWriteProps, IZodSchemaTodoListsWrite } from "./types";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
 import { useTodolistsWriteCreate } from "./create/hook";
+import { useTodolistsWriteUpdate } from "./update/hook";
+import { INIT_TODO_LIST } from "@/commons/init/todo-list";
+import { useEffect } from "react";
 
 // 리스트 등록 & 수정 컴포넌트
-export default function TodolistsWrite({ isEdit }: ITodolistsWriteProps) {
-  const { register, formState, handleSubmit } =
+export default function TodolistsWrite({
+  isEdit,
+  info = { ...INIT_TODO_LIST },
+}: ITodolistsWriteProps) {
+  const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
   // 등록 가능 여부
   const { isValid } = formState;
 
   // 등록 관련 함수
   const { createTodoListMutation } = useTodolistsWriteCreate();
+  // 수정 관련 함수
+  const {} = useTodolistsWriteUpdate({ info });
+
+  useEffect(() => {
+    // 수정 모드일 경우 조회한 데이터를 초기 데이터로 삽입
+    if (isEdit) {
+      setValue("title", info.title);
+      setValue("contents", info.contents);
+    }
+  }, [isEdit]);
+
   // dialog 종료
   const { closeDialog } = useUtillDialog();
 
@@ -26,6 +43,7 @@ export default function TodolistsWrite({ isEdit }: ITodolistsWriteProps) {
 
     try {
       if (isEdit) {
+        // todo-list 수정
       } else {
         // todo-list 등록
         createTodoListMutation.mutate(data);
@@ -63,7 +81,7 @@ export default function TodolistsWrite({ isEdit }: ITodolistsWriteProps) {
           active={isValid}
           onClick={writeTodoList}
         >
-          <TextBody02>등록</TextBody02>
+          <TextBody02>{isEdit ? "수정" : "등록"}</TextBody02>
         </ButtonPrimaryL>
       </form>
     </section>

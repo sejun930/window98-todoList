@@ -3,7 +3,7 @@ import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { TextBody02 } from "@/commons/components/text";
 
 export const useTodoListsList = () => {
-  const { openDialogAlert } = useUtillDialogAlert();
+  const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
 
   // 삭제 확인용 dialog 오픈
   const openDeleteConfirm = (info: ITodoList) => () => {
@@ -15,7 +15,7 @@ export const useTodoListsList = () => {
             <b>{String(info.title)}</b>를 삭제하시겠습니까?
           </TextBody02>
         ),
-        okEvent: () => {},
+        okEvent: closeDialogAlert,
       },
     });
   };

@@ -8,6 +8,10 @@
   height: 100%;
   z-index: 100;
 }
+.use__dialog__alert {
+  pointer-events: none;
+  filter: brightness(0.5);
+}
 
 .dialog__item {
   display: flex;

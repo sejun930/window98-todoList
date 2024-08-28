@@ -1,7 +1,9 @@
-import { ITodoListsListProps } from "../types";
+import { ITodoList } from "@/commons/types/todo-list";
 
-export type ITodoListsListUpdateProps = Pick<ITodoListsListProps, "info">;
+export interface ITodoListsListUpdateProps {
+  info: ITodoList;
+}
 
 export interface IuseTodoListsListUpdateReturn {
-  openUpdateDialog: () => void;
+  openUpdateDialog: (info: ITodoList) => () => void;
 }

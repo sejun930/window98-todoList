@@ -11,7 +11,7 @@ export default function TodoListsListUpdate({
   const { openUpdateDialog } = useTodoListsListUpdate();
 
   return (
-    <ButtonPrimary onClick={openUpdateDialog}>
+    <ButtonPrimary onClick={openUpdateDialog(info)}>
       <Image src="/icons/update-small.png" alt="수정" width={0} height={0} />
       <TextBody04>수정</TextBody04>
     </ButtonPrimary>

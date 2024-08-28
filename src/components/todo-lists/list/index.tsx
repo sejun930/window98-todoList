@@ -2,10 +2,8 @@
 
 import { memo } from "react";
 import styles from "./styles.module.css";
-import Image from "next/image";
 
-import { TextBody03, TextBody04 } from "@/commons/components/text";
-import { ButtonPrimary } from "@/commons/components/button";
+import { TextBody03 } from "@/commons/components/text";
 import { ITodoListsListProps } from "./types";
 
 import TodoListsListCheckbox from "./checkbox";
@@ -26,7 +24,9 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
           id={id}
         />
         <div className={styles.options}>
+          {/* 수정 버튼 */}
           <TodoListsListUpdate info={info} />
+          {/* 삭제 버튼 */}
           <TodoListsListDelete info={info} />
         </div>
       </div>

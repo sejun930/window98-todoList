@@ -1,5 +1,12 @@
-import { ITodoListsListProps } from "../types";
+import { ITodoList } from "@/commons/types/todo-list";
 
-export type ITodoListsListDeleteProps = Pick<ITodoListsListProps, "info">;
+export interface ITodoListsListDeleteProps {
+  info: ITodoList;
+}
 
-export type IUseTodoListsListDelete = Pick<ITodoListsListProps, "info">;
+export interface IUseTodoListsListDeleteProps {
+  info: ITodoList;
+}
+export interface IUseTodoListsListDeleteReturn {
+  openDeleteConfirm: (info: ITodoList) => () => void;
+}

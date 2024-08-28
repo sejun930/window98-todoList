@@ -16,6 +16,7 @@ import {
 } from "@/commons/zustand/store";
 import { useUtillDialog } from "@/commons/utills/dialog";
 import DialogAlert from "@/commons/components/dialog-alert";
+import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 
 interface ILayoutsContentsProps {
   children: ReactNode;
@@ -29,6 +30,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
   // dialog 실행 및 정보 zustand
   const { dialogInfo } = useDialogInfoState();
   const { closeDialog } = useUtillDialog();
+  const { closeDialogAlert } = useUtillDialogAlert();
 
   // dialog-alert 실행 및 정보 zustand
   const { dialogAlertInfo } = useDialogAlertInfoState();
@@ -49,7 +51,10 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
 
   // 초기 렌더시, Dialog 종료
   useLayoutEffect(() => {
-    if (pathname === "/") closeDialog();
+    if (pathname === "/") {
+      closeDialog();
+      closeDialogAlert();
+    }
   }, [pathname]);
 
   if (!isTodoList) return <></>;
