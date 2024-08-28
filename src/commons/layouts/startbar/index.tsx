@@ -1,13 +1,11 @@
 "use client";
 
-// import Link from "next/link";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { TextBody04 } from "@/commons/components/text";
 
 import { useUtillsRouter } from "@/commons/utills";
-import { ButtonPrimary } from "@/commons/components/button";
 
 // 레이아웃의 하단 영역
 export default function StartBar() {

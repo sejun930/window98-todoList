@@ -7,24 +7,16 @@ import Image from "next/image";
 import { TextBody03, TextBody04 } from "@/commons/components/text";
 import { ButtonPrimary } from "@/commons/components/button";
 import { ITodoListsListProps } from "./types";
-import { useTodoListsList } from "./hook";
 
 import TodoListsListCheckbox from "./checkbox";
 import TodoListsListDelete from "./delete";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
-const TodoListsList = ({
-  info,
-  classNames,
-  uuid,
-  allData,
-}: ITodoListsListProps) => {
-  const { checked, title, contents, id } = info;
-  //   const { openDeleteConfirm } = useTodoListsList({
-  //     id,
-  //     checked,
-  //     allData,
-  //   });
+const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
+  const id = info?.id ?? "";
+  const contents = info?.contents ?? "";
+  const title = info?.title ?? "";
+  const checked = info?.checked ?? false;
 
   return (
     <li className={classNames}>

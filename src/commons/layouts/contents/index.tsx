@@ -32,6 +32,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
 
   // dialog-alert 실행 및 정보 zustand
   const { dialogAlertInfo } = useDialogAlertInfoState();
+  const useDialogAlert = dialogAlertInfo.isOpenDialogAlert ?? false;
 
   const { isTodoListPage } = useUtillsRouter();
   // 현재 페이지 경로가 "/todo-list" 경로인지 확인
@@ -60,6 +61,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
           <div className={styles.contents__inline}>
             <div className={styles.contents__wrap}>
               <main>
+                {useDialogAlert && <div className={styles.bg} />}
                 {children}
                 <Dialog
                   isOpen={dialogInfo?.isOpenDialog ?? false}

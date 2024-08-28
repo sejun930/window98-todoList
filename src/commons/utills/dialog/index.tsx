@@ -1,9 +1,5 @@
 import { useDialogInfoState } from "@/commons/zustand/store";
-import {
-  IcloseDialogProps,
-  IOpenDialogProps,
-  IUseUtillDialogReturn,
-} from "./types";
+import { IOpenDialogProps, IUseUtillDialogReturn } from "./types";
 import { useUtillDialogAlert } from "../dialog-alert";
 
 // Dialog 관련 공통 함수 모음
@@ -25,14 +21,14 @@ export const useUtillDialog = (): IUseUtillDialogReturn => {
   };
 
   // Dialog 종료
-  const closeDialog = (prosp?: IcloseDialogProps) => {
-    // 제목이 기입되어 있는지
-    const title =
-      (document.getElementById("write-title") as HTMLInputElement)?.value ?? "";
-    // 내용이 기입되어 있는지
-    const textarea =
-      (document.getElementById("write-contents") as HTMLTextAreaElement)
-        ?.value ?? "";
+  const closeDialog = () => {
+    // // 제목이 기입되어 있는지
+    // const title =
+    //   (document.getElementById("write-title") as HTMLInputElement)?.value ?? "";
+    // // 내용이 기입되어 있는지
+    // const textarea =
+    //   (document.getElementById("write-contents") as HTMLTextAreaElement)
+    //     ?.value ?? "";
 
     setDialogInfo({
       isOpenDialog: false,

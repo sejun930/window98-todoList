@@ -1,6 +1,5 @@
 import { fetchAllTodoLists } from "@/server/apis";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { IUseTodoListsListProps } from "./types";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
 import TodolistsWrite from "./write";
 import WithForm from "@/commons/hocs/form";
@@ -8,7 +7,7 @@ import { zodSchemaTodoListsWrite } from "./write/types";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
 // 투두 리스트 조회 hook
-export const useTodoLists = ({ infos }: IUseTodoListsListProps) => {
+export const useTodoLists = () => {
   // dialog 실행 제어
   const { openDialog, closeDialog } = useUtillDialog();
 

@@ -1,11 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { IUseTodoListsListProps } from "./types";
 import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { TextBody02 } from "@/commons/components/text";
 
-export const useTodoListsList = ({ id, checked }: IUseTodoListsListProps) => {
-  const queryClient = useQueryClient();
+export const useTodoListsList = () => {
   const { openDialogAlert } = useUtillDialogAlert();
 
   // 삭제 확인용 dialog 오픈

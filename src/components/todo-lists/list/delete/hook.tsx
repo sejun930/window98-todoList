@@ -12,7 +12,7 @@ import { IUseTodoListsListDelete } from "./types";
 export const useTodoListsListDelete = ({ info }: IUseTodoListsListDelete) => {
   const queryClient = useQueryClient();
 
-  const { id } = info;
+  const id = info?.id ?? "";
   const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
 
   // 리스트 삭제 mutation
@@ -29,21 +29,30 @@ export const useTodoListsListDelete = ({ info }: IUseTodoListsListDelete) => {
           // pages 데이터만 별도 추출
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
           pages.some((info: IFetchTodoInfo, idx1: number) => {
-            const datas = info?.data;
+            let datas = info?.data;
 
             let isFind = false;
             datas.some((el, idx2) => {
               if (el.id === updateTodo.id) {
-                delete pages[idx1].data[idx2];
+                // 해당하는 리스트의 정보는 임시 삭제
+                pages[idx1].data[idx2] = null;
 
                 isFind = true;
                 return true;
               }
             });
 
-            if (isFind) return true;
+            if (isFind) {
+              // 임시 삭제된 리스트는 배열에서 제거
+              pages[idx1].data = pages[idx1].data.filter((el: ITodoList) => el);
+
+              return true;
+            }
             return false;
           });
+          pages[0].items--;
+
+          console.log(pages);
 
           return { ...oldInfos, pages };
         },

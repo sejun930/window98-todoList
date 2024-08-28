@@ -1,7 +1,7 @@
-import { IFetchTodoInfo } from "@/commons/types/todo-list";
+// import { IFetchTodoInfo } from "@/commons/types/todo-list";
 import TodoLists from "@/components/todo-lists";
 import { fetchAllTodoLists } from "@/server/apis";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 
 export default async function TodoListPage() {
   const queryClient = new QueryClient();
@@ -13,9 +13,9 @@ export default async function TodoListPage() {
   });
 
   // 데이터와 함께 렌더링
-  const dehydratedState = dehydrate(queryClient);
+  // const dehydratedState = dehydrate(queryClient);
   // 서버 사이드에서 가져온 데이터 추출
-  const infos = dehydratedState?.queries?.[0]?.state?.data ?? {};
+  // const infos = dehydratedState?.queries?.[0]?.state?.data ?? {};
 
-  return <TodoLists infos={infos as IFetchTodoInfo} />;
+  return <TodoLists />;
 }

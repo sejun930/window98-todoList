@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 
 import { TextBody04, TextTitle01 } from "@/commons/components/text";
-import type { ITodoListsListProps } from "./types";
 import { useTodoLists } from "./hook";
 import { ButtonPrimaryM } from "@/commons/components/button";
 import TodoListsList from "./list";
@@ -12,10 +11,8 @@ import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
 import { MutableRefObject, useRef } from "react";
 
 // Todo-list 리스트 노출 컴포넌트
-export default function TodoLists({ infos }: ITodoListsListProps) {
-  const { items, fetchMore, hasNextPage, openWriteDialog } = useTodoLists({
-    infos,
-  });
+export default function TodoLists() {
+  const { items, fetchMore, hasNextPage, openWriteDialog } = useTodoLists();
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
   // 전체 Todo-list 개수
@@ -26,7 +23,8 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
   return (
     <section className={styles.section}>
       <div className={styles.option__wrapper}>
-        <TextBody04>{`TOTAL : ${allData}`}</TextBody04>
+        <div></div>
+        {/* <TextBody04>{`TOTAL : ${allData}`}</TextBody04> */}
         <ButtonPrimaryM onClick={openWriteDialog}>
           <Image
             src="/icons/new-file-small.png"
@@ -50,7 +48,8 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
           )}
 
           {items?.map((info, idx) => {
-            const { id, createdAt } = info;
+            const id = info?.id ?? "";
+            const createdAt = info?.createdAt ?? "";
 
             // 마지막 리스트인지 체크
             const isLast = items?.length === idx + 1;
