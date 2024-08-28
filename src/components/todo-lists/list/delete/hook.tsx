@@ -5,7 +5,7 @@ import {
   ITodoList,
 } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
-import { deleteTodolist } from "@/server/apis/delete";
+import { deleteTodolist } from "@/server/apis";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   IUseTodoListsListDeleteProps,

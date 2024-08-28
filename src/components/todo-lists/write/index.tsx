@@ -23,7 +23,7 @@ export default function TodolistsWrite({
   // 등록 관련 함수
   const { createTodoListMutation } = useTodolistsWriteCreate();
   // 수정 관련 함수
-  const {} = useTodolistsWriteUpdate({ info });
+  const { updateTodoListMutation } = useTodolistsWriteUpdate({ info });
 
   useEffect(() => {
     // 수정 모드일 경우 조회한 데이터를 초기 데이터로 삽입
@@ -44,6 +44,7 @@ export default function TodolistsWrite({
     try {
       if (isEdit) {
         // todo-list 수정
+        updateTodoListMutation.mutate(data);
       } else {
         // todo-list 등록
         createTodoListMutation.mutate(data);

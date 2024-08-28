@@ -15,7 +15,7 @@ export const useTodolistsWriteCreate = (): ITodolistsWriteCreateReturn => {
   const createTodoListMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
     mutationFn: (data: IZodSchemaTodoListsWrite) => createTodolist({ data }),
-    onSuccess: (data) => {
+    onSuccess: (newData) => {
       queryClient.setQueryData(
         ["todo-lists"],
         (oldInfos: IFetchTodoInfiniteQueryInfo) => {
@@ -26,7 +26,7 @@ export const useTodolistsWriteCreate = (): ITodolistsWriteCreateReturn => {
           const datas: ITodoList[] = pages?.[0]?.data ?? [];
 
           // 맨 앞에 추가된 리스트 배치
-          datas.unshift(data);
+          datas.unshift(newData);
           pages[0].data = [...datas];
 
           return { ...oldInfos, pages };

@@ -1,3 +1,4 @@
 export { fetchAllTodoLists } from "./fetch";
-export { updateTodolistChecked } from "./update";
+export { updateTodolistChecked, updateTodolist } from "./update";
 export { createTodolist } from "./create";
+export { deleteTodolist } from "./delete";
