@@ -33,7 +33,6 @@ export const useTodoListsListCheckbox = ({
             let isFind = false;
             datas.some((el, idx2) => {
               if (el.id === updateTodo.id) {
-                console.log(idx1, idx2);
                 if (pages[idx1].data[idx2]) pages[idx1].data[idx2] = updateTodo;
 
                 isFind = true;
@@ -44,7 +43,6 @@ export const useTodoListsListCheckbox = ({
             if (isFind) return true;
             return false;
           });
-          console.log(`pages : `, pages);
 
           return { ...oldInfos, pages };
         },

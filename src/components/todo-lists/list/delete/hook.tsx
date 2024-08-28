@@ -52,8 +52,6 @@ export const useTodoListsListDelete = ({ info }: IUseTodoListsListDelete) => {
           });
           pages[0].items--;
 
-          console.log(pages);
-
           return { ...oldInfos, pages };
         },
       );

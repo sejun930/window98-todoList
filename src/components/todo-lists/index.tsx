@@ -48,8 +48,7 @@ export default function TodoLists() {
           )}
 
           {items?.map((info, idx) => {
-            const id = info?.id ?? "";
-            const createdAt = info?.createdAt ?? "";
+            const { id, createdAt } = info;
 
             // 마지막 리스트인지 체크
             const isLast = items?.length === idx + 1;

@@ -3,6 +3,10 @@ import { ZodSchema, z } from "zod";
 
 export type IZodSchemaTodoListsWrite = Pick<ITodoList, "title" | "contents">;
 
+export interface ITodolistsWriteProps {
+  isEdit?: boolean; // 수정 모드 여부
+}
+
 // 등록 & 수정에 필요한 정보 검증
 export const zodSchemaTodoListsWrite: ZodSchema<IZodSchemaTodoListsWrite> =
   z.object({

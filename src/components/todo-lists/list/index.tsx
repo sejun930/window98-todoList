@@ -10,13 +10,11 @@ import { ITodoListsListProps } from "./types";
 
 import TodoListsListCheckbox from "./checkbox";
 import TodoListsListDelete from "./delete";
+import TodoListsListUpdate from "./update";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
 const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
-  const id = info?.id ?? "";
-  const contents = info?.contents ?? "";
-  const title = info?.title ?? "";
-  const checked = info?.checked ?? false;
+  const { checked, title, contents, id } = info;
 
   return (
     <li className={classNames}>
@@ -28,16 +26,7 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
           id={id}
         />
         <div className={styles.options}>
-          <ButtonPrimary>
-            <Image
-              src="/icons/update-small.png"
-              alt="수정"
-              width={0}
-              height={0}
-            />
-            <TextBody04>수정</TextBody04>
-          </ButtonPrimary>
-
+          <TodoListsListUpdate info={info} />
           <TodoListsListDelete info={info} />
         </div>
       </div>
