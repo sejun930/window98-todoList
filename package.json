@@ -10,12 +10,15 @@
     "json-server": "json-server --watch src/server/db.json --port 5010"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@tanstack/react-query": "^5.51.11",
     "axios": "^1.7.5",
     "json-server": "^1.0.0-beta.2",
     "next": "14.2.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.51.11",

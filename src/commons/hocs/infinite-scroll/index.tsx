@@ -6,7 +6,7 @@ let fetching = false;
 let fetchingTimer: ReturnType<typeof setTimeout>;
 
 // 무한 스크롤링 제공 hocs
-export default function InfiniteScroll({
+export default function WithInfiniteScroll({
   children,
   fetchMore,
   disable,

@@ -8,10 +8,9 @@ import type { ITodoListsListProps } from "./types";
 import { useTodoLists } from "./hook";
 import { ButtonPrimaryM } from "@/commons/components/button";
 import TodoListsList from "./list";
-import InfiniteScroll from "@/commons/hocs/infinite-scroll";
+import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
 import { MutableRefObject, useRef } from "react";
-import Dialog from "@/commons/components/dialog";
-import TodolistsWrite from "./write";
+import TodoListWriteDialog from "./write-dialog";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists({ infos }: ITodoListsListProps) {
@@ -38,7 +37,7 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
           <TextBody04>새 파일</TextBody04>
         </ButtonPrimaryM>
       </div>
-      <InfiniteScroll
+      <WithInfiniteScroll
         targetRef={listWrapperRef}
         fetchMore={fetchMore}
         disable={!hasNextPage}
@@ -66,17 +65,11 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
             );
           })}
         </ul>
-      </InfiniteScroll>
-
-      <Dialog
-        header={{
-          title: "리스트 등록",
-          action: toggleDialog(false),
-        }}
-        isOpen={openDialog}
-      >
-        <TodolistsWrite />
-      </Dialog>
+      </WithInfiniteScroll>
+      <TodoListWriteDialog
+        toggleDialog={toggleDialog}
+        openDialog={openDialog}
+      />
     </section>
   );
 }
