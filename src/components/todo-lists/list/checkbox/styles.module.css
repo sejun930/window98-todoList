@@ -1,0 +1,12 @@
+.checkbox__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+.checkbox__wrapper span {
+  max-width: 28rem;
+}
+
+.checked span {
+  text-decoration: line-through;
+}

@@ -31,7 +31,7 @@ export default function DialogAlert({
           </div>
           <div className={styles.button__options}>
             <ButtonDangerousM onClick={closeDialogAlert}>취소</ButtonDangerousM>
-            <ButtonPrimaryM>확인</ButtonPrimaryM>
+            <ButtonPrimaryM onClick={alertInfo?.okEvent}>확인</ButtonPrimaryM>
           </div>
         </div>
       </div>

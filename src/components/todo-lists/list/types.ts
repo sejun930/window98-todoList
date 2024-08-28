@@ -13,6 +13,5 @@ export interface IUseTodoListsListProps {
   allData: number;
 }
 export interface IUseTodoListsListReturn {
-  toggleChecked: () => void;
   openDeleteConfirm: (info: ITodoList) => () => void;
 }

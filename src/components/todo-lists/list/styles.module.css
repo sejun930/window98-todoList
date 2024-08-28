@@ -4,17 +4,6 @@
   justify-content: space-between;
   padding-right: 0.125rem;
 }
-.title__item {
-  display: flex;
-  align-items: center;
-  gap: 0 0.5rem;
-}
-.title__item span {
-  max-width: 28rem;
-}
-.checked span {
-  text-decoration: line-through;
-}
 
 .options {
   display: flex;
