@@ -34,7 +34,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem 0;
+  gap: 0.5rem 0;
   padding-bottom: 0.75rem;
   border-bottom: solid 0.0625rem var(--gray-50);
 }

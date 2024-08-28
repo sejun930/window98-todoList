@@ -1,6 +1,11 @@
 .common {
   font-weight: 400;
 }
+.line__limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .title01 {
   font-size: 1.5rem; /* 24px */

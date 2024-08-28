@@ -16,13 +16,12 @@ export type IUseDialogInfo = UseBoundStore<
 >;
 
 export interface IDialogAlertInfo {
-  text: string;
+  text: string | React.ReactNode | JSX.Element;
   okEvent: () => void | Promise<void>;
 }
 export interface IDialogAlertInfoProps {
-  useDialogAlert: boolean;
   isOpenDialogAlert: boolean;
-  headerInfo: IWindowsHeaderProps;
+  headerInfo: Pick<IWindowsHeaderProps, "title">;
   dialogAlertInfo: IDialogAlertInfo;
 }
 

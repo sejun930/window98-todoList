@@ -26,7 +26,7 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
   return (
     <section className={styles.section}>
       <div className={styles.option__wrapper}>
-        <TextBody04>TOTAL : {allData}</TextBody04>
+        <TextBody04>{`TOTAL : ${allData}`}</TextBody04>
         <ButtonPrimaryM onClick={openWriteDialog}>
           <Image
             src="/icons/new-file-small.png"

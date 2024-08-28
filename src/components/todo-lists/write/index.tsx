@@ -60,8 +60,6 @@ export default function TodolistsWrite() {
     } catch (err) {
       if (err instanceof Error) throw new Error(err?.message);
     }
-
-    console.log(data);
   });
 
   return (
@@ -73,12 +71,14 @@ export default function TodolistsWrite() {
             className={styles.title}
             {...register("title")}
             id="write-title"
+            maxLength={20}
           />
           <textarea
             placeholder="내용 입력"
             className={styles.contents}
             {...register("contents")}
             id="write-contents"
+            maxLength={200}
           ></textarea>
         </div>
 

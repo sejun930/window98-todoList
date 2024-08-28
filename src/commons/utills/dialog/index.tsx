@@ -21,9 +21,6 @@ export const useUtillDialog = (): IUseUtillDialogReturn => {
 
   // Dialog 종료
   const closeDialog = (prosp?: IcloseDialogProps) => {
-    // const originData = prosp?.originData ?? {};
-    // console.log(originData);
-
     // 제목이 기입되어 있는지
     const title =
       (document.getElementById("write-title") as HTMLInputElement)?.value ?? "";

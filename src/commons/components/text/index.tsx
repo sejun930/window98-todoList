@@ -5,9 +5,21 @@ import styles from "./styles.module.css";
 export const TextBase = ({
   children,
   cssprop,
+  useLineLimit,
   // isLoading = false,
 }: ITextBaseProps): JSX.Element => {
-  return <span className={`${styles.common} ${cssprop}`}>{children}</span>;
+  let classNames = `${styles.common} ${cssprop}`;
+  // 글자수 제한을 사용할 경우
+  if (useLineLimit) classNames += ` ${styles.line__limit}`;
+
+  return (
+    <span
+      className={classNames}
+      title={typeof children === "string" ? children : ""}
+    >
+      {children}
+    </span>
+  );
 };
 
 export const TextTitle01 = ({

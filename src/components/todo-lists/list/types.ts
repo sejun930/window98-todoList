@@ -14,4 +14,5 @@ export interface IUseTodoListsListProps {
 }
 export interface IUseTodoListsListReturn {
   toggleChecked: () => void;
+  openDeleteConfirm: (info: ITodoList) => () => void;
 }

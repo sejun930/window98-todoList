@@ -19,7 +19,11 @@ const TodoListsList = ({
 }: ITodoListsListProps) => {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
   const { checked, title, contents, id } = info;
-  const { toggleChecked } = useTodoListsList({ id, checked, allData });
+  const { toggleChecked, openDeleteConfirm } = useTodoListsList({
+    id,
+    checked,
+    allData,
+  });
 
   useLayoutEffect(() => {
     if (!titleItemRef?.current) return;
@@ -39,7 +43,7 @@ const TodoListsList = ({
             isChecked={checked ?? false}
             onClick={toggleChecked}
           />
-          <TextTitle02>{title}</TextTitle02>
+          <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
         </div>
         <div className={styles.options}>
           <ButtonPrimary>
@@ -52,7 +56,7 @@ const TodoListsList = ({
             <TextBody04>수정</TextBody04>
           </ButtonPrimary>
 
-          <ButtonPrimary>
+          <ButtonPrimary onClick={openDeleteConfirm(info)}>
             <Image
               src="/icons/recycle-small.png"
               alt="수정"

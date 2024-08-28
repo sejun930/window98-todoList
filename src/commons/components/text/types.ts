@@ -1,10 +1,9 @@
-import type { ReactNode } from "react";
-
 export interface ITextBaseProps {
-  children: ReactNode;
+  children: string | React.ReactNode;
   className?: string;
   isLoading?: boolean;
   cssprop?: string;
+  useLineLimit?: number;
 }
 
 export type ITextCommonProps =

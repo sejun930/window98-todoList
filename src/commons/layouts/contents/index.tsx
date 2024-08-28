@@ -68,11 +68,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
                   {dialogInfo?.children}
                 </Dialog>
                 <DialogAlert
-                  isOpen={
-                    (dialogAlertInfo?.useDialogAlert &&
-                      dialogAlertInfo?.isOpenDialogAlert) ??
-                    false
-                  }
+                  isOpen={dialogAlertInfo?.isOpenDialogAlert ?? false}
                   header={dialogAlertInfo?.headerInfo ?? {}}
                   alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
                 />
