@@ -5,6 +5,7 @@ export interface ITodoList {
   contents: string; // 내용
   checked: boolean; // 체크 여부
   createdAt: string; // 작성된 날짜
+  createdAtTime: number; // 작성된 날짜 Time
 }
 
 // fetch로 받아온 todo-list 결과

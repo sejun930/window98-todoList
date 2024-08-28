@@ -8,6 +8,7 @@ interface IFetchAllTodoListsProps {
 export const fetchAllTodoLists = async ({ _page }: IFetchAllTodoListsProps) => {
   const data = await axios.get(`http://localhost:5010/todoLists`, {
     params: {
+      _sort: "-createdAtTime",
       _page,
     },
   });

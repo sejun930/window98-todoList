@@ -8,17 +8,27 @@ import { TextBody03, TextBody04, TextTitle02 } from "@/commons/components/text";
 import { ButtonPrimary } from "@/commons/components/button";
 import { ITodoListsListProps } from "./types";
 import { useTodoListsList } from "./hook";
-import { memo } from "react";
+import { memo, MutableRefObject, useLayoutEffect, useRef } from "react";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
 const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
+  const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
   const { checked, title, contents, id } = info;
   const { toggleChecked } = useTodoListsList({ id, checked });
+
+  useLayoutEffect(() => {
+    if (!titleItemRef?.current) return;
+
+    // 체크가 되어 있다면 추가 스타일을 위한 클래스 네임 추가
+    if (checked) titleItemRef.current.classList.add(styles.checked);
+    // 비체크일 경우 기존의 클래스 네임 삭제
+    else titleItemRef.current.classList.remove(styles.checked);
+  }, [checked]);
 
   return (
     <li className={classNames}>
       <div className={styles.title__wrapper}>
-        <div className={styles.title__item}>
+        <div className={styles.title__item} ref={titleItemRef}>
           <Checkbox
             id={uuid}
             isChecked={checked ?? false}

@@ -9,6 +9,9 @@
   align-items: center;
   gap: 0 0.5rem;
 }
+.checked span {
+  text-decoration: line-through;
+}
 
 .options {
   display: flex;
