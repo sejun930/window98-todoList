@@ -3,6 +3,7 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { IUseTodoListsListProps } from "./types";
 import {
   IFetchTodoInfiniteQueryInfo,
+  IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
 
@@ -27,14 +28,22 @@ export const useTodoListsList = ({
           // pages 데이터만 별도 추출
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
 
-          // 변경된 내용의 인덱스 값 추출
-          let idx = Math.abs(Number(updateTodo.id) - allData);
-          // 변경된 내용이 어떤 페이지에 있는지 조회
-          const pagesIdx = Math.floor(idx / 10);
+          pages.some((info: IFetchTodoInfo, idx1: number) => {
+            const datas = info?.data;
 
-          idx = idx % 10;
-          if (pages?.[pagesIdx]?.data?.[idx] && updateTodo)
-            pages[pagesIdx].data[idx] = updateTodo;
+            let isFind = false;
+            datas.some((el, idx2) => {
+              if (el.id === updateTodo.id) {
+                pages[idx1].data[idx2] = updateTodo;
+
+                isFind = true;
+                return true;
+              }
+            });
+
+            if (isFind) return true;
+            return false;
+          });
 
           return { ...oldInfos, pages };
         },

@@ -1,4 +1,5 @@
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import { DehydratedState } from "@tanstack/react-query";
 
 export interface ITodoListsListProps {
   infos: IFetchTodoInfo;

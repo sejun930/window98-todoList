@@ -3,7 +3,7 @@
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-import { TextBody04 } from "@/commons/components/text";
+import { TextBody04, TextTitle01 } from "@/commons/components/text";
 import type { ITodoListsListProps } from "./types";
 import { useTodoLists } from "./hook";
 import { ButtonPrimaryM } from "@/commons/components/button";
@@ -19,7 +19,9 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
   // 전체 Todo-list 개수
-  const allData = infos?.items ?? 0;
+  const allData = items?.length ?? 0;
+  // 데이터 존재 여부 반환
+  const hasItems = allData > 0 ?? false;
 
   return (
     <section className={styles.section}>
@@ -41,6 +43,12 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
         disable={!hasNextPage}
       >
         <ul className={styles.list__wrapper} ref={listWrapperRef}>
+          {!hasItems && (
+            <li className={styles.empty}>
+              <TextTitle01>리스트가 비어있습니다.</TextTitle01>
+            </li>
+          )}
+
           {items?.map((info, idx) => {
             const { id, createdAt } = info;
 

@@ -66,16 +66,16 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
                   header={dialogInfo?.headerInfo ?? {}}
                 >
                   {dialogInfo?.children}
-                  <DialogAlert
-                    isOpen={
-                      (dialogAlertInfo?.useDialogAlert &&
-                        dialogAlertInfo?.isOpenDialogAlert) ??
-                      false
-                    }
-                    header={dialogAlertInfo?.headerInfo ?? {}}
-                    alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
-                  />
                 </Dialog>
+                <DialogAlert
+                  isOpen={
+                    (dialogAlertInfo?.useDialogAlert &&
+                      dialogAlertInfo?.isOpenDialogAlert) ??
+                    false
+                  }
+                  header={dialogAlertInfo?.headerInfo ?? {}}
+                  alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
+                />
               </main>
             </div>
           </div>

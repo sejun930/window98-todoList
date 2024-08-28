@@ -29,10 +29,6 @@ export const useTodoLists = ({ infos }: IUseTodoListsListProps) => {
       return allPages?.length + 1;
     },
     initialPageParam: 1,
-    initialData: {
-      pages: [infos],
-      pageParams: [1],
-    },
   });
 
   // 다음 페이지의 데이터 호출
