@@ -28,10 +28,11 @@ export const useTodoListsList = ({
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
 
           // 변경된 내용의 인덱스 값 추출
-          const idx = Math.abs(Number(updateTodo.id) - allData);
+          let idx = Math.abs(Number(updateTodo.id) - allData);
           // 변경된 내용이 어떤 페이지에 있는지 조회
           const pagesIdx = Math.floor(idx / 10);
 
+          idx = idx % 10;
           if (pages?.[pagesIdx]?.data?.[idx] && updateTodo)
             pages[pagesIdx].data[idx] = updateTodo;
 

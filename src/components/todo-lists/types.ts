@@ -9,5 +9,6 @@ export interface IUseTodoListsListProps {
 }
 export interface IUseTodoListsListReturn {
   items: ITodoList[];
-  // toggleChecked: (id: number, checked: boolean) => () => Promise<void>;
+  fetchMore: () => void;
+  hasNextPage: boolean;
 }

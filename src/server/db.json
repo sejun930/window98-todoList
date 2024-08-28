@@ -20,7 +20,7 @@
       "id": "3",
       "title": "완료 toggle",
       "contents": "완료 여부 toggle 기능 추가하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T12:51:20.567Z",
       "createdAtTime": 1724763080567
     },
@@ -28,7 +28,7 @@
       "id": "4",
       "title": "데이터 수정 모달 구현",
       "contents": "update 버튼 클릭시 수정 모달 노출하기",
-      "checked": false,
+      "checked": true,
       "createdAt": "2024-08-27T12:52:17.567Z",
       "createdAtTime": 1724763137567
     },
@@ -36,7 +36,7 @@
       "id": "5",
       "title": "데이터 수정 이탈 감지",
       "contents": "수정에서 글 수정 후 닫기 시, 이탈 감지하는 모달 노출하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T12:53:53.567Z",
       "createdAtTime": 1724763233567
     },
@@ -60,7 +60,7 @@
       "id": "8",
       "title": "목록 삭제 후 리패치",
       "contents": "목록 삭제 후 전체 목록 최신화하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T13:02:31.567Z",
       "createdAtTime": 1724763751567
     },
@@ -68,7 +68,7 @@
       "id": "9",
       "title": "상세 페이지 구현",
       "contents": "목록 제목 및 내용 클릭시 상세 페이지로 이동하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T13:05:33.567Z",
       "createdAtTime": 1724763933567
     },
@@ -84,9 +84,17 @@
       "id": "11",
       "title": "상세 페이지의 수정 페이지 구현",
       "contents": "상세 페이지 안에서 수정 클릭시 수정 페이지 구현하기",
-      "checked": true,
+      "checked": false,
       "createdAt": "2024-08-27T13:10:33.567Z",
       "createdAtTime": 1724764233567
+    },
+    {
+      "id": "12",
+      "title": "리스트 무한 스크롤링 적용",
+      "contents": "리스트에 무한 스크롤 적용하기",
+      "checked": false,
+      "createdAt": "2024-08-28T18:10:33.567Z",
+      "createdAtTime": 1724868633567
     }
   ]
 }
