@@ -8,6 +8,7 @@ export interface IButtonBaseProps {
   size: "s" | "m" | "l" | "fit";
   onClick?: () => void | Promise<void>;
   disable?: boolean;
+  active?: boolean;
 }
 
 export type IButtonCommonProps =

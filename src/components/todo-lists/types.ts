@@ -11,6 +11,5 @@ export interface IUseTodoListsListReturn {
   items: ITodoList[];
   fetchMore: () => void;
   hasNextPage: boolean;
-  openDialog: boolean;
-  toggleDialog: (bool?: boolean) => () => void;
+  openWriteDialog: () => void;
 }

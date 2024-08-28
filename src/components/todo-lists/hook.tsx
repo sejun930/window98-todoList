@@ -2,12 +2,15 @@ import { fetchAllTodoLists } from "@/server/apis";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { IUseTodoListsListProps } from "./types";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
-import { useState } from "react";
+import TodolistsWrite from "./write";
+import WithForm from "@/commons/hocs/form";
+import { zodSchemaTodoListsWrite } from "./write/types";
+import { useUtillDialog } from "@/commons/utills/dialog";
 
 // 투두 리스트 조회 hook
 export const useTodoLists = ({ infos }: IUseTodoListsListProps) => {
-  // 등록, 수정, 삭제 모달 오픈 여부
-  const [openDialog, setOpenDialog] = useState(false);
+  // dialog 실행 제어
+  const { openDialog, closeDialog } = useUtillDialog();
 
   // 리스트 조회용 함수
   const fetchInfiniteTodoList = async (_page: number) => {
@@ -42,16 +45,22 @@ export const useTodoLists = ({ infos }: IUseTodoListsListProps) => {
   const items: ITodoList[] =
     data?.pages?.flatMap((el: IFetchTodoInfo) => el.data) ?? [];
 
-  // 모달창 Toggle
-  const toggleDialog = (bool: boolean) => () => {
-    setOpenDialog(bool);
+  // 등록 & 수정 Dialog open
+  const openWriteDialog = () => {
+    openDialog({
+      headerInfo: { title: "리스트 등록", action: closeDialog },
+      children: (
+        <WithForm zodSchema={zodSchemaTodoListsWrite}>
+          <TodolistsWrite />
+        </WithForm>
+      ),
+    });
   };
 
   return {
     items,
     fetchMore,
     hasNextPage,
-    openDialog,
-    toggleDialog,
+    openWriteDialog,
   };
 };

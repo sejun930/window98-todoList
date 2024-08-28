@@ -2,7 +2,7 @@ import { ButtonPrimaryL } from "@/commons/components/button";
 import styles from "./styles.module.css";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
-import { IZodSchemaTodoListsWrite } from "../types";
+import { IZodSchemaTodoListsWrite } from "./types";
 
 // 리스트 등록 & 수정 컴포넌트
 export default function TodolistsWrite() {
@@ -33,7 +33,11 @@ export default function TodolistsWrite() {
           ></textarea>
         </div>
 
-        <ButtonPrimaryL disable={!isValid} onClick={writeTodoList}>
+        <ButtonPrimaryL
+          disable={!isValid}
+          active={isValid}
+          onClick={writeTodoList}
+        >
           <TextBody02>등록</TextBody02>
         </ButtonPrimaryL>
       </form>

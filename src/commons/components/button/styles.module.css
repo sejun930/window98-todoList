@@ -20,6 +20,11 @@
   pointer-events: none;
 }
 
+.active {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 .fit {
   width: auto;
   height: auto;

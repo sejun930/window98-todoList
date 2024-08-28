@@ -1,5 +1,7 @@
+import { ITodoList } from "@/commons/types/todo-list";
 import { ZodSchema, z } from "zod";
-import { IZodSchemaTodoListsWrite } from "./types";
+
+export type IZodSchemaTodoListsWrite = Pick<ITodoList, "title" | "contents">;
 
 // 등록 & 수정에 필요한 정보 검증
 export const zodSchemaTodoListsWrite: ZodSchema<IZodSchemaTodoListsWrite> =

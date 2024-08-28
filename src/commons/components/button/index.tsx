@@ -8,10 +8,12 @@ export const ButtonBase = ({
   size,
   onClick,
   disable,
+  active,
   // isLoading = false,
 }: IButtonBaseProps): JSX.Element => {
   let classNames = `${styles.common} ${styles[theme]} ${styles[size]}`;
   if (disable) classNames += ` ${styles.disable}`;
+  else if (active) classNames += ` ${styles.active}`;
 
   return (
     <button type="button" className={classNames} onClick={onClick}>
