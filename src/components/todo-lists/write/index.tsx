@@ -1,29 +1,32 @@
-import { ButtonPrimaryL } from "@/commons/components/button";
+import { useEffect } from "react";
 import styles from "./styles.module.css";
+import { INIT_TODO_LIST } from "@/commons/init/todo-list";
+
+import { ButtonPrimaryL } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
 import { ITodolistsWriteProps, IZodSchemaTodoListsWrite } from "./types";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
-import { useTodolistsWriteCreate } from "./create/hook";
-import { useTodolistsWriteUpdate } from "./update/hook";
-import { INIT_TODO_LIST } from "@/commons/init/todo-list";
-import { useEffect } from "react";
+import { useServerUtillsCraete } from "@/server/utills/create";
+import { useServerUtillsUpdate } from "@/server/utills/update";
 
 // 리스트 등록 & 수정 컴포넌트
 export default function TodolistsWrite({
   isEdit,
   info = { ...INIT_TODO_LIST },
 }: ITodolistsWriteProps) {
+  const { id } = info;
+
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
   // 등록 가능 여부
   const { isValid } = formState;
 
   // 등록 관련 함수
-  const { createTodoListMutation } = useTodolistsWriteCreate();
+  const { createTodoListMutation } = useServerUtillsCraete();
   // 수정 관련 함수
-  const { updateTodoListMutation } = useTodolistsWriteUpdate({ info });
+  const { updateTodoListMutation } = useServerUtillsUpdate();
 
   useEffect(() => {
     // 수정 모드일 경우 조회한 데이터를 초기 데이터로 삽입
@@ -44,7 +47,7 @@ export default function TodolistsWrite({
     try {
       if (isEdit) {
         // todo-list 수정
-        updateTodoListMutation.mutate(data);
+        updateTodoListMutation.mutate({ data, id });
       } else {
         // todo-list 등록
         createTodoListMutation.mutate(data);

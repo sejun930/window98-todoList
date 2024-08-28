@@ -3,6 +3,7 @@ import { TextBody04 } from "@/commons/components/text";
 import Image from "next/image";
 import { useTodoListsListDelete } from "./hook";
 import { ITodoListsListDeleteProps } from "./types";
+import { useServerUtillsDelete } from "@/server/utills/delete";
 
 // 리스트 삭제 기능 컴포넌트
 export default function TodoListsListDelete({

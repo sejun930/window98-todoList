@@ -1,22 +1,20 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { IUseServerUtillsDeleteReturn } from "./types";
+import { deleteTodolist } from "@/server/apis";
 import {
   IFetchTodoInfiniteQueryInfo,
   IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { updateTodolistChecked } from "@/server/apis";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseTodoListsListCheckboxProps } from "./types";
 
-export const useTodoListsListCheckbox = ({
-  id,
-  checked,
-}: IUseTodoListsListCheckboxProps) => {
+// 삭제에 관련된 api 함수들
+export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
   const queryClient = useQueryClient();
 
-  // checked toggle 전용 mutation 함수
-  const updateTodolistCheckedMutation = useMutation({
+  // 리스트 삭제 mutation
+  const deleteTodolistMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
-    mutationFn: () => updateTodolistChecked({ id, checked }),
+    mutationFn: (id: string) => deleteTodolist({ id }),
     onSuccess: (updateTodo: ITodoList) => {
       // 변경된 리스트의 캐시 변경
       queryClient.setQueryData(
@@ -26,23 +24,29 @@ export const useTodoListsListCheckbox = ({
 
           // pages 데이터만 별도 추출
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
-
           pages.some((info: IFetchTodoInfo, idx1: number) => {
-            const datas = info?.data;
+            let datas = info?.data;
 
             let isFind = false;
             datas.some((el, idx2) => {
               if (el.id === updateTodo.id) {
-                if (pages[idx1].data[idx2]) pages[idx1].data[idx2] = updateTodo;
+                // 해당하는 리스트의 정보는 임시 삭제
+                pages[idx1].data[idx2] = null;
 
                 isFind = true;
                 return true;
               }
             });
 
-            if (isFind) return true;
+            if (isFind) {
+              // 임시 삭제된 리스트는 배열에서 제거
+              pages[idx1].data = pages[idx1].data.filter((el: ITodoList) => el);
+
+              return true;
+            }
             return false;
           });
+          pages[0].items--;
 
           return { ...oldInfos, pages };
         },
@@ -50,18 +54,7 @@ export const useTodoListsListCheckbox = ({
     },
   });
 
-  // Todo-list checked toggle 함수
-  const toggleChecked = () => {
-    try {
-      updateTodolistCheckedMutation.mutate();
-    } catch (err) {
-      if (err instanceof Error) {
-        throw new Error(err?.message ?? "");
-      }
-    }
-  };
-
   return {
-    toggleChecked,
+    deleteTodolistMutation,
   };
 };

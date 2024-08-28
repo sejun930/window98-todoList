@@ -1,17 +1,17 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IZodSchemaTodoListsWrite } from "../types";
-import { createTodolist } from "@/server/apis";
 import {
   IFetchTodoInfiniteQueryInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { ITodolistsWriteCreateReturn } from "./types";
+import { IZodSchemaTodoListsWrite } from "@/components/todo-lists/write/types";
+import { createTodolist } from "@/server/apis/create";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { IUseServerUtillsCraeteReturn } from "./types";
 
-// 등록 관련 hook
-export const useTodolistsWriteCreate = (): ITodolistsWriteCreateReturn => {
+// 등록에 관련된 api 함수들
+export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {
   const queryClient = useQueryClient();
 
-  // 등록 함수
+  // 리스트 등록 함수
   const createTodoListMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
     mutationFn: (data: IZodSchemaTodoListsWrite) => createTodolist({ data }),
@@ -32,6 +32,10 @@ export const useTodolistsWriteCreate = (): ITodolistsWriteCreateReturn => {
           return { ...oldInfos, pages };
         },
       );
+    },
+    onError: () => {
+      // TODO : 에러 화면 노출
+      console.log("?");
     },
   });
 

@@ -5,7 +5,6 @@ import { zodSchemaTodoListsWrite } from "../../write/types";
 import WithForm from "@/commons/hocs/form";
 import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
-import { useRouter } from "next/router";
 
 export const useTodoListsListUpdate = (): IuseTodoListsListUpdateReturn => {
   const { openDialog, closeDialog } = useUtillDialog();

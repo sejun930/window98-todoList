@@ -3,9 +3,9 @@ import { MutableRefObject, useLayoutEffect, useRef } from "react";
 import { Checkbox } from "@/commons/components/checkbox";
 import { TextTitle02 } from "@/commons/components/text";
 import { ITodoListsListCheckboxProps } from "./types";
-import { useTodoListsListCheckbox } from "./hook";
+import { useServerUtillsUpdate } from "@/server/utills/update";
 
-// Todo-list 체크 여부 컴포넌트
+// 리스트 체크박스 컴포넌트
 export default function TodoListsListCheckbox({
   uuid,
   checked,
@@ -13,7 +13,18 @@ export default function TodoListsListCheckbox({
   id,
 }: ITodoListsListCheckboxProps) {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
-  const { toggleChecked } = useTodoListsListCheckbox({ checked, id });
+  const { updateTodolistCheckedMutation } = useServerUtillsUpdate();
+
+  // 리스트 checked toggle 함수
+  const toggleTodolistChecked = () => {
+    try {
+      updateTodolistCheckedMutation.mutate({ id, checked });
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err?.message ?? "");
+      }
+    }
+  };
 
   useLayoutEffect(() => {
     if (!titleItemRef?.current) return;
@@ -29,7 +40,7 @@ export default function TodoListsListCheckbox({
       <Checkbox
         id={uuid}
         isChecked={checked ?? false}
-        onClick={toggleChecked}
+        onClick={toggleTodolistChecked}
       />
       <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
     </div>

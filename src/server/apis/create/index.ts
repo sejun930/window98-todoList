@@ -6,7 +6,7 @@ interface ICreateTodolist {
 }
 type createTodoList = Omit<ITodoList, "id">;
 
-// todo-list 등록
+// 리스트 등록
 export const createTodolist = async ({ data }: ICreateTodolist) => {
   const _data: createTodoList = {
     ...data,

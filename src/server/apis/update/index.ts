@@ -16,11 +16,12 @@ export const updateTodolistChecked = async ({
   return result.data;
 };
 
+//
+
 interface IUpdateTodolist {
   id: string;
   data: Pick<ITodoList, "title" | "contents">;
 }
-
 // todo-list 수정
 export const updateTodolist = async ({ id, data }: IUpdateTodolist) => {
   const result = await axios.patch(
