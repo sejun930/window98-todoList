@@ -3,6 +3,7 @@ export interface ICheckboxBaseProps {
   isLoading?: boolean;
   isChecked?: boolean; // 체크 여부
   id: string;
+  onClick: () => void | Promise<void>; // toogle 실행 이벤트
 }
 
 export type ICheckboxCommonProps =

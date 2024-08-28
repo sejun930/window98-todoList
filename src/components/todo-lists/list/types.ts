@@ -1,12 +1,15 @@
-import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import { ITodoList } from "@/commons/types/todo-list";
 
 export interface ITodoListsListProps {
-  infos: IFetchTodoInfo;
+  info: ITodoList;
+  uuid: string;
+  classNames: string;
 }
 
 export interface IUseTodoListsListProps {
-  infos: IFetchTodoInfo;
+  id: number;
+  checked: boolean;
 }
 export interface IUseTodoListsListReturn {
-  items: ITodoList[];
+  toggleChecked: () => void;
 }

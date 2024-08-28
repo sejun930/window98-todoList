@@ -13,7 +13,7 @@ export const fetchAllTodoLists = async ({ _page }: IFetchAllTodoListsProps) => {
   });
 
   if (data?.status !== 200) {
-    throw new Error("Failed to fetch posts");
+    throw new Error("목록 조회에 실패했습니다.");
   }
   return data.data;
 };
