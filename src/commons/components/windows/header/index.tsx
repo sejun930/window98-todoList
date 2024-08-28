@@ -1,4 +1,5 @@
 import styles from "./styles.module.css";
+import windowsStyles from "../../../styles/windows/styles.module.css";
 
 import { TextBody03 } from "../../text";
 import { IWindowsHeaderProps } from "./types";
@@ -21,7 +22,9 @@ export default function WindowsHeader({ title, action }: IWindowsHeaderProps) {
   };
 
   return (
-    <header className={styles.windows__header}>
+    <header
+      className={`${styles.windows__header} ${windowsStyles.windows__inner}`}
+    >
       <TextBody03>{title}</TextBody03>
       {RenderWithAction()}
     </header>

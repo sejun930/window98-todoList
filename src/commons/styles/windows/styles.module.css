@@ -1,0 +1,15 @@
+/* windows 창의 가장 외곽 스타일 */
+.windows__outline {
+  border-top: 0.125rem solid var(--gray-30);
+  border-left: 0.125rem solid var(--gray-30);
+  border-right: 0.125rem solid var(--black);
+  border-bottom: 0.125rem solid var(--black);
+}
+
+/* windows 창의 가장 내곽 스타일 */
+.windows__inner {
+  border-top: 0.0625 solid var(--gray-60);
+  border-left: 0.0625 solid var(--gray-60);
+  border-right: 0.125rem solid var(--gray-60);
+  border-bottom: 0.0625 solid var(--gray-60);
+}

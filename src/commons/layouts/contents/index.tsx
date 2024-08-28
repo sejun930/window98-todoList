@@ -2,11 +2,14 @@
 
 import { useLayoutEffect, type ReactNode } from "react";
 import styles from "./styles.module.css";
+import windowsStyles from "../../styles/windows/styles.module.css";
+
 import { usePathname, useRouter } from "next/navigation";
-import { TextBody03 } from "@/commons/components/text";
 import { useUtillsRouter } from "@/commons/utills";
+
 import WindowsHeader from "@/commons/components/windows/header";
 import Dialog from "@/commons/components/dialog";
+
 import { useDialogInfoState } from "@/commons/zustand/store";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
@@ -42,23 +45,21 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
 
   if (!isTodoList) return <></>;
   return (
-    <div>
-      <div className={styles.contents__wrapper}>
-        <WindowsHeader title="Todo-List" action={closeContents} />
-        <div className={styles.contents__item}>
-          <div className={styles.contents__outline}>
-            <div className={styles.contents__inline}>
-              <div className={styles.contents__wrap}>
-                <main>
-                  {children}
-                  <Dialog
-                    isOpen={dialogInfo?.isOpenDialog ?? false}
-                    header={dialogInfo?.headerInfo ?? {}}
-                  >
-                    {dialogInfo?.children}
-                  </Dialog>
-                </main>
-              </div>
+    <div className={`${styles.windows} ${windowsStyles.windows__outline}`}>
+      <WindowsHeader title="Todo-List" action={closeContents} />
+      <div className={styles.contents__item}>
+        <div className={styles.contents__inner}>
+          <div className={styles.contents__inline}>
+            <div className={styles.contents__wrap}>
+              <main>
+                {children}
+                <Dialog
+                  isOpen={dialogInfo?.isOpenDialog ?? false}
+                  header={dialogInfo?.headerInfo ?? {}}
+                >
+                  {dialogInfo?.children}
+                </Dialog>
+              </main>
             </div>
           </div>
         </div>

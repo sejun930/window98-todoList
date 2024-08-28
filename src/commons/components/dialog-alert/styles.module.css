@@ -1,0 +1,39 @@
+.dialog__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  z-index: 100;
+}
+
+.dialog__item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-left: 0.0625rem solid var(--gray-40);
+  border-top: 0.0625rem solid var(--gray-40);
+  border-right: 0.0625rem solid var(--gray-90);
+  border-bottom: 0.0625rem solid var(--gray-90);
+  height: 100%;
+}
+
+.dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 1.5rem;
+  border-top: 0.0625 solid var(--gray-60);
+  border-bottom: 0.0625 solid var(--gray-60);
+  background: var(--blue-80);
+  color: var(--white);
+  padding: 0 0.25rem;
+}
+
+.dialog__contents {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+}
