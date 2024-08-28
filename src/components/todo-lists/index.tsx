@@ -9,10 +9,14 @@ import Image from "next/image";
 import TodoListsList from "./list";
 import InfiniteScroll from "@/commons/hocs/infinite-scroll";
 import { MutableRefObject, useRef } from "react";
+import Dialog from "@/commons/components/dialog";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists({ infos }: ITodoListsListProps) {
-  const { items, fetchMore, hasNextPage } = useTodoLists({ infos });
+  const { items, fetchMore, hasNextPage, toggleDialog, openDialog } =
+    useTodoLists({
+      infos,
+    });
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
   // 전체 Todo-list 개수
@@ -22,7 +26,7 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
     <section className={styles.section}>
       <div className={styles.option__wrapper}>
         <TextBody04>TOTAL : {allData}</TextBody04>
-        <ButtonPrimaryM>
+        <ButtonPrimaryM onClick={toggleDialog(true)}>
           <Image
             src="/icons/new-file-small.png"
             alt="등록"
@@ -61,6 +65,16 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
           })}
         </ul>
       </InfiniteScroll>
+
+      <Dialog
+        header={{
+          title: "리스트 등록",
+          action: toggleDialog(false),
+        }}
+        isOpen={openDialog}
+      >
+        등록 페이지에요
+      </Dialog>
     </section>
   );
 }

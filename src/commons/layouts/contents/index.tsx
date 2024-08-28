@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { useRouter } from "next/navigation";
 import { TextBody03 } from "@/commons/components/text";
 import { useUtillsRouter } from "@/commons/utills";
+import WindowsHeader from "@/commons/components/windows/header";
 
 interface ILayoutsContentsProps {
   children: ReactNode;
@@ -31,10 +32,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
   return (
     <div>
       <div className={styles.contents__wrapper}>
-        <header className={styles.contents__header}>
-          <TextBody03>Todo-List</TextBody03>
-          <button onClick={closeContents} />
-        </header>
+        <WindowsHeader title="Todo-List" action={closeContents} />
         <div className={styles.contents__item}>
           <div className={styles.contents__outline}>
             <div className={styles.contents__inline}>
