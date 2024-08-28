@@ -14,3 +14,23 @@ export type IUseDialogInfo = UseBoundStore<
     setDialogInfo: (props: IDialogInfoProps) => void;
   }>
 >;
+
+export interface IDialogAlertInfo {
+  text: string;
+  okEvent: () => void | Promise<void>;
+}
+export interface IDialogAlertInfoProps {
+  useDialogAlert: boolean;
+  isOpenDialogAlert: boolean;
+  headerInfo: IWindowsHeaderProps;
+  dialogAlertInfo: IDialogAlertInfo;
+}
+
+// dialog-alert 정보
+// prettier-ignore
+export type IUseDialogAlertInfo = UseBoundStore<
+  StoreApi<{
+    dialogAlertInfo: IDialogAlertInfoProps;
+    setDialogAlertInfo: (props: IDialogAlertInfoProps) => void;
+  }>
+>;

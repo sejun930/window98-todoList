@@ -2,15 +2,15 @@
 }
 
 .primary {
-  box-shadow:
-    inset 0.0625rem 0.0625rem var(--gray-40),
-    0.0625rem 0 var(--black),
-    0 0.0625rem var(--black),
-    0.0625rem 0.0625rem var(--black);
-  border-top: 0.0625rem solid var(--white);
-  border-left: 0.0625rem solid var(--white);
+  border-top: 0.0625rem solid var(--gray);
+  border-left: 0.0625rem solid var(--gray);
   border-right: 0.0625rem solid var(--gray);
   border-bottom: 0.0625rem solid var(--gray);
+}
+.dangerous {
+  border: unset;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .disable {
@@ -19,7 +19,6 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-
 .active {
   background-color: var(--black);
   color: var(--white);

@@ -1,6 +1,6 @@
 import WindowsHeader from "../windows/header";
 import styles from "./styles.module.css";
-import commonsStyles from "../../styles/windows/styles.module.css";
+import windowsStyles from "../../styles/windows/styles.module.css";
 
 import { IDialogProps } from "./types";
 
@@ -9,12 +9,12 @@ export default function Dialog({ children, header, isOpen }: IDialogProps) {
   if (!isOpen) return <></>;
   return (
     <div
-      className={`${styles.dialog__wrapper} ${commonsStyles.windows__outline}`}
+      className={`${styles.dialog__wrapper} ${windowsStyles.windows__outline}`}
     >
       <div className={styles.dialog__item}>
         <WindowsHeader {...header} />
         <div
-          className={`${styles.dialog__contents} ${commonsStyles.windows__inner}`}
+          className={`${styles.dialog__contents} ${windowsStyles.windows__inner}`}
         >
           {children}
         </div>

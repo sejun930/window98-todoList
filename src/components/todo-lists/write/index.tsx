@@ -25,11 +25,13 @@ export default function TodolistsWrite() {
             placeholder="제목 입력"
             className={styles.title}
             {...register("title")}
+            id="write-title"
           />
           <textarea
             placeholder="내용 입력"
             className={styles.contents}
             {...register("contents")}
+            id="write-contents"
           ></textarea>
         </div>
 

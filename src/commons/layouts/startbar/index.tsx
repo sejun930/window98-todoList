@@ -18,10 +18,10 @@ export default function StartBar() {
   return (
     <footer className={styles.footer}>
       <div className={styles.start}>
-        <ButtonPrimary>
+        <button>
           <Image src="/icons/window.webp" alt="start" width={0} height={0} />
           <TextBody04>시작</TextBody04>
-        </ButtonPrimary>
+        </button>
       </div>
 
       <div className={styles.items}>

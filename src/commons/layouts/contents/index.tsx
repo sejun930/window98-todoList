@@ -10,8 +10,12 @@ import { useUtillsRouter } from "@/commons/utills";
 import WindowsHeader from "@/commons/components/windows/header";
 import Dialog from "@/commons/components/dialog";
 
-import { useDialogInfoState } from "@/commons/zustand/store";
+import {
+  useDialogAlertInfoState,
+  useDialogInfoState,
+} from "@/commons/zustand/store";
 import { useUtillDialog } from "@/commons/utills/dialog";
+import DialogAlert from "@/commons/components/dialog-alert";
 
 interface ILayoutsContentsProps {
   children: ReactNode;
@@ -21,9 +25,13 @@ interface ILayoutsContentsProps {
 export default function LayoutsContents({ children }: ILayoutsContentsProps) {
   const pathname = usePathname();
   const router = useRouter();
+
   // dialog 실행 및 정보 zustand
   const { dialogInfo } = useDialogInfoState();
   const { closeDialog } = useUtillDialog();
+
+  // dialog-alert 실행 및 정보 zustand
+  const { dialogAlertInfo } = useDialogAlertInfoState();
 
   const { isTodoListPage } = useUtillsRouter();
   // 현재 페이지 경로가 "/todo-list" 경로인지 확인
@@ -58,6 +66,15 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
                   header={dialogInfo?.headerInfo ?? {}}
                 >
                   {dialogInfo?.children}
+                  <DialogAlert
+                    isOpen={
+                      (dialogAlertInfo?.useDialogAlert &&
+                        dialogAlertInfo?.isOpenDialogAlert) ??
+                      false
+                    }
+                    header={dialogAlertInfo?.headerInfo ?? {}}
+                    alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
+                  />
                 </Dialog>
               </main>
             </div>

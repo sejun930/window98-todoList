@@ -5,7 +5,11 @@ export interface IOpenDialogProps {
   children: React.ReactNode;
 }
 
+export interface IcloseDialogProps {
+  originData: { title: string; contents: string };
+}
+
 export interface IUseUtillDialogReturn {
   openDialog: (props: IOpenDialogProps) => void;
-  closeDialog: () => void;
+  closeDialog: (props?: IcloseDialogProps) => void;
 }
