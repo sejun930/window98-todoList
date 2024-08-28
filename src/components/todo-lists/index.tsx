@@ -47,6 +47,7 @@ export default function TodoLists({ infos }: ITodoListsListProps) {
               uuid={uuid}
               classNames={classNames}
               info={info}
+              allData={allData}
             />
           );
         })}

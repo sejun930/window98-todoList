@@ -18,3 +18,9 @@ export interface IFetchTodoInfo {
   items: number;
   data: ITodoList[];
 }
+
+// fetch로 받아온 todo-list 결과
+export interface IFetchTodoInfiniteQueryInfo {
+  pages: IFetchTodoInfo[];
+  pageParams: number[];
+}

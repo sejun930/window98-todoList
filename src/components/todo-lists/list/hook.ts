@@ -1,9 +1,16 @@
 import { updateTodolistChecked } from "@/server/apis";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { IUseTodoListsListProps } from "./types";
-import { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import {
+  IFetchTodoInfiniteQueryInfo,
+  ITodoList,
+} from "@/commons/types/todo-list";
 
-export const useTodoListsList = ({ id, checked }: IUseTodoListsListProps) => {
+export const useTodoListsList = ({
+  id,
+  checked,
+  allData,
+}: IUseTodoListsListProps) => {
   const queryClient = useQueryClient();
 
   // checked toggle 전용 mutation 함수
@@ -12,16 +19,25 @@ export const useTodoListsList = ({ id, checked }: IUseTodoListsListProps) => {
     mutationFn: () => updateTodolistChecked({ id, checked }),
     onSuccess: (updateTodo: ITodoList) => {
       // 변경된 리스트의 캐시 변경
-      queryClient.setQueryData(["todo-lists"], (oldInfos: IFetchTodoInfo) => {
-        if (!oldInfos) return [];
+      queryClient.setQueryData(
+        ["todo-lists"],
+        (oldInfos: IFetchTodoInfiniteQueryInfo) => {
+          if (!oldInfos) return { pages: [], pageParams: [] };
 
-        const oldTodos = oldInfos?.data ?? [];
-        // 변경된 리스트의 캐시만 수정
-        const newTodos = oldTodos.map((el) => {
-          return el.id === updateTodo.id ? updateTodo : el;
-        });
-        return { ...oldInfos, data: newTodos };
-      });
+          // pages 데이터만 별도 추출
+          const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
+
+          // 변경된 내용의 인덱스 값 추출
+          const idx = Math.abs(Number(updateTodo.id) - allData);
+          // 변경된 내용이 어떤 페이지에 있는지 조회
+          const pagesIdx = Math.floor(idx / 10);
+
+          if (pages?.[pagesIdx]?.data?.[idx] && updateTodo)
+            pages[pagesIdx].data[idx] = updateTodo;
+
+          return { ...oldInfos, pages };
+        },
+      );
     },
   });
 
@@ -29,9 +45,6 @@ export const useTodoListsList = ({ id, checked }: IUseTodoListsListProps) => {
   const toggleChecked = () => {
     try {
       updateTodolistCheckedMutation.mutate();
-      //   console.log(`result : `, result);
-      // console.log(updateTodolistCheckedMutation);
-      // const result = await updateTodolistChecked({ id, checked });
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err?.message ?? "");

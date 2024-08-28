@@ -11,10 +11,15 @@ import { useTodoListsList } from "./hook";
 import { memo, MutableRefObject, useLayoutEffect, useRef } from "react";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
-const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
+const TodoListsList = ({
+  info,
+  classNames,
+  uuid,
+  allData,
+}: ITodoListsListProps) => {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
   const { checked, title, contents, id } = info;
-  const { toggleChecked } = useTodoListsList({ id, checked });
+  const { toggleChecked } = useTodoListsList({ id, checked, allData });
 
   useLayoutEffect(() => {
     if (!titleItemRef?.current) return;
