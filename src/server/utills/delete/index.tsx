@@ -6,10 +6,12 @@ import {
   IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
+import { useUtillsError } from "@/commons/utills";
 
 // 삭제에 관련된 api 함수들
 export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
   const queryClient = useQueryClient();
+  const { showError } = useUtillsError();
 
   // 리스트 삭제 mutation
   const deleteTodolistMutation = useMutation({
@@ -51,6 +53,10 @@ export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
           return { ...oldInfos, pages };
         },
       );
+    },
+    onError: () => {
+      // 에러 발생시 에러 화면 노출
+      showError("400");
     },
   });
 

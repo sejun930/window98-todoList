@@ -7,10 +7,12 @@ import {
   ITodoList,
 } from "@/commons/types/todo-list";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import { useUtillsError } from "@/commons/utills";
 
 // 수정에 관련된 api 함수들
 export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
   const queryClient = useQueryClient();
+  const { showError } = useUtillsError();
 
   // 리스트 체크 mutation
   const updateTodolistCheckedMutation = useMutation({
@@ -52,6 +54,9 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
           return { ...oldInfos, pages };
         },
       );
+    },
+    onError: () => {
+      showError("400");
     },
   });
 
@@ -109,6 +114,9 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
           );
         },
       );
+    },
+    onError: () => {
+      showError("400");
     },
   });
 

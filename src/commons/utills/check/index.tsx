@@ -13,7 +13,6 @@ export const useUtillsCheck = (): IUseUtillsCheckReturn => {
     targetIds.some((id: string) => {
       const value =
         (document.getElementById(id) as HTMLInputElement)?.value ?? "";
-      console.log(value, id, origin[id]);
 
       if (value) {
         if (origin[id] !== value) {

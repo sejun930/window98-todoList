@@ -1,5 +1,9 @@
 import { create } from "zustand";
-import type { IUseDialogAlertInfo, IUseDialogInfo } from "./types";
+import type {
+  IUseDialogAlertInfo,
+  IUseDialogInfo,
+  IUseErrorInfo,
+} from "./types";
 
 // dialog 오픈 여부
 export const useDialogInfoState: IUseDialogInfo = create((set) => ({
@@ -22,5 +26,16 @@ export const useDialogAlertInfoState: IUseDialogAlertInfo = create((set) => ({
   },
   setDialogAlertInfo: (newDialogAlertInfo) => {
     set({ dialogAlertInfo: { ...newDialogAlertInfo } });
+  },
+}));
+
+// Error 코드 및 실행 관리
+export const useErrorInfoState: IUseErrorInfo = create((set) => ({
+  errorInfo: {
+    isShow: false,
+    errorType: "400",
+  },
+  setErrorInfo: (newErrorInfo) => {
+    set({ errorInfo: { ...newErrorInfo } });
   },
 }));

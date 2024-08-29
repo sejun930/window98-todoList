@@ -10,10 +10,16 @@ export const updateTodolistChecked = async ({
   id,
   checked,
 }: IUpdateTodolistChecked) => {
-  const result = await axios.patch(`http://localhost:5010/todoLists/${id}`, {
-    checked: !checked,
-  });
-  return result.data;
+  try {
+    const result = await axios.patch(`http://localhost:5010/todoLists/${id}`, {
+      checked: !checked,
+    });
+    return result.data;
+  } catch (err) {
+    if (err instanceof Error) throw new Error(err.message);
+  }
+
+  return {};
 };
 
 //
@@ -24,9 +30,14 @@ interface IUpdateTodolist {
 }
 // todo-list 수정
 export const updateTodolist = async ({ id, data }: IUpdateTodolist) => {
-  const result = await axios.patch(
-    `http://localhost:5010/todoLists/${id}`,
-    data,
-  );
-  return result.data;
+  try {
+    const result = await axios.patch(
+      `http://localhost:5010/todoLists/${id}`,
+      data,
+    );
+    return result.data;
+  } catch (err) {
+    if (err instanceof Error) throw new Error(err.message);
+  }
+  return {};
 };

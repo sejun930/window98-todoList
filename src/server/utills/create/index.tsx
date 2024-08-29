@@ -6,10 +6,12 @@ import { createTodolist } from "@/server/apis/create";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsCraeteReturn } from "./types";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import { useUtillsError } from "@/commons/utills";
 
 // 등록에 관련된 api 함수들
 export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {
   const queryClient = useQueryClient();
+  const { showError } = useUtillsError();
 
   // 리스트 등록 함수
   const createTodoListMutation = useMutation({
@@ -34,8 +36,8 @@ export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {
       );
     },
     onError: () => {
-      // TODO : 에러 화면 노출
-      console.log("?");
+      // 에러 발생시 에러 화면 노출
+      showError("400");
     },
   });
 

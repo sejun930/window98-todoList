@@ -13,10 +13,12 @@ import Dialog from "@/commons/components/dialog";
 import {
   useDialogAlertInfoState,
   useDialogInfoState,
+  useErrorInfoState,
 } from "@/commons/zustand/store";
 import { useUtillDialog } from "@/commons/utills/dialog";
 import DialogAlert from "@/commons/components/dialog-alert";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import Error from "@/components/commons/error";
 
 interface ILayoutsContentsProps {
   children: ReactNode;
@@ -35,6 +37,10 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
   // dialog-alert 실행 및 정보 zustand
   const { dialogAlertInfo } = useDialogAlertInfoState();
   const useDialogAlert = dialogAlertInfo.isOpenDialogAlert ?? false;
+
+  // Error 실행 및 정보 zustand
+  const { errorInfo } = useErrorInfoState();
+  const isShowError = errorInfo?.isShow ?? false;
 
   const { isTodoListPage } = useUtillsRouter();
   // 현재 페이지 경로가 "/todo-list" 경로인지 확인
@@ -77,6 +83,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
                   header={dialogAlertInfo?.headerInfo ?? {}}
                   alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
                 />
+                <Error isShow={isShowError} errorType={errorInfo.errorType} />
               </main>
             </div>
           </div>

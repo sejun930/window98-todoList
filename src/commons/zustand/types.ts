@@ -33,3 +33,18 @@ export type IUseDialogAlertInfo = UseBoundStore<
     setDialogAlertInfo: (props: IDialogAlertInfoProps) => void;
   }>
 >;
+
+export type IErrorType = "404" | "400";
+
+export interface IErrorInfoProps {
+  isShow: boolean;
+  errorType: IErrorType;
+}
+// Error 정보
+// prettier-ignore
+export type IUseErrorInfo = UseBoundStore<
+  StoreApi<{
+    errorInfo: IErrorInfoProps;
+    setErrorInfo: (props: IErrorInfoProps) => void;
+  }>
+>;
