@@ -7,6 +7,7 @@ import { ITodoDetailViewProps, ITodoDetailProps } from "./types";
 import { useEffect } from "react";
 import { useUtillDialog } from "@/commons/utills/dialog";
 import TodoDetailViewDetail from "./detail";
+import Error from "@/components/commons/error";
 
 // 리스트 상세 조회 페이지
 export default function TodoDetailView({
@@ -14,6 +15,8 @@ export default function TodoDetailView({
   id,
   isEmpty,
 }: ITodoDetailViewProps) {
+  if (isEmpty) return <Error isShow errorType="404" />;
+
   return (
     <HydrationBoundary state={dehydratedState}>
       <TodoDetail id={id} dehydratedState={dehydratedState} isEmpty={isEmpty} />

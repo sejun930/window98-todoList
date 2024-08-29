@@ -23,22 +23,6 @@
       "checked": false,
       "createdAt": "Thu Aug 29 2024 14:55:00 GMT+0900 (한국 표준시)",
       "createdAtTime": 1724910900863
-    },
-    {
-      "id": "2a98",
-      "title": "포도",
-      "contents": "포도",
-      "checked": false,
-      "createdAt": "Thu Aug 29 2024 14:55:08 GMT+0900 (한국 표준시)",
-      "createdAtTime": 1724910908742
-    },
-    {
-      "id": "618b",
-      "title": "수박",
-      "contents": "수박",
-      "checked": true,
-      "createdAt": "Thu Aug 29 2024 14:55:15 GMT+0900 (한국 표준시)",
-      "createdAtTime": 1724910915394
     }
   ]
 }

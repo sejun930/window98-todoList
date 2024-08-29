@@ -16,7 +16,7 @@ export const createTodolist = async ({ data }: ICreateTodolist) => {
       createdAtTime: new Date().getTime(),
     };
 
-    const result = await axios.post(`http://localhost:5010/todoLists`, _data);
+    const result = await axios.post(`http://localhost:5010/todoLists2`, _data);
     return result.data;
   } catch (err) {
     if (err instanceof Error) {

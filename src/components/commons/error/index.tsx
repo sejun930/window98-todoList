@@ -15,7 +15,7 @@ export default function Error({ errorType, isShow }: IErrorInfoProps) {
   const onClick = () => {
     switch (errorType) {
       case "404":
-        router.replace("/");
+        router.replace("/todo-list");
         return;
       default:
         // 에러 화면 숨기기

@@ -26,7 +26,11 @@ export default async function TodoListDetailEditPage(
   // 없는 데이터인 경우
   const isEmpty = !dehydratedState.queries[0]?.state.data;
 
-  if (isEmpty) return <div>존재하지 않는 페이지입니다.</div>;
-
-  return <TodoDetailsEdit dehydratedState={dehydratedState} id={id} />;
+  return (
+    <TodoDetailsEdit
+      dehydratedState={dehydratedState}
+      id={id}
+      isEmpty={isEmpty}
+    />
+  );
 }

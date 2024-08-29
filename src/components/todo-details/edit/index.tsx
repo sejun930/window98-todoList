@@ -19,10 +19,12 @@ import { useEffect } from "react";
 import { useUtillsCheck } from "@/commons/utills/check";
 import { useRouter } from "next/navigation";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import Error from "@/components/commons/error";
 
 interface ITodoDetailsEditProps {
   dehydratedState: DehydratedState;
   id: string;
+  isEmpty: boolean;
 }
 
 const TodoDetails = ({ dehydratedState, id }: ITodoDetailsEditProps) => {
@@ -87,6 +89,8 @@ const TodoDetails = ({ dehydratedState, id }: ITodoDetailsEditProps) => {
 
 // 상세 수정 컴포넌트
 export default function TodoDetailsEdit(props: ITodoDetailsEditProps) {
+  if (props?.isEmpty) return <Error isShow errorType="404" />;
+
   return (
     <HydrationBoundary state={props?.dehydratedState}>
       <WithForm zodSchema={zodSchemaTodoListsWrite}>
