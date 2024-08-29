@@ -12,10 +12,11 @@ import TodoDetailViewDetail from "./detail";
 export default function TodoDetailView({
   dehydratedState,
   id,
+  isEmpty,
 }: ITodoDetailViewProps) {
   return (
     <HydrationBoundary state={dehydratedState}>
-      <TodoDetail id={id} dehydratedState={dehydratedState} />
+      <TodoDetail id={id} dehydratedState={dehydratedState} isEmpty={isEmpty} />
     </HydrationBoundary>
   );
 }

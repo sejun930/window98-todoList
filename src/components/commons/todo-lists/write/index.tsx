@@ -1,8 +1,10 @@
+"use client";
+
 import { useEffect } from "react";
 import styles from "./styles.module.css";
 import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
-import { ButtonPrimaryL } from "@/commons/components/button";
+import { ButtonDangerousL, ButtonPrimaryL } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
 import { ICommonsTodoListsWriteProps } from "./types";
@@ -11,13 +13,17 @@ import { useUtillDialog } from "@/commons/utills/dialog";
 
 import { useServerUtillsCraete } from "@/server/utills/create";
 import { useServerUtillsUpdate } from "@/server/utills/update";
+import { useRouter } from "next/navigation";
 
 // 리스트 등록 & 수정 컴포넌트
 export default function CommonsTodoListsWrite({
   isEdit,
   info = { ...INIT_TODO_LIST },
+  useBackEvent,
+  afterMovePath,
 }: ICommonsTodoListsWriteProps) {
   const { id } = info;
+  const router = useRouter();
 
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
@@ -56,39 +62,51 @@ export default function CommonsTodoListsWrite({
 
       // 등록 & 수정창 닫기
       closeDialog();
+
+      // 종료 후 이동할 경로가 설정되어 있다면
+      if (afterMovePath) router.replace(afterMovePath);
+      return;
     } catch (err) {
       if (err instanceof Error) throw new Error(err?.message);
     }
   });
 
   return (
-    <section className={styles.section}>
+    <div className={styles.wrapper}>
       <form className={styles.form} onSubmit={writeTodoList}>
         <div className={styles.write__wrapper}>
           <input
             placeholder="제목 입력"
             className={styles.title}
             {...register("title")}
-            id="write-title"
+            id="title"
             maxLength={20}
           />
           <textarea
             placeholder="내용 입력"
             className={styles.contents}
             {...register("contents")}
-            id="write-contents"
+            id="contents"
             maxLength={200}
           ></textarea>
         </div>
 
-        <ButtonPrimaryL
-          disable={!isValid}
-          active={isValid}
-          onClick={writeTodoList}
-        >
-          <TextBody02>{isEdit ? "수정" : "등록"}</TextBody02>
-        </ButtonPrimaryL>
+        <div className={styles.button__wrapper}>
+          {useBackEvent && (
+            <ButtonDangerousL onClick={useBackEvent}>
+              <TextBody02>취소</TextBody02>
+            </ButtonDangerousL>
+          )}
+
+          <ButtonPrimaryL
+            disable={!isValid}
+            active={isValid}
+            onClick={writeTodoList}
+          >
+            <TextBody02>{isEdit ? "수정" : "등록"}</TextBody02>
+          </ButtonPrimaryL>
+        </div>
       </form>
-    </section>
+    </div>
   );
 }

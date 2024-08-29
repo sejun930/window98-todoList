@@ -7,29 +7,26 @@ import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 
 import CommonsTodoListsWrite from "../../write";
 import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import { useUtillsCheck } from "@/commons/utills/check";
 
 export const useCommonTodoListsButtonsUpdate =
   (): IuseCommonTodoListsButtonsUpdateReturn => {
     const { openDialog, closeDialog } = useUtillDialog();
     const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
+    const { getIsDifferenceDatas } = useUtillsCheck();
 
     // 수정용 dialog 창 띄우기
     const openUpdateDialog = (info: ITodoList) => () => {
       // 이탈시, 데이터 변경 감지
       const onCloseWithConfirm = () => {
-        // 실시간 제목 조회
-        const title =
-          (document.getElementById("write-title") as HTMLInputElement)?.value ??
-          "";
-        // 실시간 내용 조회
-        const contents =
-          (document.getElementById("write-contents") as HTMLTextAreaElement)
-            ?.value ?? "";
+        // 수정된 내역이 있는지 조회
+        const isDifference = getIsDifferenceDatas({
+          targetIds: ["title", "contents"],
+          origin: { title: info.title, contents: info.contents },
+        });
 
-        // 제목 및 내용 중 기존의 내용과 변경된 내용이 있는지 체크
-        const isChanged = title !== info.title || contents !== info.contents;
         // 변경된 부분이 없다면 종료
-        if (!isChanged) return closeDialog();
+        if (!isDifference) return closeDialog();
 
         // 변경된 부분이 있다면 종료에 대한 재검증
         // 재검증을 위한 dialog-alert 실행

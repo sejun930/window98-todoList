@@ -1,14 +1,14 @@
+import TodoDetailsEdit from "@/components/todo-details/edit";
 import { fetchTodoList } from "@/server/apis/fetch";
-import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-interface ITodoListDetailPageProps {
+interface ITodoListDetailEditPageProps {
   params: { id: string };
 }
 
-// 리스트 상세 페이지
-export default async function TodoListDetailPage(
-  props: ITodoListDetailPageProps,
+// 리스트 상세 수정 페이지
+export default async function TodoListDetailEditPage(
+  props: ITodoListDetailEditPageProps,
 ) {
   const queryClient = new QueryClient();
 
@@ -27,11 +27,6 @@ export default async function TodoListDetailPage(
   const isEmpty = !dehydratedState.queries[0]?.state.data;
 
   if (isEmpty) return <div>존재하지 않는 페이지입니다.</div>;
-  return (
-    <TodoDetailView
-      dehydratedState={dehydratedState}
-      id={id}
-      isEmpty={isEmpty}
-    />
-  );
+
+  return <TodoDetailsEdit dehydratedState={dehydratedState} id={id} />;
 }
