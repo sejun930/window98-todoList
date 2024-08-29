@@ -17,12 +17,13 @@ export type IUseDialogInfo = UseBoundStore<
 
 export interface IDialogAlertInfo {
   text: string | React.ReactNode | JSX.Element;
-  okEvent: () => void | Promise<void>;
+  okEvent?: () => void | Promise<void>;
 }
 export interface IDialogAlertInfoProps {
   isOpenDialogAlert: boolean;
   headerInfo: Pick<IWindowsHeaderProps, "title">;
   dialogAlertInfo: IDialogAlertInfo;
+  onlyWait?: boolean;
 }
 
 // dialog-alert 정보

@@ -11,7 +11,12 @@ import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/button
 import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
-const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
+const TodoListsList = ({
+  info,
+  classNames,
+  uuid,
+  isLoading,
+}: ITodoListsListProps) => {
   const { checked, title, contents, id } = info;
 
   return (
@@ -22,6 +27,7 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
           checked={checked}
           title={title}
           id={id}
+          isLoading={isLoading}
         />
         <div className={styles.options}>
           {/* 수정 버튼 */}
@@ -32,7 +38,7 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
       </div>
 
       <div className={styles.contents}>
-        <TextBody03>{contents}</TextBody03>
+        <TextBody03 isLoading={isLoading}>{contents}</TextBody03>
       </div>
     </li>
   );

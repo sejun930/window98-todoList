@@ -8,6 +8,7 @@ export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
   const openDialogAlert = ({
     headerInfo,
     dialogAlertInfo,
+    onlyWait = false,
   }: IOpenDialogAlertProps) => {
     if (!dialogAlertInfo) return;
 
@@ -15,6 +16,7 @@ export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
       isOpenDialogAlert: true,
       headerInfo,
       dialogAlertInfo,
+      onlyWait,
     });
   };
 
@@ -24,6 +26,7 @@ export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
       isOpenDialogAlert: false,
       headerInfo: { title: "" },
       dialogAlertInfo: { text: "", okEvent: () => {} },
+      onlyWait: false,
     });
   };
 

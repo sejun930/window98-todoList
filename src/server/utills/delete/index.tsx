@@ -7,9 +7,12 @@ import {
   ITodoList,
 } from "@/commons/types/todo-list";
 import { useUtillsError } from "@/commons/utills";
+import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 삭제에 관련된 api 함수들
-export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
+export const useServerUtillsDelete = ({
+  callback,
+}: IUseServerUtillsCallback): IUseServerUtillsDeleteReturn => {
   const queryClient = useQueryClient();
   const { showError } = useUtillsError();
 
@@ -58,6 +61,7 @@ export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
       // 에러 발생시 에러 화면 노출
       showError("400");
     },
+    onSettled: callback,
   });
 
   return {

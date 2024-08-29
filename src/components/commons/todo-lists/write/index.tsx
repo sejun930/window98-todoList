@@ -14,6 +14,7 @@ import { useUtillDialog } from "@/commons/utills/dialog";
 import { useServerUtillsCraete } from "@/server/utills/create";
 import { useServerUtillsUpdate } from "@/server/utills/update";
 import { useRouter } from "next/navigation";
+import { useUtillDialogAlert } from "@/commons/utills";
 
 // 리스트 등록 & 수정 컴포넌트
 export default function CommonsTodoListsWrite({
@@ -24,16 +25,27 @@ export default function CommonsTodoListsWrite({
 }: ICommonsTodoListsWriteProps) {
   const { id } = info;
   const router = useRouter();
+  const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
 
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
   // 등록 가능 여부
   const { isValid } = formState;
 
+  // 콜백 함수
+  const callback = () => {
+    // 등록 & 수정창 닫기
+    closeDialog();
+    closeDialogAlert();
+
+    // 종료 후 이동할 경로가 설정되어 있다면
+    if (afterMovePath) router.replace(afterMovePath);
+  };
+
   // 등록 관련 함수
-  const { createTodoListMutation } = useServerUtillsCraete();
+  const { createTodoListMutation } = useServerUtillsCraete({ callback });
   // 수정 관련 함수
-  const { updateTodoListMutation } = useServerUtillsUpdate();
+  const { updateTodoListMutation } = useServerUtillsUpdate({ callback });
 
   useEffect(() => {
     // 수정 모드일 경우 조회한 데이터를 초기 데이터로 삽입
@@ -52,6 +64,17 @@ export default function CommonsTodoListsWrite({
     if (!title || !contents) return;
 
     try {
+      const waitText = `리스트 ${isEdit ? "수정" : "등록"} 중`;
+      openDialogAlert({
+        onlyWait: true,
+        dialogAlertInfo: {
+          text: `${waitText} 입니다.`,
+        },
+        headerInfo: {
+          title: waitText,
+        },
+      });
+
       if (isEdit) {
         // todo-list 수정
         updateTodoListMutation.mutate({ data, id });
@@ -60,11 +83,6 @@ export default function CommonsTodoListsWrite({
         createTodoListMutation.mutate(data);
       }
 
-      // 등록 & 수정창 닫기
-      closeDialog();
-
-      // 종료 후 이동할 경로가 설정되어 있다면
-      if (afterMovePath) router.replace(afterMovePath);
       return;
     } catch (err) {
       if (err instanceof Error) throw new Error(err?.message);

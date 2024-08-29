@@ -17,7 +17,7 @@ export const useTodoLists = () => {
     return result;
   };
 
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
     queryKey: ["todo-lists"],
     queryFn: ({ pageParam }) => fetchInfiniteTodoList(pageParam),
     getNextPageParam: (lastPage, allPages) => {
@@ -57,5 +57,6 @@ export const useTodoLists = () => {
     fetchMore,
     hasNextPage,
     openWriteDialog,
+    isLoading,
   };
 };

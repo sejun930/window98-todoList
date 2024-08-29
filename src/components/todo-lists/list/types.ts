@@ -5,6 +5,7 @@ export interface ITodoListsListProps {
   uuid: string;
   classNames: string;
   allData: number;
+  isLoading: boolean;
 }
 
 export interface IUseTodoListsListProps {

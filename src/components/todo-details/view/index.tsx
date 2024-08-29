@@ -33,7 +33,7 @@ const TodoDetail = ({ id, dehydratedState }: ITodoDetailProps) => {
     {};
 
   // 상세 데이터 조회
-  const { data: info } = useQuery({
+  const { data: info, isLoading } = useQuery({
     queryKey: ["todo-list", { id }],
     queryFn: () => fetchTodoList({ id }),
     initialData: initData,
@@ -41,7 +41,7 @@ const TodoDetail = ({ id, dehydratedState }: ITodoDetailProps) => {
 
   useEffect(() => {
     openDialog({
-      children: <TodoDetailViewDetail info={info} />,
+      children: <TodoDetailViewDetail isLoading={isLoading} info={info} />,
       headerInfo: { title: info?.title, action: { href: "/todo-list" } },
     });
   }, [info]);

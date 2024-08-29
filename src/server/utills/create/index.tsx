@@ -6,11 +6,16 @@ import { createTodolist } from "@/server/apis/create";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsCraeteReturn } from "./types";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
-import { useUtillsError } from "@/commons/utills";
+import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
+import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 등록에 관련된 api 함수들
-export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {
+export const useServerUtillsCraete = ({
+  callback,
+}: IUseServerUtillsCallback): IUseServerUtillsCraeteReturn => {
   const queryClient = useQueryClient();
+
+  const { closeDialogAlert } = useUtillDialogAlert();
   const { showError } = useUtillsError();
 
   // 리스트 등록 함수
@@ -38,6 +43,11 @@ export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {
     onError: () => {
       // 에러 발생시 에러 화면 노출
       showError("400");
+    },
+    onSettled: () => {
+      closeDialogAlert();
+
+      if (callback) callback();
     },
   });
 

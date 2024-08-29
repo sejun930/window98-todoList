@@ -1,7 +1,9 @@
 import { ITodoListsListProps } from "@/components/todo-lists/list/types";
 
 export type ICommonsTodoListsCheckboxProps = Pick<ITodoListsListProps, "uuid"> &
-  Pick<ITodoListsListProps["info"], "checked" | "title" | "id">;
+  Pick<ITodoListsListProps["info"], "checked" | "title" | "id"> & {
+    isLoading: boolean;
+  };
 
 export type IUseCommonsTodoListsCheckboxProps = Pick<
   ICommonsTodoListsCheckboxProps,

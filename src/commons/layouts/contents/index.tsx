@@ -82,6 +82,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
                   isOpen={dialogAlertInfo?.isOpenDialogAlert ?? false}
                   header={dialogAlertInfo?.headerInfo ?? {}}
                   alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
+                  onlyWait={dialogAlertInfo?.onlyWait ?? false}
                 />
                 <Error isShow={isShowError} errorType={errorInfo.errorType} />
               </main>

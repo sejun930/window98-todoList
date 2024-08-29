@@ -8,9 +8,12 @@ import {
 } from "@/commons/types/todo-list";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillsError } from "@/commons/utills";
+import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 수정에 관련된 api 함수들
-export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
+export const useServerUtillsUpdate = ({
+  callback,
+}: IUseServerUtillsCallback): IUseServerUtillsUpdateReturn => {
   const queryClient = useQueryClient();
   const { showError } = useUtillsError();
 
@@ -117,6 +120,9 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
     },
     onError: () => {
       showError("400");
+    },
+    onSettled: () => {
+      if (callback) callback();
     },
   });
 

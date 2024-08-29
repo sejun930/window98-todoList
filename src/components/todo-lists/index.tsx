@@ -12,7 +12,8 @@ import { MutableRefObject, useRef } from "react";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists() {
-  const { items, fetchMore, hasNextPage, openWriteDialog } = useTodoLists();
+  const { items, fetchMore, hasNextPage, openWriteDialog, isLoading } =
+    useTodoLists();
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
   // 전체 Todo-list 개수
@@ -41,7 +42,13 @@ export default function TodoLists() {
         disable={!hasNextPage}
       >
         <ul className={styles.list__wrapper} ref={listWrapperRef}>
-          {!hasItems && (
+          {isLoading && (
+            <li className={styles.empty}>
+              <TextTitle01>데이터 조회 중</TextTitle01>
+            </li>
+          )}
+
+          {!hasItems && !isLoading && (
             <li className={styles.empty}>
               <TextTitle01>리스트가 비어있습니다.</TextTitle01>
             </li>
@@ -65,6 +72,7 @@ export default function TodoLists() {
                 classNames={classNames}
                 info={info}
                 allData={allData}
+                isLoading={isLoading}
               />
             );
           })}

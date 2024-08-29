@@ -7,11 +7,13 @@ import { TextBody04 } from "@/commons/components/text";
 
 interface ITodoDetailViewDetailProps {
   info: ITodoList;
+  isLoading: boolean;
 }
 
 // 리스트 상세의 상세 조회 컴포넌트
 export default function TodoDetailViewDetail({
   info,
+  isLoading,
 }: ITodoDetailViewDetailProps) {
   const { id, checked, title, createdAtTime, contents } = info;
   const uuid = `${id}-${title}-${createdAtTime}`;
@@ -24,6 +26,7 @@ export default function TodoDetailViewDetail({
           id={id}
           checked={checked}
           title={title}
+          isLoading={isLoading}
         />
         <div className={styles.options}>
           <CommonTodoListsButtonsUpdate info={info} type="edit" />

@@ -13,9 +13,12 @@ export default function CommonsTodoListsCheckbox({
   checked,
   title,
   id,
+  isLoading,
 }: ICommonsTodoListsCheckboxProps) {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
-  const { updateTodolistCheckedMutation } = useServerUtillsUpdate();
+  const { updateTodolistCheckedMutation } = useServerUtillsUpdate({
+    callback: () => {},
+  });
 
   // 리스트 checked toggle 함수
   const toggleTodolistChecked = () => {
@@ -43,9 +46,12 @@ export default function CommonsTodoListsCheckbox({
         id={uuid}
         isChecked={checked ?? false}
         onClick={toggleTodolistChecked}
+        isLoading={isLoading}
       />
       <Link href={`/todo-list/${id}`}>
-        <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
+        <TextTitle02 useLineLimit={1} isLoading={isLoading}>
+          {title}
+        </TextTitle02>
       </Link>
     </div>
   );
