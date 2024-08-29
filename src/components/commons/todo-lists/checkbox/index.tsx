@@ -1,17 +1,19 @@
 import styles from "./styles.module.css";
 import { MutableRefObject, useLayoutEffect, useRef } from "react";
+
 import { Checkbox } from "@/commons/components/checkbox";
 import { TextTitle02 } from "@/commons/components/text";
-import { ITodoListsListCheckboxProps } from "./types";
+import { ICommonsTodoListsCheckboxProps } from "./types";
 import { useServerUtillsUpdate } from "@/server/utills/update";
+import Link from "next/link";
 
-// 리스트 체크박스 컴포넌트
-export default function TodoListsListCheckbox({
+// 리스트 체크박스 공통 컴포넌트
+export default function CommonsTodoListsCheckbox({
   uuid,
   checked,
   title,
   id,
-}: ITodoListsListCheckboxProps) {
+}: ICommonsTodoListsCheckboxProps) {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
   const { updateTodolistCheckedMutation } = useServerUtillsUpdate();
 
@@ -42,7 +44,9 @@ export default function TodoListsListCheckbox({
         isChecked={checked ?? false}
         onClick={toggleTodolistChecked}
       />
-      <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
+      <Link href={`/todo-list/${id}`}>
+        <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
+      </Link>
     </div>
   );
 }

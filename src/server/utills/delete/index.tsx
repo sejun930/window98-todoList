@@ -25,7 +25,7 @@ export const useServerUtillsDelete = (): IUseServerUtillsDeleteReturn => {
           // pages 데이터만 별도 추출
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
           pages.some((info: IFetchTodoInfo, idx1: number) => {
-            let datas = info?.data;
+            const datas = info?.data;
 
             let isFind = false;
             datas.some((el, idx2) => {

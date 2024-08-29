@@ -6,9 +6,9 @@ import styles from "./styles.module.css";
 import { TextBody03 } from "@/commons/components/text";
 import { ITodoListsListProps } from "./types";
 
-import TodoListsListCheckbox from "./checkbox";
-import TodoListsListDelete from "./delete";
-import TodoListsListUpdate from "./update";
+import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
+import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/buttons/delete";
+import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
 const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
@@ -17,7 +17,7 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
   return (
     <li className={classNames}>
       <div className={styles.title__wrapper}>
-        <TodoListsListCheckbox
+        <CommonsTodoListsCheckbox
           uuid={uuid}
           checked={checked}
           title={title}
@@ -25,9 +25,9 @@ const TodoListsList = ({ info, classNames, uuid }: ITodoListsListProps) => {
         />
         <div className={styles.options}>
           {/* 수정 버튼 */}
-          <TodoListsListUpdate info={info} />
+          <CommonTodoListsButtonsUpdate info={info} type="dialog" />
           {/* 삭제 버튼 */}
-          <TodoListsListDelete info={info} />
+          <CommonTodoListsButtonsDelete info={info} />
         </div>
       </div>
 

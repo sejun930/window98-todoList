@@ -10,18 +10,6 @@
   align-items: center;
   gap: 0 0.75rem;
 }
-.options button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: unset;
-  box-shadow: unset;
-  gap: 0.25rem;
-}
-.options button img {
-  width: 1rem;
-  height: 1rem;
-}
 
 .contents span {
   white-space: break-spaces;

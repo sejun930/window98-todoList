@@ -1,6 +1,6 @@
 // Todo-list에 관련된 공통 타입
 export interface ITodoList {
-  id: number; // 고유 아이디 값
+  id: string; // 고유 아이디 값
   title: string; // 제목
   contents: string; // 내용
   checked: boolean; // 체크 여부

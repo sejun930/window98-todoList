@@ -1,19 +1,22 @@
 import type {
-  IUseTodoListsListDeleteProps,
-  IUseTodoListsListDeleteReturn,
+  IUseCommonTodoListsButtonsDeleteProps,
+  IUseCommonTodoListsButtonsDeleteReturn,
 } from "./types";
 
 import { TextBody02 } from "@/commons/components/text";
 import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { useServerUtillsDelete } from "@/server/utills/delete";
+import { useRouter } from "next/navigation";
 
-export const useTodoListsListDelete = ({
+export const useCommonTodoListsButtonDelete = ({
   info,
-}: IUseTodoListsListDeleteProps): IUseTodoListsListDeleteReturn => {
+}: IUseCommonTodoListsButtonsDeleteProps): IUseCommonTodoListsButtonsDeleteReturn => {
   const { id } = info;
   const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
   const { deleteTodolistMutation } = useServerUtillsDelete();
+
+  const router = useRouter();
 
   // 리스트 삭제 함수
   const deleteTodoListById = () => {
@@ -24,6 +27,9 @@ export const useTodoListsListDelete = ({
       deleteTodolistMutation.mutate(id);
       // dialog-alert 종료
       closeDialogAlert();
+
+      // 홈으로 이동
+      router.replace("/todo-list");
     } catch (err) {
       if (err instanceof Error) throw new Error(err.message);
     }

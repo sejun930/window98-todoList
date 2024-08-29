@@ -2,10 +2,10 @@ import {
   IFetchTodoInfiniteQueryInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { IZodSchemaTodoListsWrite } from "@/components/todo-lists/write/types";
 import { createTodolist } from "@/server/apis/create";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsCraeteReturn } from "./types";
+import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 
 // 등록에 관련된 api 함수들
 export const useServerUtillsCraete = (): IUseServerUtillsCraeteReturn => {

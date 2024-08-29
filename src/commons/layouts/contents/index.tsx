@@ -51,10 +51,8 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
 
   // 초기 렌더시, Dialog 종료
   useLayoutEffect(() => {
-    if (pathname === "/") {
-      closeDialog();
-      closeDialogAlert();
-    }
+    closeDialog();
+    closeDialogAlert();
   }, [pathname]);
 
   if (!isTodoList) return <></>;
@@ -65,7 +63,7 @@ export default function LayoutsContents({ children }: ILayoutsContentsProps) {
         <div className={styles.contents__inner}>
           <div className={styles.contents__inline}>
             <div className={styles.contents__wrap}>
-              <main>
+              <main className={styles.main}>
                 {useDialogAlert && <div className={styles.bg} />}
                 {children}
                 <Dialog

@@ -1,5 +1,5 @@
 import { ITodoList } from "@/commons/types/todo-list";
-import { IZodSchemaTodoListsWrite } from "@/components/todo-lists/write/types";
+import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { UseMutationResult } from "@tanstack/react-query";
 
 export interface IUseServerUtillsUpdateReturn {
@@ -13,7 +13,7 @@ export interface IUseServerUtillsUpdateReturn {
     unknown
   >;
   updateTodoListMutation: UseMutationResult<
-    any,
+    unknown,
     Error,
     {
       id: string;

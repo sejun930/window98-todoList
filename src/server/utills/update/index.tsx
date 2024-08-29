@@ -6,7 +6,7 @@ import {
   IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { IZodSchemaTodoListsWrite } from "@/components/todo-lists/write/types";
+import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 
 // 수정에 관련된 api 함수들
 export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
@@ -18,11 +18,16 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
     mutationFn: ({ id, checked }: { id: string; checked: boolean }) =>
       updateTodolistChecked({ id, checked }),
     onSuccess: (updateTodo: ITodoList) => {
+      // 개별 리스트의 캐시 변경
+      queryClient.invalidateQueries({
+        queryKey: ["todo-list", { id: updateTodo.id }],
+      });
+
       // 변경된 리스트의 캐시 변경
       queryClient.setQueryData(
         ["todo-lists"],
         (oldInfos: IFetchTodoInfiniteQueryInfo) => {
-          if (!oldInfos) return { pages: [], pageParams: [] };
+          if (!oldInfos) return;
 
           // pages 데이터만 별도 추출
           const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
@@ -61,6 +66,11 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
       data: IZodSchemaTodoListsWrite;
     }) => updateTodolist({ id, data }),
     onSuccess: (updateTodo) => {
+      // 개별 리스트의 캐시 변경
+      queryClient.invalidateQueries({
+        queryKey: ["todo-list", { id: updateTodo.id }],
+      });
+
       queryClient.setQueryData(
         ["todo-lists"],
         (oldInfos: IFetchTodoInfiniteQueryInfo) => {
@@ -74,7 +84,7 @@ export const useServerUtillsUpdate = (): IUseServerUtillsUpdateReturn => {
               // pages 데이터만 별도 추출
               const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
               pages.some((info: IFetchTodoInfo, idx1: number) => {
-                let datas = info?.data;
+                const datas = info?.data;
 
                 let isFind = false;
                 datas.some((el, idx2) => {

@@ -1,7 +1,6 @@
 .section {
   display: flex;
   flex-direction: column;
-  width: 35rem;
 }
 
 .option__wrapper {

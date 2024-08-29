@@ -1,10 +1,10 @@
 import { fetchAllTodoLists } from "@/server/apis";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
-import TodolistsWrite from "./write";
 import WithForm from "@/commons/hocs/form";
-import { zodSchemaTodoListsWrite } from "./write/types";
 import { useUtillDialog } from "@/commons/utills/dialog";
+import CommonsTodoListsWrite from "../commons/todo-lists/write";
+import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 
 // 투두 리스트 조회 hook
 export const useTodoLists = () => {
@@ -46,7 +46,7 @@ export const useTodoLists = () => {
       headerInfo: { title: "리스트 등록", action: closeDialog },
       children: (
         <WithForm zodSchema={zodSchemaTodoListsWrite}>
-          <TodolistsWrite />
+          <CommonsTodoListsWrite />
         </WithForm>
       ),
     });

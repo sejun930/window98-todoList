@@ -5,17 +5,18 @@ import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 import { ButtonPrimaryL } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
-import { ITodolistsWriteProps, IZodSchemaTodoListsWrite } from "./types";
+import { ICommonsTodoListsWriteProps } from "./types";
+import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
 import { useServerUtillsCraete } from "@/server/utills/create";
 import { useServerUtillsUpdate } from "@/server/utills/update";
 
 // 리스트 등록 & 수정 컴포넌트
-export default function TodolistsWrite({
+export default function CommonsTodoListsWrite({
   isEdit,
   info = { ...INIT_TODO_LIST },
-}: ITodolistsWriteProps) {
+}: ICommonsTodoListsWriteProps) {
   const { id } = info;
 
   const { register, formState, handleSubmit, setValue } =
