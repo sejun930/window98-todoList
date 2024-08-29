@@ -32,3 +32,11 @@
   justify-content: flex-end;
   gap: 0 0.5rem;
 }
+
+/* 모바일 사이즈 */
+@media (max-width: 768px) {
+  .dialog__alert__wrapper {
+    min-width: auto;
+    width: 90%;
+  }
+}

@@ -11,7 +11,7 @@ export default function WindowsHeader({ title, action }: IWindowsHeaderProps) {
     <header
       className={`${styles.windows__header} ${windowsStyles.windows__inner}`}
     >
-      <TextBody03>{title}</TextBody03>
+      <TextBody03 useLineLimit={1}>{title}</TextBody03>
       <WithAction action={action}>
         <div className={styles.windows__close} />
       </WithAction>
