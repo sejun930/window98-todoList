@@ -6,7 +6,7 @@ import type {
 import { TextBody02 } from "@/commons/components/text";
 import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
-import { useServerUtillsDelete } from "@/server/utills/todo-lists";
+import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
 
 export const useCommonTodoListsButtonDelete = ({
@@ -24,7 +24,7 @@ export const useCommonTodoListsButtonDelete = ({
     closeDialogAlert();
   };
 
-  const { deleteTodolistMutation } = useServerUtillsDelete({
+  const { deleteTodolistMutation } = useServerUtillsTodoListsDelete({
     callback: deleteCallback,
   });
 

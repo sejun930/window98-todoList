@@ -4,7 +4,7 @@ import { MutableRefObject, useLayoutEffect, useRef } from "react";
 import { Checkbox } from "@/commons/components/checkbox";
 import { TextTitle02 } from "@/commons/components/text";
 import { ICommonsTodoListsCheckboxProps } from "./types";
-import { useServerUtillsUpdate } from "@/server/utills/todo-lists";
+import { useServerUtillsTodoListsUpdate } from "@/server/utills/todo-lists";
 import Link from "next/link";
 import { Skeleton } from "@/commons/components/skeleton";
 
@@ -17,9 +17,7 @@ export default function CommonsTodoListsCheckbox({
   isLoading,
 }: ICommonsTodoListsCheckboxProps) {
   const titleItemRef = useRef() as MutableRefObject<HTMLDivElement>;
-  const { updateTodolistCheckedMutation } = useServerUtillsUpdate({
-    callback: () => {},
-  });
+  const { updateTodolistCheckedMutation } = useServerUtillsTodoListsUpdate();
 
   // 리스트 checked toggle 함수
   const toggleTodolistChecked = () => {

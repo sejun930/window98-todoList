@@ -4,15 +4,15 @@ import {
 } from "@/commons/types/todo-list";
 import { createTodolist } from "@/server/apis/todo-lists";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsCraeteReturn } from "./types";
+import { IUseServerUtillsTodoListsCreateReturn } from "./types";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
 import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 등록에 관련된 api 함수들
-export const useServerUtillsCraete = ({
+export const useServerUtillsTodoListsCreate = ({
   callback,
-}: IUseServerUtillsCallback): IUseServerUtillsCraeteReturn => {
+}: IUseServerUtillsCallback): IUseServerUtillsTodoListsCreateReturn => {
   const queryClient = useQueryClient();
 
   const { closeDialogAlert } = useUtillDialogAlert();

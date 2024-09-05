@@ -2,7 +2,7 @@ import { ITodoList } from "@/commons/types/todo-list";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { UseMutationResult } from "@tanstack/react-query";
 
-export interface IUseServerUtillsUpdateReturn {
+export interface IUseServerUtillsTodoListsUpdateReturn {
   updateTodolistCheckedMutation: UseMutationResult<
     ITodoList,
     Error,

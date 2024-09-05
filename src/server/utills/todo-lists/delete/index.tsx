@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsDeleteReturn } from "./types";
+import { IUseServerUtillsDeleteTodoListsReturn } from "./types";
 import { deleteTodolist } from "@/server/apis/todo-lists";
 import {
   IFetchTodoInfiniteQueryInfo,
@@ -10,9 +10,9 @@ import { useUtillsError } from "@/commons/utills";
 import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 삭제에 관련된 api 함수들
-export const useServerUtillsDelete = ({
+export const useServerUtillsTodoListsDelete = ({
   callback,
-}: IUseServerUtillsCallback): IUseServerUtillsDeleteReturn => {
+}: IUseServerUtillsCallback): IUseServerUtillsDeleteTodoListsReturn => {
   const queryClient = useQueryClient();
   const { showError } = useUtillsError();
 

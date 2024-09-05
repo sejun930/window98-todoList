@@ -12,8 +12,8 @@ import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
 import {
-  useServerUtillsCraete,
-  useServerUtillsUpdate,
+  useServerUtillsTodoListsCreate,
+  useServerUtillsTodoListsUpdate,
 } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
 import { useUtillDialogAlert } from "@/commons/utills";
@@ -45,9 +45,13 @@ export default function CommonsTodoListsWrite({
   };
 
   // 등록 관련 함수
-  const { createTodoListMutation } = useServerUtillsCraete({ callback });
+  const { createTodoListMutation } = useServerUtillsTodoListsCreate({
+    callback,
+  });
   // 수정 관련 함수
-  const { updateTodoListMutation } = useServerUtillsUpdate({ callback });
+  const { updateTodoListMutation } = useServerUtillsTodoListsUpdate({
+    callback,
+  });
 
   useEffect(() => {
     // 수정 모드일 경우 조회한 데이터를 초기 데이터로 삽입

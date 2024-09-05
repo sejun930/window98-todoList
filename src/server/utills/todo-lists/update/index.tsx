@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsUpdateReturn } from "./types";
+import { IUseServerUtillsTodoListsUpdateReturn } from "./types";
 import {
   updateTodolist,
   updateTodolistChecked,
@@ -14,9 +14,11 @@ import { useUtillsError } from "@/commons/utills";
 import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 수정에 관련된 api 함수들
-export const useServerUtillsUpdate = ({
-  callback,
-}: IUseServerUtillsCallback): IUseServerUtillsUpdateReturn => {
+export const useServerUtillsTodoListsUpdate = (
+  props?: IUseServerUtillsCallback,
+): IUseServerUtillsTodoListsUpdateReturn => {
+  const callback = props?.callback;
+
   const queryClient = useQueryClient();
   const { showError } = useUtillsError();
 
