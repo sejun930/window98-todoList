@@ -38,6 +38,7 @@ export const useServerUtillsTodoListsCreate = ({
           // 맨 앞에 추가된 리스트 배치
           datas.unshift(newData);
           pages[0].data = [...datas];
+          pages[0].items++;
 
           return { ...oldInfos, pages };
         },

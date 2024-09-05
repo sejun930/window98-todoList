@@ -13,4 +13,5 @@ export interface IUseTodoListsListReturn {
   hasNextPage: boolean;
   openWriteDialog: () => void;
   isLoading: boolean;
+  allData: number;
 }

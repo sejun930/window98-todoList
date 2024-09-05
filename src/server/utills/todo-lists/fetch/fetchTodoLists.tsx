@@ -41,10 +41,10 @@ export const useServerUtillsTodoListsFetchTodoLists =
   };
 
 interface IUseServerUtillsTodoListsFetchTodoListsReturn {
-  data?: InfiniteData<any, unknown>;
+  data?: InfiniteData<IFetchTodoInfo, unknown>;
   isLoading: boolean;
   hasNextPage: boolean;
   fetchNextPage: () => Promise<
-    InfiniteQueryObserverResult<InfiniteData<any, unknown>>
+    InfiniteQueryObserverResult<InfiniteData<IFetchTodoInfo, unknown>>
   >;
 }

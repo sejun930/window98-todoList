@@ -9,11 +9,18 @@ import type { IWithLinkProps } from "./types";
 
 import { TextBody04 } from "@/commons/components/text";
 import { useDesktopInfo } from "@/commons/zustand/store";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+import { useServerUtillsTodoListsFetchTodoLists } from "@/server/utills/todo-lists";
+import { Skeleton } from "@/commons/components/skeleton";
 
 // 레이아웃의 왼쪽 영역 아이콘들
 export default function LayoutsDesktop(): ReactNode {
   const { desktopInfo } = useDesktopInfo();
+  const { data, isLoading } = useServerUtillsTodoListsFetchTodoLists();
+
+  // 리스트가 있는지 체크
+  const hasItems = !!data?.pages[0].items ?? false;
+  const { setDesktopInfo } = useDesktopInfo();
 
   // 이동 경로가 있을 경우, Link 태그와 함께 사용
   const withLink = ({ children, href, isBlank }: IWithLinkProps): ReactNode => {
@@ -26,6 +33,12 @@ export default function LayoutsDesktop(): ReactNode {
 
     return children;
   };
+
+  useEffect(() => {
+    setDesktopInfo({
+      hasTodoList: hasItems,
+    });
+  }, [hasItems]);
 
   return (
     <article className={styles.wrapper}>
@@ -47,13 +60,15 @@ export default function LayoutsDesktop(): ReactNode {
             {withLink({
               children: (
                 <div className={styles.item}>
-                  <div className={styles.image}>
-                    <Image
-                      src={`/icons/${desktopSrc}.png`}
-                      alt={name}
-                      layout="fill"
-                    />
-                  </div>
+                  <Skeleton isLoading={isLoading && hasTargetState}>
+                    <div className={styles.image}>
+                      <Image
+                        src={`/icons/${desktopSrc}.png`}
+                        alt={name}
+                        layout="fill"
+                      />
+                    </div>
+                  </Skeleton>
 
                   <TextBody04>{name}</TextBody04>
                 </div>

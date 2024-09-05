@@ -21,9 +21,11 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     void fetchNextPage();
   };
 
-  // 전체 Todo-list
+  // 조회된 총 Todo-list 개수
   const items: ITodoList[] =
     data?.pages?.flatMap((el: IFetchTodoInfo) => el.data) ?? [];
+  // 전체 총 Todo-list 개수
+  const allData = data?.pages[0]?.items ?? items?.length;
 
   // 등록 & 수정 Dialog open
   const openWriteDialog = (): void => {
@@ -43,5 +45,6 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     hasNextPage,
     openWriteDialog,
     isLoading,
+    allData,
   };
 };
