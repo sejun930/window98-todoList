@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type {
+  IUseDesktopInfo,
   IUseDialogAlertInfo,
   IUseDialogInfo,
   IUseErrorInfo,
@@ -38,5 +39,16 @@ export const useErrorInfoState: IUseErrorInfo = create((set) => ({
   },
   setErrorInfo: (newErrorInfo) => {
     set({ errorInfo: { ...newErrorInfo } });
+  },
+}));
+
+// Desktop 제어 여부
+export const useDesktopInfo: IUseDesktopInfo = create((set) => ({
+  desktopInfo: {
+    hasRecycle: false,
+    hasTodoList: false,
+  },
+  setDesktopInfo: (newDesktop) => {
+    set({ desktopInfo: { ...newDesktop } });
   },
 }));

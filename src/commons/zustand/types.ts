@@ -49,3 +49,15 @@ export type IUseErrorInfo = UseBoundStore<
     setErrorInfo: (props: IErrorInfoProps) => void;
   }>
 >;
+
+export interface IDesktopInfoProps {
+  hasTodoList: boolean; // 리스트 존재 여부
+  hasRecycle: boolean; // 삭제 리스트 존재 여부
+}
+// Desktop 정보
+export type IUseDesktopInfo = UseBoundStore<
+  StoreApi<{
+    desktopInfo: IDesktopInfoProps;
+    setDesktopInfo: (props: IDesktopInfoProps) => void;
+  }>
+>;
