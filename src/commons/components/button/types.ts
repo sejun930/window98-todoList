@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 export interface IButtonBaseProps {
   children: ReactNode;
   className?: string;
-  isLoading?: boolean;
   theme: "primary" | "dangerous";
   size: "s" | "m" | "l" | "fit";
   onClick?: () => void | Promise<void>;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../styles.module.css";
 
-import { ButtonPrimary } from "@/commons/components/button";
+import { ButtonPrimaryFit } from "@/commons/components/button";
 import { TextBody04 } from "@/commons/components/text";
 import { useCommonTodoListsButtonDelete } from "./hook";
 import { ICommonTodoListsButtonsDeleteProps } from "./types";
@@ -14,10 +14,10 @@ export default function CommonTodoListsButtonsDelete({
 
   return (
     <div className={styles.wrapper}>
-      <ButtonPrimary onClick={openDeleteConfirm(info)}>
+      <ButtonPrimaryFit onClick={openDeleteConfirm(info)}>
         <Image src="/icons/recycle-small.png" alt="삭제" width={0} height={0} />
         <TextBody04>삭제</TextBody04>
-      </ButtonPrimary>
+      </ButtonPrimaryFit>
     </div>
   );
 }

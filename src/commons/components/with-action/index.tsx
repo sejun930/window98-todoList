@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ButtonPrimary } from "../button";
+import { ButtonPrimaryFit } from "../button";
 import { IWithActionProps } from "./types";
 
 // action props의 타입값에 따라 버튼 및 링크 태그 분기 렌더하는 컴포넌트
@@ -11,7 +11,7 @@ export default function WithAction({ action, children }: IWithActionProps) {
   const isObject = typeof action === "object" && !!action.href;
 
   if (isButton)
-    return <ButtonPrimary onClick={action}>{children}</ButtonPrimary>;
+    return <ButtonPrimaryFit onClick={action}>{children}</ButtonPrimaryFit>;
   else if (isObject) return <Link href={action.href}>{children}</Link>;
 
   return children;
