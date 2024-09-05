@@ -1,0 +1,34 @@
+.common {
+  font-weight: 400;
+}
+.line__limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title01 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+}
+.title02 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
+}
+
+.body01 {
+  font-size: 1.125rem; /* 18px */
+}
+.body02 {
+  font-size: 1rem; /* 16px */
+}
+.body03 {
+  font-size: 0.875rem; /* 14px */
+}
+.body04 {
+  font-size: 0.75rem; /* 12px */
+}
+
+.caption01 {
+  font-size: 0.625rem; /* 10px */
+}

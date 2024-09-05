@@ -1,0 +1,25 @@
+.title__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.125rem;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 0 0.75rem;
+}
+
+.contents span {
+  white-space: break-spaces;
+}
+
+/* 모바일 사이즈 */
+@media (max-width: 768px) {
+  .options {
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
+  }
+}

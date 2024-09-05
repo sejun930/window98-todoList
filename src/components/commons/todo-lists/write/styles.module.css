@@ -1,0 +1,44 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 0.5rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.write__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem 0;
+  height: 80%;
+}
+
+.title {
+  border: unset;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-bottom: 0.75rem;
+  border-bottom: solid 1px var(--gray-40);
+}
+.title::placeholder {
+  font-weight: 400;
+}
+
+.contents {
+  height: 100%;
+}
+
+.button__wrapper {
+  display: flex;
+  gap: 0 0.5rem;
+  width: 100%;
+}
+.button__wrapper button,
+.button__wrapper a {
+  width: 100%;
+}

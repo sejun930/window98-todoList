@@ -1,0 +1,49 @@
+.error__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue-60);
+  color: var(--white);
+  z-index: 10000;
+  cursor: pointer;
+}
+
+.error__item {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  gap: 1rem 0;
+}
+
+.badge {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.badge span {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 0.25rem 0.75rem;
+}
+
+.text__wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.error__notice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem 0;
+}
+
+.option {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem 0;
+  padding: 0.75rem 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.app {
+  position: relative;
+  width: 4rem;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.app span {
+  color: var(--white);
+}

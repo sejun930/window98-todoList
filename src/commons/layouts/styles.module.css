@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top__layout {
+  display: flex;
+  height: 100%;
+}
+
+.bottom__layout {
+  display: flex;
+  width: 100%;
+}
