@@ -1,27 +1,23 @@
 import type { ITextBaseProps, ITextCommonProps } from "./types";
 import styles from "./styles.module.css";
-import { Skeleton } from "../skeleton";
 
 // 텍스트 노출용 공통 컴포넌트
 export const TextBase = ({
   children,
   cssprop,
   useLineLimit,
-  isLoading = false,
 }: ITextBaseProps): JSX.Element => {
   let classNames = `${styles.common} ${cssprop}`;
   // 글자수 제한을 사용할 경우
   if (useLineLimit) classNames += ` ${styles.line__limit}`;
 
   return (
-    <Skeleton loading={isLoading}>
-      <span
-        className={classNames}
-        title={typeof children === "string" ? children : ""}
-      >
-        {children}
-      </span>
-    </Skeleton>
+    <span
+      className={classNames}
+      title={typeof children === "string" ? children : ""}
+    >
+      {children}
+    </span>
   );
 };
 

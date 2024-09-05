@@ -1,7 +1,6 @@
 export interface ITextBaseProps {
   children: string | React.ReactNode;
   className?: string;
-  isLoading?: boolean;
   cssprop?: string;
   useLineLimit?: number;
 }

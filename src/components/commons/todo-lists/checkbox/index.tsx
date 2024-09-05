@@ -6,6 +6,7 @@ import { TextTitle02 } from "@/commons/components/text";
 import { ICommonsTodoListsCheckboxProps } from "./types";
 import { useServerUtillsUpdate } from "@/server/utills/update";
 import Link from "next/link";
+import { Skeleton } from "@/commons/components/skeleton";
 
 // 리스트 체크박스 공통 컴포넌트
 export default function CommonsTodoListsCheckbox({
@@ -42,16 +43,18 @@ export default function CommonsTodoListsCheckbox({
 
   return (
     <div className={styles.checkbox__wrapper} ref={titleItemRef}>
-      <Checkbox
-        id={uuid}
-        isChecked={checked ?? false}
-        onClick={toggleTodolistChecked}
-        isLoading={isLoading}
-      />
+      <Skeleton isLoading={isLoading}>
+        <Checkbox
+          id={uuid}
+          isChecked={checked ?? false}
+          onClick={toggleTodolistChecked}
+        />
+      </Skeleton>
+
       <Link href={`/todo-list/${id}`}>
-        <TextTitle02 useLineLimit={1} isLoading={isLoading}>
-          {title}
-        </TextTitle02>
+        <Skeleton isLoading={isLoading}>
+          <TextTitle02 useLineLimit={1}>{title}</TextTitle02>
+        </Skeleton>
       </Link>
     </div>
   );

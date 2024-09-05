@@ -9,6 +9,7 @@ import { ITodoListsListProps } from "./types";
 import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/buttons/delete";
 import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
+import { Skeleton } from "@/commons/components/skeleton";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
 const TodoListsList = ({
@@ -38,7 +39,9 @@ const TodoListsList = ({
       </div>
 
       <div className={styles.contents}>
-        <TextBody03 isLoading={isLoading}>{contents}</TextBody03>
+        <Skeleton isLoading={isLoading}>
+          <TextBody03>{contents}</TextBody03>
+        </Skeleton>
       </div>
     </li>
   );
