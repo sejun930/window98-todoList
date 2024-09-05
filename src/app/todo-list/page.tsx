@@ -1,6 +1,6 @@
 // import { IFetchTodoInfo } from "@/commons/types/todo-list";
 import TodoLists from "@/components/todo-lists";
-import { fetchAllTodoLists } from "@/server/apis";
+import { fetchAllTodoLists } from "@/server/apis/todo-lists";
 import { QueryClient } from "@tanstack/react-query";
 
 export default async function TodoListPage() {

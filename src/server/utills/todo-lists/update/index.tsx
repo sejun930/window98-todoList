@@ -1,6 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsUpdateReturn } from "./types";
-import { updateTodolist, updateTodolistChecked } from "@/server/apis";
+import {
+  updateTodolist,
+  updateTodolistChecked,
+} from "@/server/apis/todo-lists";
 import {
   IFetchTodoInfiniteQueryInfo,
   IFetchTodoInfo,

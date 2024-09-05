@@ -4,7 +4,7 @@ import { MutableRefObject, useLayoutEffect, useRef } from "react";
 import { Checkbox } from "@/commons/components/checkbox";
 import { TextTitle02 } from "@/commons/components/text";
 import { ICommonsTodoListsCheckboxProps } from "./types";
-import { useServerUtillsUpdate } from "@/server/utills/update";
+import { useServerUtillsUpdate } from "@/server/utills/todo-lists";
 import Link from "next/link";
 import { Skeleton } from "@/commons/components/skeleton";
 

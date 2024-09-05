@@ -1,7 +1,7 @@
 "use client";
 
 import { ITodoList } from "@/commons/types/todo-list";
-import { fetchTodoList } from "@/server/apis/fetch";
+import { fetchTodoList } from "@/server/apis/todo-lists";
 import { HydrationBoundary, useQuery } from "@tanstack/react-query";
 import { ITodoDetailViewProps, ITodoDetailProps } from "./types";
 import { useEffect } from "react";

@@ -42,7 +42,7 @@ export const useErrorInfoState: IUseErrorInfo = create((set) => ({
   },
 }));
 
-// Desktop 제어 여부
+// 리스트 존재 여부 및 삭제 데이터 존재 여부 정보 저장
 export const useDesktopInfo: IUseDesktopInfo = create((set) => ({
   desktopInfo: {
     hasRecycle: false,

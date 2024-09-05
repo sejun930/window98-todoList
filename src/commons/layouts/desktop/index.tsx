@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TextBody04 } from "@/commons/components/text";
 import { useDesktopInfo } from "@/commons/zustand/store";
+import { useLayoutEffect } from "react";
 
 // 레이아웃의 왼쪽 영역 아이콘들
 export default function LayoutsDesktop() {
@@ -24,6 +25,11 @@ export default function LayoutsDesktop() {
 
     return children;
   };
+
+  useLayoutEffect(() => {
+    const getTodoList = () => {};
+    getTodoList();
+  }, []);
 
   return (
     <article className={styles.wrapper}>

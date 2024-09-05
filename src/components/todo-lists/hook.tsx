@@ -1,4 +1,4 @@
-import { fetchAllTodoLists } from "@/server/apis";
+import { fetchAllTodoLists } from "@/server/apis/todo-lists";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
 import WithForm from "@/commons/hocs/form";

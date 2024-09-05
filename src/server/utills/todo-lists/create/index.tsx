@@ -2,7 +2,7 @@ import {
   IFetchTodoInfiniteQueryInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { createTodolist } from "@/server/apis/create";
+import { createTodolist } from "@/server/apis/todo-lists";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsCraeteReturn } from "./types";
 import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";

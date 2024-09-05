@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUseServerUtillsDeleteReturn } from "./types";
-import { deleteTodolist } from "@/server/apis";
+import { deleteTodolist } from "@/server/apis/todo-lists";
 import {
   IFetchTodoInfiniteQueryInfo,
   IFetchTodoInfo,
