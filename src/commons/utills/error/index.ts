@@ -1,13 +1,13 @@
 import { useErrorInfoState } from "@/commons/zustand/store";
-import { IuseUtillsErrorReturn } from "./types";
-import { IErrorType } from "@/commons/zustand/types";
+import type { IUseUtillsErrorReturn } from "./types";
+import type { IErrorType } from "@/commons/zustand/types";
 
 // 에러 관련 공통 함수
-export const useUtillsError = (): IuseUtillsErrorReturn => {
+export const useUtillsError = (): IUseUtillsErrorReturn => {
   const { setErrorInfo } = useErrorInfoState();
 
   // 에러 노출하기
-  const showError = (errorType: IErrorType) => {
+  const showError = (errorType: IErrorType): void => {
     setErrorInfo({
       isShow: true,
       errorType,
@@ -15,7 +15,7 @@ export const useUtillsError = (): IuseUtillsErrorReturn => {
   };
 
   // 에러 숨기기
-  const hideError = () => {
+  const hideError = (): void => {
     setErrorInfo({
       isShow: false,
       errorType: "400",

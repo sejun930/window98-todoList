@@ -6,9 +6,10 @@ import Image from "next/image";
 import { TextBody04 } from "@/commons/components/text";
 
 import { useUtillsRouter } from "@/commons/utills";
+import type { ReactNode } from "react";
 
 // 레이아웃의 하단 영역
-export default function StartBar() {
+export default function StartBar(): ReactNode {
   const { isTodoListPage } = useUtillsRouter();
   // 현재 페이지 경로가 "/todo-list" 경로인지 확인
   const isTodoList = isTodoListPage();

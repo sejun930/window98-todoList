@@ -1,4 +1,7 @@
-import { IGetIsDifferenceDatasProps, IUseUtillsCheckReturn } from "./types";
+import type {
+  IGetIsDifferenceDatasProps,
+  IUseUtillsCheckReturn,
+} from "./types";
 
 // 값 비교 등의 데이터 체크를 위한 공통 함수
 export const useUtillsCheck = (): IUseUtillsCheckReturn => {

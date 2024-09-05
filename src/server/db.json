@@ -1,3 +1,12 @@
 {
-  "todoLists": []
+  "todoLists": [
+    {
+      "id": "900c",
+      "title": "g222",
+      "contents": "g2",
+      "checked": true,
+      "createdAt": "Thu Sep 05 2024 12:15:07 GMT+0900 (한국 표준시)",
+      "createdAtTime": 1725506107564
+    }
+  ]
 }

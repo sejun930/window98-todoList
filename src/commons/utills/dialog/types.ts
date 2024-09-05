@@ -1,4 +1,4 @@
-import { IWindowsHeaderProps } from "@/commons/components/windows/header/types";
+import type { IWindowsHeaderProps } from "@/commons/components/windows/header/types";
 
 export interface IOpenDialogProps {
   headerInfo: IWindowsHeaderProps;

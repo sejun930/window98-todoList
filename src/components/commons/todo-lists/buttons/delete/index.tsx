@@ -4,12 +4,14 @@ import styles from "../styles.module.css";
 import { ButtonPrimaryFit } from "@/commons/components/button";
 import { TextBody04 } from "@/commons/components/text";
 import { useCommonTodoListsButtonDelete } from "./hook";
-import { ICommonTodoListsButtonsDeleteProps } from "./types";
+
+import type { ICommonTodoListsButtonsDeleteProps } from "./types";
+import type { ReactNode } from "react";
 
 // 리스트 삭제 기능 컴포넌트
 export default function CommonTodoListsButtonsDelete({
   info,
-}: ICommonTodoListsButtonsDeleteProps) {
+}: ICommonTodoListsButtonsDeleteProps): ReactNode {
   const { openDeleteConfirm } = useCommonTodoListsButtonDelete({ info });
 
   return (

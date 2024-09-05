@@ -1,13 +1,14 @@
-import {
+import { createTodolist } from "@/server/apis/todo-lists";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
+
+import type {
   IFetchTodoInfiniteQueryInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { createTodolist } from "@/server/apis/todo-lists";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsTodoListsCreateReturn } from "./types";
-import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
-import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
-import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
+import type { IUseServerUtillsTodoListsCreateReturn } from "./types";
+import type { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 등록에 관련된 api 함수들
 export const useServerUtillsTodoListsCreate = ({
@@ -21,7 +22,9 @@ export const useServerUtillsTodoListsCreate = ({
   // 리스트 등록 함수
   const createTodoListMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
-    mutationFn: (data: IZodSchemaTodoListsWrite) => createTodolist({ data }),
+    mutationFn: async (data: IZodSchemaTodoListsWrite) => {
+      return await createTodolist({ data });
+    },
     onSuccess: (newData) => {
       queryClient.setQueryData(
         ["todo-lists"],

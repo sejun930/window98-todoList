@@ -2,17 +2,22 @@ import { TextBody01, TextTitle01 } from "@/commons/components/text";
 import styles from "./styles.module.css";
 import { ERROR_TEXT } from "./constanst";
 import { useRouter } from "next/navigation";
-import { IErrorInfoProps } from "@/commons/zustand/types";
 import { useUtillsError } from "@/commons/utills/error";
 
+import type { IErrorInfoProps } from "@/commons/zustand/types";
+import type { ReactNode } from "react";
+
 // 404 또는 서버 이슈 발생시 해당 에러 안내 컴포넌트 노출
-export default function Error({ errorType, isShow }: IErrorInfoProps) {
+export default function Error({
+  errorType,
+  isShow,
+}: IErrorInfoProps): ReactNode {
   const TEXT = ERROR_TEXT[errorType];
   const router = useRouter();
 
   const { hideError } = useUtillsError();
 
-  const onClick = () => {
+  const onClick = (): void => {
     switch (errorType) {
       case "404":
         router.replace("/todo-list");
@@ -20,7 +25,6 @@ export default function Error({ errorType, isShow }: IErrorInfoProps) {
       default:
         // 에러 화면 숨기기
         hideError();
-        return;
     }
   };
 

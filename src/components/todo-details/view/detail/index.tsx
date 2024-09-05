@@ -1,9 +1,11 @@
-import { ITodoList } from "@/commons/types/todo-list";
 import styles from "./styles.module.css";
 import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/buttons/delete";
 import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
 import { TextBody04 } from "@/commons/components/text";
+
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { ReactNode } from "react";
 
 interface ITodoDetailViewDetailProps {
   info: ITodoList;
@@ -14,7 +16,7 @@ interface ITodoDetailViewDetailProps {
 export default function TodoDetailViewDetail({
   info,
   isLoading,
-}: ITodoDetailViewDetailProps) {
+}: ITodoDetailViewDetailProps): ReactNode {
   const { id, checked, title, createdAtTime, contents } = info;
   const uuid = `${id}-${title}-${createdAtTime}`;
 

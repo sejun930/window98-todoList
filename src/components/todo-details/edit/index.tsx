@@ -1,33 +1,29 @@
 "use client";
 
-import { ITodoList } from "@/commons/types/todo-list";
 import styles from "./styles.module.css";
 import WithForm from "@/commons/hocs/form";
-import {
-  IZodSchemaTodoListsWrite,
-  zodSchemaTodoListsWrite,
-} from "@/commons/zod/todo-list.zod";
+
 import CommonsTodoListsWrite from "@/components/commons/todo-lists/write";
-import {
-  DehydratedState,
-  HydrationBoundary,
-  useQuery,
-} from "@tanstack/react-query";
-import { fetchTodoList } from "@/server/apis/todo-lists/";
 import { useFormContext } from "react-hook-form";
-import { useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import { useUtillsCheck } from "@/commons/utills/check";
 import { useRouter } from "next/navigation";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import Error from "@/components/commons/error";
+import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/todo-lists/fetch";
+import { HydrationBoundary } from "@tanstack/react-query";
 
-interface ITodoDetailsEditProps {
-  dehydratedState: DehydratedState;
-  id: string;
-  isEmpty: boolean;
-}
+import {
+  type IZodSchemaTodoListsWrite,
+  zodSchemaTodoListsWrite,
+} from "@/commons/zod/todo-list.zod";
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { ITodoDetailsEditProps } from "./types";
 
-const TodoDetails = ({ dehydratedState, id }: ITodoDetailsEditProps) => {
+const TodoDetails = ({
+  dehydratedState,
+  id,
+}: ITodoDetailsEditProps): ReactNode => {
   const { setValue } = useFormContext<IZodSchemaTodoListsWrite>();
   const { getIsDifferenceDatas } = useUtillsCheck();
   const { openDialogAlert } = useUtillDialogAlert();
@@ -39,19 +35,17 @@ const TodoDetails = ({ dehydratedState, id }: ITodoDetailsEditProps) => {
     {};
 
   // 상세 데이터 조회
-  const { data } = useQuery({
-    queryKey: ["todo-list", { id }],
-    queryFn: () => fetchTodoList({ id }),
-    initialData: initData,
+  const { info } = useServerUtillsTodoListsFetchTodoListDetail({
+    id,
+    initData,
   });
-  const info: ITodoList = data;
 
   useEffect(() => {
     setValue("title", info.title ?? "");
     setValue("contents", info.contents ?? "");
   }, [info]);
 
-  const onBackEvent = () => {
+  const onBackEvent = (): void => {
     // 변경된 사항이 있는지 검증
     const isDifference = getIsDifferenceDatas({
       targetIds: ["title", "contents"],
@@ -88,7 +82,9 @@ const TodoDetails = ({ dehydratedState, id }: ITodoDetailsEditProps) => {
 };
 
 // 상세 수정 컴포넌트
-export default function TodoDetailsEdit(props: ITodoDetailsEditProps) {
+export default function TodoDetailsEdit(
+  props: ITodoDetailsEditProps,
+): ReactNode {
   if (props?.isEmpty) return <Error isShow errorType="404" />;
 
   return (

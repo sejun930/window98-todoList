@@ -1,4 +1,4 @@
-import { ITodoList } from "@/commons/types/todo-list";
+import type { ITodoList } from "@/commons/types/todo-list";
 
 type ICommonTodoListsButtonsUpdateType = "dialog" | "edit";
 

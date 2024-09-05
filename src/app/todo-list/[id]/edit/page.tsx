@@ -1,5 +1,5 @@
 import TodoDetailsEdit from "@/components/todo-details/edit";
-import { fetchTodoList } from "@/server/apis/fetch";
+import { fetchTodoList } from "@/server/apis/todo-lists/fetch";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 interface ITodoListDetailEditPageProps {

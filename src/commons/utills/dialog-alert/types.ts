@@ -1,5 +1,5 @@
-import { IWindowsHeaderProps } from "@/commons/components/windows/header/types";
-import { IDialogAlertInfo } from "@/commons/zustand/types";
+import type { IWindowsHeaderProps } from "@/commons/components/windows/header/types";
+import type { IDialogAlertInfo } from "@/commons/zustand/types";
 
 export interface IOpenDialogAlertProps {
   headerInfo: Pick<IWindowsHeaderProps, "title">;

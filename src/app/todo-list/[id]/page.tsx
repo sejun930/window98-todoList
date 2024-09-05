@@ -1,4 +1,4 @@
-import { fetchTodoList } from "@/server/apis/fetch";
+import { fetchTodoList } from "@/server/apis/todo-lists/fetch";
 import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 

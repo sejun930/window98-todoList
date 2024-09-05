@@ -1,15 +1,17 @@
-import { ITodoList } from "@/commons/types/todo-list";
 import axios from "axios";
+import type {
+  IUpdateTodolistCheckedProps,
+  IUpdateTodolistCheckedReturn,
+  IUpdateTodolistProps,
+  IUpdateTodolistReturn,
+} from "./types";
+import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
-interface IUpdateTodolistChecked {
-  id: string;
-  checked: boolean;
-}
 // todo-list 체크 정보 변경
 export const updateTodolistChecked = async ({
   id,
   checked,
-}: IUpdateTodolistChecked) => {
+}: IUpdateTodolistCheckedProps): Promise<IUpdateTodolistCheckedReturn> => {
   try {
     const result = await axios.patch(`http://localhost:5010/todoLists/${id}`, {
       checked: !checked,
@@ -19,17 +21,14 @@ export const updateTodolistChecked = async ({
     if (err instanceof Error) throw new Error(err.message);
   }
 
-  return {};
+  return INIT_TODO_LIST;
 };
 
-//
-
-interface IUpdateTodolist {
-  id: string;
-  data: Pick<ITodoList, "title" | "contents">;
-}
 // todo-list 수정
-export const updateTodolist = async ({ id, data }: IUpdateTodolist) => {
+export const updateTodolist = async ({
+  id,
+  data,
+}: IUpdateTodolistProps): Promise<IUpdateTodolistReturn> => {
   try {
     const result = await axios.patch(
       `http://localhost:5010/todoLists/${id}`,
@@ -39,5 +38,5 @@ export const updateTodolist = async ({ id, data }: IUpdateTodolist) => {
   } catch (err) {
     if (err instanceof Error) throw new Error(err.message);
   }
-  return {};
+  return INIT_TODO_LIST;
 };

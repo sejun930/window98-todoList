@@ -1,17 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsTodoListsUpdateReturn } from "./types";
 import {
   updateTodolist,
   updateTodolistChecked,
 } from "@/server/apis/todo-lists";
-import {
+import { useUtillsError } from "@/commons/utills";
+
+import type { IUseServerUtillsTodoListsUpdateReturn } from "./types";
+import type {
   IFetchTodoInfiniteQueryInfo,
   IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
-import { useUtillsError } from "@/commons/utills";
-import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
+import type { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 수정에 관련된 api 함수들
 export const useServerUtillsTodoListsUpdate = (
@@ -25,11 +26,12 @@ export const useServerUtillsTodoListsUpdate = (
   // 리스트 체크 mutation
   const updateTodolistCheckedMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
-    mutationFn: ({ id, checked }: { id: string; checked: boolean }) =>
-      updateTodolistChecked({ id, checked }),
+    mutationFn: async ({ id, checked }: { id: string; checked: boolean }) => {
+      return await updateTodolistChecked({ id, checked });
+    },
     onSuccess: (updateTodo: ITodoList) => {
       // 개별 리스트의 캐시 변경
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: ["todo-list", { id: updateTodo.id }],
       });
 
@@ -53,6 +55,7 @@ export const useServerUtillsTodoListsUpdate = (
                 isFind = true;
                 return true;
               }
+              return false;
             });
 
             if (isFind) return true;
@@ -71,16 +74,18 @@ export const useServerUtillsTodoListsUpdate = (
   // 리스트 수정 함수
   const updateTodoListMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
-    mutationFn: ({
+    mutationFn: async ({
       id,
       data,
     }: {
       id: string;
       data: IZodSchemaTodoListsWrite;
-    }) => updateTodolist({ id, data }),
+    }) => {
+      return await updateTodolist({ id, data });
+    },
     onSuccess: (updateTodo) => {
       // 개별 리스트의 캐시 변경
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: ["todo-list", { id: updateTodo.id }],
       });
 
@@ -108,6 +113,7 @@ export const useServerUtillsTodoListsUpdate = (
                     isFind = true;
                     return true;
                   }
+                  return false;
                 });
 
                 if (isFind) {

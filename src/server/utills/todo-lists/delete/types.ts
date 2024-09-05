@@ -1,6 +1,6 @@
-import { ITodoList } from "@/commons/types/todo-list";
-import { UseMutationResult } from "@tanstack/react-query";
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { UseMutationResult } from "@tanstack/react-query";
 
-export interface IUseServerUtillsDeleteTodoListsReturn {
+export interface IUseServerUtillsTodoListsDeleteReturn {
   deleteTodolistMutation: UseMutationResult<ITodoList, Error, string, unknown>;
 }

@@ -1,5 +1,8 @@
 import { useDialogAlertInfoState } from "@/commons/zustand/store";
-import { IUseUtillDialogAlertReturn, IOpenDialogAlertProps } from "./types";
+import type {
+  IUseUtillDialogAlertReturn,
+  IOpenDialogAlertProps,
+} from "./types";
 
 // Dialog-alert 관련 공통 함수 모음
 export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
@@ -9,7 +12,7 @@ export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
     headerInfo,
     dialogAlertInfo,
     onlyWait = false,
-  }: IOpenDialogAlertProps) => {
+  }: IOpenDialogAlertProps): void => {
     if (!dialogAlertInfo) return;
 
     setDialogAlertInfo({
@@ -21,7 +24,7 @@ export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
   };
 
   // Dialog-alert 종료
-  const closeDialogAlert = () => {
+  const closeDialogAlert = (): void => {
     setDialogAlertInfo({
       isOpenDialogAlert: false,
       headerInfo: { title: "" },

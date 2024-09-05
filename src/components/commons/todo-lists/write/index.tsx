@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import styles from "./styles.module.css";
 import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
 import { ButtonDangerousL, ButtonPrimaryL } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
-import { ICommonsTodoListsWriteProps } from "./types";
-import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillDialog } from "@/commons/utills/dialog";
 
 import {
@@ -18,13 +16,16 @@ import {
 import { useRouter } from "next/navigation";
 import { useUtillDialogAlert } from "@/commons/utills";
 
+import type { ICommonsTodoListsWriteProps } from "./types";
+import type { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+
 // 리스트 등록 & 수정 컴포넌트
 export default function CommonsTodoListsWrite({
   isEdit,
   info = { ...INIT_TODO_LIST },
   useBackEvent,
   afterMovePath,
-}: ICommonsTodoListsWriteProps) {
+}: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
   const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
@@ -35,7 +36,7 @@ export default function CommonsTodoListsWrite({
   const { isValid } = formState;
 
   // 콜백 함수
-  const callback = () => {
+  const callback = (): void => {
     // 등록 & 수정창 닫기
     closeDialog();
     closeDialogAlert();
@@ -65,7 +66,7 @@ export default function CommonsTodoListsWrite({
   const { closeDialog } = useUtillDialog();
 
   // 등록 & 수정 실행
-  const writeTodoList = handleSubmit(async (data) => {
+  const writeTodoList = handleSubmit((data) => {
     const { title, contents } = data;
     if (!title || !contents) return;
 
@@ -88,8 +89,6 @@ export default function CommonsTodoListsWrite({
         // todo-list 등록
         createTodoListMutation.mutate(data);
       }
-
-      return;
     } catch (err) {
       if (err instanceof Error) throw new Error(err?.message);
     }

@@ -2,16 +2,18 @@ import Image from "next/image";
 import styles from "../styles.module.css";
 
 import { TextBody04 } from "@/commons/components/text";
-import { ICommonTodoListsButtonsUpdateProps } from "./types";
 import { useCommonTodoListsButtonsUpdate } from "./hook";
-import { IAction } from "@/commons/components/with-action/types";
 import WithAction from "@/commons/components/with-action";
+
+import type { ICommonTodoListsButtonsUpdateProps } from "./types";
+import type { IAction } from "@/commons/components/with-action/types";
+import type { ReactNode } from "react";
 
 // 리스트 수정용 컴포넌트
 export default function CommonTodoListsButtonsUpdate({
   info,
   type,
-}: ICommonTodoListsButtonsUpdateProps) {
+}: ICommonTodoListsButtonsUpdateProps): ReactNode {
   const { openUpdateDialog } = useCommonTodoListsButtonsUpdate();
 
   const action: IAction =

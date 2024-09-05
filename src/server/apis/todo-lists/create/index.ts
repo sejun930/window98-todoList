@@ -1,15 +1,17 @@
-import { ITodoList } from "@/commons/types/todo-list";
 import axios from "axios";
-
-interface ICreateTodolist {
-  data: Pick<ITodoList, "title" | "contents">;
-}
-type createTodoList = Omit<ITodoList, "id">;
+import type {
+  ICreateTodoList,
+  ICreateTodolistProps,
+  ICreateTodolistReturn,
+} from "./types";
+import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
 // 리스트 등록
-export const createTodolist = async ({ data }: ICreateTodolist) => {
+export const createTodolist = async ({
+  data,
+}: ICreateTodolistProps): Promise<ICreateTodolistReturn> => {
   try {
-    const _data: createTodoList = {
+    const _data: ICreateTodoList = {
       ...data,
       checked: false,
       createdAt: String(new Date()),
@@ -23,5 +25,5 @@ export const createTodolist = async ({ data }: ICreateTodolist) => {
       throw new Error(err.message);
     }
   }
-  return {};
+  return INIT_TODO_LIST;
 };

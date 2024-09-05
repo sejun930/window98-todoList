@@ -1,5 +1,5 @@
-import { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
-import { UseMutationResult } from "@tanstack/react-query";
+import type { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
+import type { UseMutationResult } from "@tanstack/react-query";
 
 export interface IUseServerUtillsTodoListsCreateReturn {
   createTodoListMutation: UseMutationResult<

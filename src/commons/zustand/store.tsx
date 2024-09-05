@@ -46,7 +46,7 @@ export const useErrorInfoState: IUseErrorInfo = create((set) => ({
 export const useDesktopInfo: IUseDesktopInfo = create((set) => ({
   desktopInfo: {
     hasRecycle: false,
-    hasTodoList: false,
+    hasTodoList: true,
   },
   setDesktopInfo: (newDesktop) => {
     set({ desktopInfo: { ...newDesktop } });

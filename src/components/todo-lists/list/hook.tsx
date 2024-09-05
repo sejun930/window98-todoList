@@ -1,8 +1,9 @@
-import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { TextBody02 } from "@/commons/components/text";
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { IUseTodoListsListReturn } from "./types";
 
-export const useTodoListsList = () => {
+export const useTodoListsList = (): IUseTodoListsListReturn => {
   const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
 
   // 삭제 확인용 dialog 오픈

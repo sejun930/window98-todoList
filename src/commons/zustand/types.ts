@@ -1,5 +1,5 @@
 import type { StoreApi, UseBoundStore } from "zustand";
-import { IWindowsHeaderProps } from "../components/windows/header/types";
+import type { IWindowsHeaderProps } from "../components/windows/header/types";
 
 export interface IDialogInfoProps {
   isOpenDialog: boolean;
@@ -51,8 +51,8 @@ export type IUseErrorInfo = UseBoundStore<
 >;
 
 export interface IDesktopInfoProps {
-  hasTodoList: boolean; // 리스트 존재 여부
-  hasRecycle: boolean; // 삭제 리스트 존재 여부
+  hasTodoList?: boolean; // 리스트 존재 여부
+  hasRecycle?: boolean; // 삭제 리스트 존재 여부
 }
 // Desktop 정보
 export type IUseDesktopInfo = UseBoundStore<

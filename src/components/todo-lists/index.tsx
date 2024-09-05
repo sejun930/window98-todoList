@@ -8,10 +8,10 @@ import { useTodoLists } from "./hook";
 import { ButtonPrimaryM } from "@/commons/components/button";
 import TodoListsList from "./list";
 import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
-import { MutableRefObject, useRef } from "react";
+import { type MutableRefObject, type ReactNode, useRef } from "react";
 
 // Todo-list 리스트 노출 컴포넌트
-export default function TodoLists() {
+export default function TodoLists(): ReactNode {
   const { items, fetchMore, hasNextPage, openWriteDialog, isLoading } =
     useTodoLists();
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;

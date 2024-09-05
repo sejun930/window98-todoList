@@ -11,7 +11,7 @@ export const useUtillsRouter = (): IUseUtillsRouterReturn => {
   const pathname = usePathname();
 
   // 현재 페이지가 "/todo-list" 페이지인지 검증
-  const isTodoListPage = () => {
+  const isTodoListPage = (): boolean => {
     return pathname.includes("/todo-list") ?? false;
   };
 

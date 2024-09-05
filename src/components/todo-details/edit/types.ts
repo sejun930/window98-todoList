@@ -1,8 +1,7 @@
 import type { DehydratedState } from "@tanstack/react-query";
 
-export interface ITodoDetailProps {
+export interface ITodoDetailsEditProps {
   dehydratedState: DehydratedState;
   id: string;
   isEmpty: boolean;
 }
-export type ITodoDetailViewProps = ITodoDetailProps;

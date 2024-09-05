@@ -1,25 +1,28 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { IUseServerUtillsDeleteTodoListsReturn } from "./types";
 import { deleteTodolist } from "@/server/apis/todo-lists";
-import {
+import { useUtillsError } from "@/commons/utills";
+
+import type { IUseServerUtillsTodoListsDeleteReturn } from "./types";
+import type {
   IFetchTodoInfiniteQueryInfo,
   IFetchTodoInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
-import { useUtillsError } from "@/commons/utills";
-import { IUseServerUtillsCallback } from "@/commons/types/server-callback";
+import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 
 // 삭제에 관련된 api 함수들
 export const useServerUtillsTodoListsDelete = ({
   callback,
-}: IUseServerUtillsCallback): IUseServerUtillsDeleteTodoListsReturn => {
+}: IUseServerUtillsCallback): IUseServerUtillsTodoListsDeleteReturn => {
   const queryClient = useQueryClient();
   const { showError } = useUtillsError();
 
   // 리스트 삭제 mutation
   const deleteTodolistMutation = useMutation({
     mutationKey: ["todo-lists-checked-toggle"],
-    mutationFn: (id: string) => deleteTodolist({ id }),
+    mutationFn: async (id: string) => {
+      return await deleteTodolist({ id });
+    },
     onSuccess: (updateTodo: ITodoList) => {
       // 변경된 리스트의 캐시 변경
       queryClient.setQueryData(
@@ -41,6 +44,7 @@ export const useServerUtillsTodoListsDelete = ({
                 isFind = true;
                 return true;
               }
+              return false;
             });
 
             if (isFind) {

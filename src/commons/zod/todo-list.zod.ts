@@ -1,5 +1,5 @@
-import { z, ZodSchema } from "zod";
-import { ITodoList } from "../types/todo-list";
+import { z, type ZodSchema } from "zod";
+import type { ITodoList } from "../types/todo-list";
 
 export type IZodSchemaTodoListsWrite = Pick<ITodoList, "title" | "contents">;
 

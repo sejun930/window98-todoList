@@ -1,13 +1,13 @@
+import { TextBody02 } from "@/commons/components/text";
+import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
+import { useRouter } from "next/navigation";
+
+import type { ITodoList } from "@/commons/types/todo-list";
 import type {
   IUseCommonTodoListsButtonsDeleteProps,
   IUseCommonTodoListsButtonsDeleteReturn,
 } from "./types";
-
-import { TextBody02 } from "@/commons/components/text";
-import { ITodoList } from "@/commons/types/todo-list";
-import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
-import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
-import { useRouter } from "next/navigation";
 
 export const useCommonTodoListsButtonDelete = ({
   info,
@@ -17,7 +17,7 @@ export const useCommonTodoListsButtonDelete = ({
   const router = useRouter();
 
   // 삭제 후 실행 callback
-  const deleteCallback = () => {
+  const deleteCallback = (): void => {
     // 홈으로 이동
     router.replace("/todo-list");
     // dialog-alert 종료
@@ -29,7 +29,7 @@ export const useCommonTodoListsButtonDelete = ({
   });
 
   // 리스트 삭제 함수
-  const deleteTodoListById = () => {
+  const deleteTodoListById = (): void => {
     if (!id) return;
 
     try {

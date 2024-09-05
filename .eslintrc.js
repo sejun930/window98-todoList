@@ -1,32 +1,41 @@
 module.exports = {
   env: {
-    node: true,
+    browser: true,
+    es2021: true,
   },
   extends: [
-    "next/core-web-vitals",
-    "eslint:recommended",
+    "next/core-web-vitals", // nextjs 기본 eslint 설정
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
+    "plugin:react/jsx-runtime", // import React from 'react' 제거
+    "standard-with-typescript", // eslint에 typescript 연동
+    "prettier", // eslint에 prettier 연동
   ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
     },
-    ecmaVersion: 2020,
+  ],
+  parserOptions: {
+    ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react"],
   rules: {
-    "prettier/prettier": "off",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-  },
-  settings: {
-    react: {
-      version: "detect",
-    },
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-dynamic-delete": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-throw-literal": "off",
   },
 };

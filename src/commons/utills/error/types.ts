@@ -1,6 +1,6 @@
-import { IErrorType } from "@/commons/zustand/types";
+import type { IErrorType } from "@/commons/zustand/types";
 
-export interface IuseUtillsErrorReturn {
+export interface IUseUtillsErrorReturn {
   showError: (errorType: IErrorType) => void;
   hideError: () => void;
 }

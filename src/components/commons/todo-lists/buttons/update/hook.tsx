@@ -1,13 +1,14 @@
 import { useUtillDialog } from "@/commons/utills/dialog";
-import { IuseCommonTodoListsButtonsUpdateReturn } from "./types";
 
 import WithForm from "@/commons/hocs/form";
-import { ITodoList } from "@/commons/types/todo-list";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 
 import CommonsTodoListsWrite from "../../write";
 import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillsCheck } from "@/commons/utills/check";
+
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { IuseCommonTodoListsButtonsUpdateReturn } from "./types";
 
 export const useCommonTodoListsButtonsUpdate =
   (): IuseCommonTodoListsButtonsUpdateReturn => {
@@ -18,7 +19,7 @@ export const useCommonTodoListsButtonsUpdate =
     // 수정용 dialog 창 띄우기
     const openUpdateDialog = (info: ITodoList) => () => {
       // 이탈시, 데이터 변경 감지
-      const onCloseWithConfirm = () => {
+      const onCloseWithConfirm = (): void => {
         // 수정된 내역이 있는지 조회
         const isDifference = getIsDifferenceDatas({
           targetIds: ["title", "contents"],
@@ -26,7 +27,10 @@ export const useCommonTodoListsButtonsUpdate =
         });
 
         // 변경된 부분이 없다면 종료
-        if (!isDifference) return closeDialog();
+        if (!isDifference) {
+          closeDialog();
+          return;
+        }
 
         // 변경된 부분이 있다면 종료에 대한 재검증
         // 재검증을 위한 dialog-alert 실행
