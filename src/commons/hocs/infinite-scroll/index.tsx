@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { IInfiniteScrollProps } from "./types";
+import { type ReactNode, useEffect } from "react";
+import type { IInfiniteScrollProps } from "./types";
 
 let movePercent = 0; // 이동한 스크롤 영역
 let fetching = false;
@@ -12,7 +12,7 @@ export default function WithInfiniteScroll({
   disable,
   isFetching = false,
   targetRef,
-}: IInfiniteScrollProps) {
+}: IInfiniteScrollProps): ReactNode {
   // 스크롤 이동 감지 이벤트
   const checkScrollY = (): void => {
     const hasTargetRef = !!targetRef?.current ?? false;

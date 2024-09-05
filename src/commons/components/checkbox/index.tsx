@@ -7,10 +7,14 @@ export const Checkbox = ({
   onClick,
   isChecked = false,
 }: ICheckboxBaseProps): JSX.Element => {
+  const checkboxOnClick = (): void => {
+    if (onClick) void onClick();
+  };
+
   return (
     <div className={styles.checkbox__wrapper}>
       <input type="checkbox" id={id} checked={isChecked} readOnly />
-      <label htmlFor={id} onClick={onClick} />
+      <label htmlFor={id} onClick={checkboxOnClick} />
     </div>
   );
 };

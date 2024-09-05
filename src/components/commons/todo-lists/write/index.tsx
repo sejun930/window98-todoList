@@ -96,7 +96,12 @@ export default function CommonsTodoListsWrite({
 
   return (
     <div className={styles.wrapper}>
-      <form className={styles.form} onSubmit={writeTodoList}>
+      <form
+        className={styles.form}
+        onSubmit={(data) => {
+          void writeTodoList(data);
+        }}
+      >
         <div className={styles.write__wrapper}>
           <input
             placeholder="제목 입력"

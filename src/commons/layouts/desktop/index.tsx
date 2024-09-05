@@ -1,20 +1,22 @@
 "use client";
 
 import styles from "./styles.module.css";
+import Image from "next/image";
+import Link from "next/link";
+
 import { DESKTOP_LISTS } from "./constants";
 import type { IWithLinkProps } from "./types";
 
-import Image from "next/image";
-import Link from "next/link";
 import { TextBody04 } from "@/commons/components/text";
 import { useDesktopInfo } from "@/commons/zustand/store";
+import type { ReactNode } from "react";
 
 // 레이아웃의 왼쪽 영역 아이콘들
-export default function LayoutsDesktop() {
+export default function LayoutsDesktop(): ReactNode {
   const { desktopInfo } = useDesktopInfo();
 
   // 이동 경로가 있을 경우, Link 태그와 함께 사용
-  const withLink = ({ children, href, isBlank }: IWithLinkProps) => {
+  const withLink = ({ children, href, isBlank }: IWithLinkProps): ReactNode => {
     if (href)
       return (
         <Link href={href} target={isBlank ? "_blank" : "_self"}>

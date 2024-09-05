@@ -2,10 +2,12 @@ import WindowsHeader from "../windows/header";
 import styles from "./styles.module.css";
 import windowsStyles from "../../styles/windows/styles.module.css";
 
-import { IDialogAlertProps } from "./types";
 import { TextBody02 } from "../text";
 import { ButtonDangerousM, ButtonPrimaryM } from "../button";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+
+import type { IDialogAlertProps } from "./types";
+import type { ReactNode } from "react";
 
 // Dialog-alert 공통 컴포넌트
 export default function DialogAlert({
@@ -13,7 +15,7 @@ export default function DialogAlert({
   isOpen,
   alertInfo,
   onlyWait,
-}: IDialogAlertProps) {
+}: IDialogAlertProps): ReactNode {
   const { text } = alertInfo;
   const { closeDialogAlert } = useUtillDialogAlert();
 

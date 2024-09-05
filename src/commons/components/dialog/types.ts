@@ -1,4 +1,4 @@
-import { IWindowsHeaderProps } from "../windows/header/types";
+import type { IWindowsHeaderProps } from "../windows/header/types";
 
 export interface IDialogProps {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { IAction } from "../../with-action/types";
+import type { IAction } from "../../with-action/types";
 
 export interface IWindowsHeaderProps {
   title: string; // 상단에 노출될 제목

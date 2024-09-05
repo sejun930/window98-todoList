@@ -9,7 +9,7 @@ export const useUtillsCheck = (): IUseUtillsCheckReturn => {
   const getIsDifferenceDatas = ({
     targetIds,
     origin,
-  }: IGetIsDifferenceDatasProps) => {
+  }: IGetIsDifferenceDatasProps): boolean => {
     // 원본과 비교해서 다른 점이 있는지 체크
     let isDifferent = false;
 

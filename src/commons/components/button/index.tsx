@@ -14,8 +14,12 @@ export const ButtonBase = ({
   if (disable) classNames += ` ${styles.disable}`;
   else if (active) classNames += ` ${styles.active}`;
 
+  const onClickButton = (): void => {
+    if (onClick) void onClick();
+  };
+
   return (
-    <button type="button" className={classNames} onClick={onClick}>
+    <button type="button" className={classNames} onClick={onClickButton}>
       {children}
     </button>
   );

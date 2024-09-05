@@ -1,5 +1,5 @@
 import { ButtonBase } from "..";
-import { IButtonCommonProps } from "../types";
+import type { IButtonCommonProps } from "../types";
 
 // primary 테마 - fit 사이즈
 export const ButtonPrimaryFit = ({

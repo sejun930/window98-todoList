@@ -1,6 +1,7 @@
 import { fetchTodoList } from "@/server/apis/todo-lists/fetch";
 import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+import type { ReactNode } from "react";
 
 interface ITodoListDetailPageProps {
   params: { id: string };
@@ -9,7 +10,7 @@ interface ITodoListDetailPageProps {
 // 리스트 상세 페이지
 export default async function TodoListDetailPage(
   props: ITodoListDetailPageProps,
-) {
+): Promise<ReactNode> {
   const queryClient = new QueryClient();
 
   // 리스트의 id 값 조회
@@ -18,7 +19,9 @@ export default async function TodoListDetailPage(
   // 해당 리스트의 상세 정보 조회
   await queryClient.prefetchQuery({
     queryKey: ["todo-list", { id }],
-    queryFn: () => fetchTodoList({ id }),
+    queryFn: async () => {
+      return await fetchTodoList({ id });
+    },
   });
 
   // 데이터 직렬화

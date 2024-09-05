@@ -1,4 +1,4 @@
-import { IDesktopInfoProps } from "@/commons/zustand/types";
+import type { IDesktopInfoProps } from "@/commons/zustand/types";
 
 interface IDESKTOP_LISTS {
   name: string; // 파일명
