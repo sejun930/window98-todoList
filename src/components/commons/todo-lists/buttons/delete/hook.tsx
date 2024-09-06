@@ -2,6 +2,7 @@ import { TextBody02 } from "@/commons/components/text";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
 import { useServerUtillsTodoListsUpdate } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
+import { URL } from "@/commons/constants/URL";
 
 import type { ITodoList } from "@/commons/types/todo-list";
 import type {
@@ -19,7 +20,7 @@ export const useCommonTodoListsButtonDelete = ({
   // 삭제 후 실행 callback
   const deleteCallback = (): void => {
     // 홈으로 이동
-    router.replace("/todo-list");
+    router.replace(URL().TODOLIST);
     // dialog-alert 종료
     closeDialogAlert();
   };

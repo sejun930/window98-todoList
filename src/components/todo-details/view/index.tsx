@@ -9,6 +9,7 @@ import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/tod
 
 import type { ITodoList } from "@/commons/types/todo-list";
 import type { ITodoDetailViewProps, ITodoDetailProps } from "./types";
+import { URL } from "@/commons/constants/URL";
 
 // 리스트 상세 조회 페이지
 export default function TodoDetailView({
@@ -46,7 +47,7 @@ const TodoDetail = ({ id, dehydratedState }: ITodoDetailProps): ReactNode => {
   useEffect(() => {
     openDialog({
       children: <TodoDetailViewDetail isLoading={isLoading} info={info} />,
-      headerInfo: { title: info?.title, action: { href: "/todo-list" } },
+      headerInfo: { title: info?.title, action: { href: URL().TODOLIST } },
     });
   }, [info]);
 

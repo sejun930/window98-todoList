@@ -49,7 +49,7 @@ export const useFetchTodoList = (): IUseFetchTodoListReturn => {
   // 삭제된 리스트 목록 조회
   const fetchDeletedTodoList = async ({
     _page,
-  }: IFetchDeletedTodoListProps) => {
+  }: IFetchDeletedTodoListProps): Promise<IFetchTodoInfo> => {
     const data = await axios.get(`http://localhost:5010/todoLists`, {
       params: {
         _sort: "-deletedAtTime",

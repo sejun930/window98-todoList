@@ -1,8 +1,9 @@
-import { TextBody01, TextTitle01 } from "@/commons/components/text";
 import styles from "./styles.module.css";
+import { TextBody01, TextTitle01 } from "@/commons/components/text";
 import { ERROR_TEXT } from "./constanst";
 import { useRouter } from "next/navigation";
 import { useUtillsError } from "@/commons/utills/error";
+import { URL } from "@/commons/constants/URL";
 
 import type { IErrorInfoProps } from "@/commons/zustand/types";
 import type { ReactNode } from "react";
@@ -20,7 +21,7 @@ export default function Error({
   const onClick = (): void => {
     switch (errorType) {
       case "404":
-        router.replace("/todo-list");
+        router.replace(URL().TODOLIST);
         return;
       default:
         // 에러 화면 숨기기

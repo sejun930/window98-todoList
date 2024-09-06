@@ -31,14 +31,14 @@ export const useLayoutsDesktop = (): IUseLayoutsDesktopReturn => {
   };
 
   // 리스트 존재 여부에 따른 "Todo-list" 아이콘 분기
-  const initTodoListIcon = () => {
+  const initTodoListIcon = (): void => {
     setDesktopInfo({
       hasTodoList: hasItems,
     });
   };
 
   // 삭제 리스트 존재 여부에 따른 "휴지통" 아이콘 분기
-  const initDeleteTodoListIcon = () => {
+  const initDeleteTodoListIcon = (): void => {
     setDesktopInfo({
       hasRecycle: hasDeleted,
     });
