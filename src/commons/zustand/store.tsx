@@ -49,6 +49,8 @@ export const useDesktopInfo: IUseDesktopInfo = create((set) => ({
     hasTodoList: true,
   },
   setDesktopInfo: (newDesktop) => {
-    set({ desktopInfo: { ...newDesktop } });
+    set((state) => {
+      return { desktopInfo: { ...state.desktopInfo, ...newDesktop } };
+    });
   },
 }));

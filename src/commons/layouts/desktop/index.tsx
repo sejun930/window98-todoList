@@ -1,44 +1,36 @@
 "use client";
 
+import { useEffect, type ReactNode } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DESKTOP_LISTS } from "./constants";
-import type { IWithLinkProps } from "./types";
-
-import { TextBody04 } from "@/commons/components/text";
-import { useDesktopInfo } from "@/commons/zustand/store";
-import { useEffect, type ReactNode } from "react";
-import { useServerUtillsTodoListsFetchTodoLists } from "@/server/utills/todo-lists";
 import { Skeleton } from "@/commons/components/skeleton";
+import { TextBody04 } from "@/commons/components/text";
+import { useLayoutsDesktop } from "./hook";
+import { useDesktopInfo } from "@/commons/zustand/store";
 
 // 레이아웃의 왼쪽 영역 아이콘들
 export default function LayoutsDesktop(): ReactNode {
+  const {
+    isLoading,
+    WithLink,
+    initTodoListIcon,
+    hasItems,
+    initDeleteTodoListIcon,
+    hasDeleted,
+  } = useLayoutsDesktop();
   const { desktopInfo } = useDesktopInfo();
-  const { data, isLoading } = useServerUtillsTodoListsFetchTodoLists();
 
-  // 리스트가 있는지 체크
-  const hasItems = !!data?.pages[0].items ?? false;
-  const { setDesktopInfo } = useDesktopInfo();
-
-  // 이동 경로가 있을 경우, Link 태그와 함께 사용
-  const withLink = ({ children, href, isBlank }: IWithLinkProps): ReactNode => {
-    if (href)
-      return (
-        <Link href={href} target={isBlank ? "_blank" : "_self"}>
-          {children}
-        </Link>
-      );
-
-    return children;
-  };
-
+  // 리스트 존재 여부에 따른 "Todo-list" 아이콘 분기
   useEffect(() => {
-    setDesktopInfo({
-      hasTodoList: hasItems,
-    });
+    initTodoListIcon();
   }, [hasItems]);
+
+  // 삭제 리스트 존재 여부에 따른 "휴지통" 아이콘 분기
+  useEffect(() => {
+    initDeleteTodoListIcon();
+  }, [hasDeleted]);
 
   return (
     <article className={styles.wrapper}>
@@ -57,7 +49,7 @@ export default function LayoutsDesktop(): ReactNode {
 
         return (
           <div key={`desktop-${name}-${desktopSrc}`} className={styles.app}>
-            {withLink({
+            {WithLink({
               children: (
                 <div className={styles.item}>
                   <Skeleton isLoading={isLoading && hasTargetState}>

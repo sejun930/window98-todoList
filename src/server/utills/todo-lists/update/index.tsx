@@ -93,37 +93,30 @@ export const useServerUtillsTodoListsUpdate = (
         (oldInfos: IFetchTodoInfiniteQueryInfo) => {
           if (!oldInfos) return { pages: [], pageParams: [] };
 
-          queryClient.setQueryData(
-            ["todo-lists"],
-            (oldInfos: IFetchTodoInfiniteQueryInfo) => {
-              if (!oldInfos) return { pages: [], pageParams: [] };
+          // pages 데이터만 별도 추출
+          const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
+          pages.some((info: IFetchTodoInfo, idx1: number) => {
+            const datas = info?.data;
 
-              // pages 데이터만 별도 추출
-              const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
-              pages.some((info: IFetchTodoInfo, idx1: number) => {
-                const datas = info?.data;
+            let isFind = false;
+            datas.some((el, idx2) => {
+              if (el.id === updateTodo.id) {
+                // 해당하는 리스트의 정보 변경
+                pages[idx1].data[idx2] = updateTodo;
 
-                let isFind = false;
-                datas.some((el, idx2) => {
-                  if (el.id === updateTodo.id) {
-                    // 해당하는 리스트의 정보 변경
-                    pages[idx1].data[idx2] = updateTodo;
+                isFind = true;
+                return true;
+              }
+              return false;
+            });
 
-                    isFind = true;
-                    return true;
-                  }
-                  return false;
-                });
+            if (isFind) {
+              return true;
+            }
+            return false;
+          });
 
-                if (isFind) {
-                  return true;
-                }
-                return false;
-              });
-
-              return { ...oldInfos, pages };
-            },
-          );
+          return { ...oldInfos, pages };
         },
       );
     },
@@ -147,47 +140,57 @@ export const useServerUtillsTodoListsUpdate = (
         queryKey: ["todo-list", { id: updateTodo.id }],
       });
 
+      // 삭제 리스트의 캐시 변경
+      queryClient.setQueryData(
+        ["deleted-todo-lists"],
+        (oldInfos: IFetchTodoInfiniteQueryInfo) => {
+          if (!oldInfos) return { pages: [], pageParams: [] };
+
+          // pages 데이터만 별도 추출
+          const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
+          const datas: ITodoList[] = pages?.[0]?.data ?? [];
+
+          // 맨 앞에 삭제된 리스트 배치
+          datas.unshift(updateTodo);
+          pages[0].data = [...datas];
+          pages[0].items++;
+
+          return { ...oldInfos, pages };
+        },
+      );
+
       queryClient.setQueryData(
         ["todo-lists"],
         (oldInfos: IFetchTodoInfiniteQueryInfo) => {
           if (!oldInfos) return { pages: [], pageParams: [] };
 
-          queryClient.setQueryData(
-            ["todo-lists"],
-            (oldInfos: IFetchTodoInfiniteQueryInfo) => {
-              if (!oldInfos) return { pages: [], pageParams: [] };
+          // pages 데이터만 별도 추출
+          const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
+          pages.some((info: IFetchTodoInfo, idx1: number) => {
+            const datas = info?.data;
 
-              // pages 데이터만 별도 추출
-              const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
-              pages.some((info: IFetchTodoInfo, idx1: number) => {
-                const datas = info?.data;
+            let isFind = false;
+            datas.some((el, idx2) => {
+              if (el.id === updateTodo.id) {
+                // 해당하는 리스트 임시 제거
+                pages[idx1].data[idx2] = null;
 
-                let isFind = false;
-                datas.some((el, idx2) => {
-                  if (el.id === updateTodo.id) {
-                    // 해당하는 리스트 임시 제거
-                    pages[idx1].data[idx2] = null;
+                isFind = true;
+                return true;
+              }
+              return false;
+            });
 
-                    isFind = true;
-                    return true;
-                  }
-                  return false;
-                });
+            if (isFind) {
+              // 임시 삭제된 리스트는 배열에서 제거
+              pages[idx1].data = pages[idx1].data.filter((el: ITodoList) => el);
+              return true;
+            }
+            return false;
+          });
+          pages[0].items--;
 
-                if (isFind) {
-                  // 임시 삭제된 리스트는 배열에서 제거
-                  pages[idx1].data = pages[idx1].data.filter(
-                    (el: ITodoList) => el,
-                  );
-                  return true;
-                }
-                return false;
-              });
-              pages[0].items--;
-
-              return { ...oldInfos, pages };
-            },
-          );
+          return { ...oldInfos, pages };
         },
       );
     },

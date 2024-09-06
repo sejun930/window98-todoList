@@ -7,6 +7,7 @@ import axios from "axios";
 
 import type {
   IFetchAllTodoListsProps,
+  IFetchDeletedTodoListProps,
   IFetchTodoListProps,
   IUseFetchTodoListReturn,
 } from "./types";
@@ -45,8 +46,26 @@ export const useFetchTodoList = (): IUseFetchTodoListReturn => {
     return data.data;
   };
 
+  // 삭제된 리스트 목록 조회
+  const fetchDeletedTodoList = async ({
+    _page,
+  }: IFetchDeletedTodoListProps) => {
+    const data = await axios.get(`http://localhost:5010/todoLists`, {
+      params: {
+        _sort: "-deletedAtTime",
+        _page,
+        deletedAt_ne: "",
+        deletedAtTime_ne: 0, // 삭제 정보가 있는 경우
+        status: ITodoListStatus.deleted, // 삭제된 리스트인 경우
+      },
+    });
+
+    return data.data;
+  };
+
   return {
     fetchAllTodoLists,
     fetchTodoList,
+    fetchDeletedTodoList,
   };
 };
