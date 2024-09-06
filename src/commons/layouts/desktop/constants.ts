@@ -1,5 +1,8 @@
 import type { IDesktopInfoProps } from "@/commons/zustand/types";
 
+import { URL } from "@/commons/constants/URL";
+const _URL = URL();
+
 interface IDESKTOP_LISTS {
   name: string; // 파일명
   src: string; // 파일 이미지
@@ -17,6 +20,7 @@ export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
   {
     name: "휴지통",
     src: "recycle-empty",
+    href: _URL.DELETED,
     targetState: {
       name: "hasRecycle",
       src: "recycle",
@@ -37,7 +41,7 @@ export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
   {
     name: "Todo-List",
     src: "documents-empty",
-    href: "/todo-list",
+    href: _URL.TODOLIST,
     targetState: {
       name: "hasTodoList",
       src: "documents",

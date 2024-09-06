@@ -3,6 +3,6 @@ import type { DehydratedState } from "@tanstack/react-query";
 export interface ITodoDetailProps {
   dehydratedState: DehydratedState;
   id: string;
-  isEmpty: boolean;
+  isDisable: boolean;
 }
 export type ITodoDetailViewProps = ITodoDetailProps;

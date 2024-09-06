@@ -9,18 +9,23 @@ import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/tod
 
 import type { ITodoList } from "@/commons/types/todo-list";
 import type { ITodoDetailViewProps, ITodoDetailProps } from "./types";
+import { URL } from "@/commons/constants/URL";
 
 // 리스트 상세 조회 페이지
 export default function TodoDetailView({
   dehydratedState,
   id,
-  isEmpty,
+  isDisable,
 }: ITodoDetailViewProps): ReactNode {
-  if (isEmpty) return <Error isShow errorType="404" />;
+  if (isDisable) return <Error isShow errorType="404" />;
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <TodoDetail id={id} dehydratedState={dehydratedState} isEmpty={isEmpty} />
+      <TodoDetail
+        id={id}
+        dehydratedState={dehydratedState}
+        isDisable={isDisable}
+      />
     </HydrationBoundary>
   );
 }
@@ -42,7 +47,7 @@ const TodoDetail = ({ id, dehydratedState }: ITodoDetailProps): ReactNode => {
   useEffect(() => {
     openDialog({
       children: <TodoDetailViewDetail isLoading={isLoading} info={info} />,
-      headerInfo: { title: info?.title, action: { href: "/todo-list" } },
+      headerInfo: { title: info?.title, action: { href: URL().TODOLIST } },
     });
   }, [info]);
 

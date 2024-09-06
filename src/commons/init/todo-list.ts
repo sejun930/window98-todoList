@@ -1,4 +1,4 @@
-import type { ITodoList } from "../types/todo-list";
+import { ITodoListStatus, type ITodoList } from "../types/todo-list";
 
 // Todo-list 관련 기본값
 export const INIT_TODO_LIST: ITodoList = {
@@ -8,4 +8,7 @@ export const INIT_TODO_LIST: ITodoList = {
   contents: "",
   createdAt: "",
   createdAtTime: 0,
+  deletedAt: "",
+  deletedAtTime: 0,
+  status: ITodoListStatus.active,
 };

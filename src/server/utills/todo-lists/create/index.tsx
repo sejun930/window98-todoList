@@ -1,4 +1,4 @@
-import { createTodolist } from "@/server/apis/todo-lists";
+import { useCreateTodolist } from "@/server/apis/todo-lists";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
 
@@ -15,6 +15,7 @@ export const useServerUtillsTodoListsCreate = ({
   callback,
 }: IUseServerUtillsCallback): IUseServerUtillsTodoListsCreateReturn => {
   const queryClient = useQueryClient();
+  const { createTodolist } = useCreateTodolist();
 
   const { closeDialogAlert } = useUtillDialogAlert();
   const { showError } = useUtillsError();

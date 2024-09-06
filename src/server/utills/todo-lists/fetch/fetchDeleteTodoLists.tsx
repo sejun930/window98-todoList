@@ -6,21 +6,21 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 
-// 리스트 조회
-export const useServerUtillsTodoListsFetchTodoLists =
+// 삭제된 리스트 목록 조회
+export const useServerUtillsTodoListsFetchDeleteTodoLists =
   (): IUseServerUtillsTodoListsFetchTodoListsReturn => {
-    const { fetchAllTodoLists } = useFetchTodoList();
+    const { fetchDeletedTodoList } = useFetchTodoList();
 
-    // 리스트 조회용 함수
+    // 삭제 리스트 조회용 함수
     const fetchInfiniteTodoList = async (
       _page: number,
     ): Promise<IFetchTodoInfo> => {
-      const result = await fetchAllTodoLists({ _page });
+      const result = await fetchDeletedTodoList({ _page });
       return result;
     };
 
     const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
-      queryKey: ["todo-lists"],
+      queryKey: ["deleted-todo-lists"],
       queryFn: async ({ pageParam }) => {
         return await fetchInfiniteTodoList(pageParam);
       },
