@@ -1,5 +1,5 @@
 import type { IFetchTodoInfo } from "@/commons/types/todo-list";
-import { fetchAllTodoLists } from "@/server/apis/todo-lists";
+import { useFetchTodoList } from "@/server/apis/todo-lists";
 import {
   type InfiniteQueryObserverResult,
   type InfiniteData,
@@ -9,6 +9,8 @@ import {
 // 리스트 조회
 export const useServerUtillsTodoListsFetchTodoLists =
   (): IUseServerUtillsTodoListsFetchTodoListsReturn => {
+    const { fetchAllTodoLists } = useFetchTodoList();
+
     // 리스트 조회용 함수
     const fetchInfiniteTodoList = async (
       _page: number,

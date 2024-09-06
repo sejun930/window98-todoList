@@ -1,4 +1,4 @@
-import { fetchTodoList } from "@/server/apis/todo-lists/fetch";
+import { useFetchTodoList } from "@/server/apis/todo-lists/fetch";
 import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
@@ -12,6 +12,7 @@ interface ITodoListDetailPageProps {
 export default async function TodoListDetailPage(
   props: ITodoListDetailPageProps,
 ): Promise<ReactNode> {
+  const { fetchTodoList } = useFetchTodoList();
   const queryClient = new QueryClient();
 
   // 리스트의 id 값 조회

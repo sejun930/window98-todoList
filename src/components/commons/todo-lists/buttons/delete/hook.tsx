@@ -1,6 +1,6 @@
 import { TextBody02 } from "@/commons/components/text";
 import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
-import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
+import { useServerUtillsTodoListsUpdate } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
 
 import type { ITodoList } from "@/commons/types/todo-list";
@@ -24,7 +24,8 @@ export const useCommonTodoListsButtonDelete = ({
     closeDialogAlert();
   };
 
-  const { deleteTodolistMutation } = useServerUtillsTodoListsDelete({
+  // 수정 Mutation
+  const { updateTodoListDeletedAtMutation } = useServerUtillsTodoListsUpdate({
     callback: deleteCallback,
   });
 
@@ -43,8 +44,8 @@ export const useCommonTodoListsButtonDelete = ({
         },
       });
 
-      // 리스트 삭제
-      deleteTodolistMutation.mutate(id);
+      // 리스트 삭제 = 삭제일 업데이트
+      updateTodoListDeletedAtMutation.mutate({ id });
     } catch (err) {
       if (err instanceof Error) throw new Error(err.message);
     }

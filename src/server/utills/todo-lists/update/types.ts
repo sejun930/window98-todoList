@@ -21,4 +21,12 @@ export interface IUseServerUtillsTodoListsUpdateReturn {
     },
     unknown
   >;
+  updateTodoListDeletedAtMutation: UseMutationResult<
+    unknown,
+    Error,
+    {
+      id: string;
+    },
+    unknown
+  >;
 }

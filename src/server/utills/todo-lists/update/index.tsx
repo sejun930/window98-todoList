@@ -1,8 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  updateTodolist,
-  updateTodolistChecked,
-} from "@/server/apis/todo-lists";
+import { useUpdateTodoList } from "@/server/apis/todo-lists";
 import { useUtillsError } from "@/commons/utills";
 
 import type { IUseServerUtillsTodoListsUpdateReturn } from "./types";
@@ -18,6 +15,8 @@ import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 export const useServerUtillsTodoListsUpdate = (
   props?: IUseServerUtillsCallback,
 ): IUseServerUtillsTodoListsUpdateReturn => {
+  const { updateTodolistChecked, updateTodolist, updateTodolistDeletedAt } =
+    useUpdateTodoList();
   const callback = props?.callback;
 
   const queryClient = useQueryClient();
@@ -73,7 +72,7 @@ export const useServerUtillsTodoListsUpdate = (
 
   // 리스트 수정 함수
   const updateTodoListMutation = useMutation({
-    mutationKey: ["todo-lists-checked-toggle"],
+    mutationKey: ["todo-lists-update"],
     mutationFn: async ({
       id,
       data,
@@ -121,6 +120,69 @@ export const useServerUtillsTodoListsUpdate = (
                 }
                 return false;
               });
+
+              return { ...oldInfos, pages };
+            },
+          );
+        },
+      );
+    },
+    onError: () => {
+      showError("400");
+    },
+    onSettled: () => {
+      if (callback) callback();
+    },
+  });
+
+  // 리스트 삭제 업데이트 함수
+  const updateTodoListDeletedAtMutation = useMutation({
+    mutationKey: ["todo-lists-deleted"],
+    mutationFn: async ({ id }: { id: string }) => {
+      return await updateTodolistDeletedAt({ id });
+    },
+    onSuccess: (updateTodo) => {
+      // 개별 리스트의 캐시 변경
+      void queryClient.invalidateQueries({
+        queryKey: ["todo-list", { id: updateTodo.id }],
+      });
+
+      queryClient.setQueryData(
+        ["todo-lists"],
+        (oldInfos: IFetchTodoInfiniteQueryInfo) => {
+          if (!oldInfos) return { pages: [], pageParams: [] };
+
+          queryClient.setQueryData(
+            ["todo-lists"],
+            (oldInfos: IFetchTodoInfiniteQueryInfo) => {
+              if (!oldInfos) return { pages: [], pageParams: [] };
+
+              // pages 데이터만 별도 추출
+              const pages = JSON.parse(JSON.stringify(oldInfos?.pages));
+              pages.some((info: IFetchTodoInfo, idx1: number) => {
+                const datas = info?.data;
+
+                let isFind = false;
+                datas.some((el, idx2) => {
+                  if (el.id === updateTodo.id) {
+                    // 해당하는 리스트 임시 제거
+                    pages[idx1].data[idx2] = null;
+
+                    isFind = true;
+                    return true;
+                  }
+                  return false;
+                });
+
+                if (isFind) {
+                  // 임시 삭제된 리스트는 배열에서 제거
+                  pages[idx1].data = pages[idx1].data.filter(
+                    (el: ITodoList) => el,
+                  );
+                  return true;
+                }
+                return false;
+              });
               pages[0].items--;
 
               return { ...oldInfos, pages };
@@ -140,5 +202,6 @@ export const useServerUtillsTodoListsUpdate = (
   return {
     updateTodolistCheckedMutation,
     updateTodoListMutation,
+    updateTodoListDeletedAtMutation,
   };
 };
