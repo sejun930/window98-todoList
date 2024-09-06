@@ -2,6 +2,7 @@ import { fetchTodoList } from "@/server/apis/todo-lists/fetch";
 import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
+import { ITodoListStatus, type ITodoList } from "@/commons/types/todo-list";
 
 interface ITodoListDetailPageProps {
   params: { id: string };
@@ -26,14 +27,21 @@ export default async function TodoListDetailPage(
 
   // 데이터 직렬화
   const dehydratedState = dehydrate(queryClient);
+  const data = dehydratedState.queries[0]?.state.data as ITodoList;
+
   // 없는 데이터인 경우
-  const isEmpty = !dehydratedState.queries[0]?.state.data;
+  const isEmpty = !data;
+  // 삭제된 데이터인 경우
+  const isDeleted =
+    !!data?.deletedAt ||
+    !!data?.deletedAtTime ||
+    data?.status === ITodoListStatus.deleted;
 
   return (
     <TodoDetailView
       dehydratedState={dehydratedState}
       id={id}
-      isEmpty={isEmpty}
+      isDisable={isEmpty || isDeleted}
     />
   );
 }

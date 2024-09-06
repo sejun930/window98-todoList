@@ -1,4 +1,8 @@
-import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import {
+  ITodoListStatus,
+  type IFetchTodoInfo,
+  type ITodoList,
+} from "@/commons/types/todo-list";
 import axios from "axios";
 
 interface IFetchAllTodoListsProps {
@@ -13,6 +17,9 @@ export const fetchAllTodoLists = async ({
     params: {
       _sort: "-createdAtTime",
       _page,
+      deletedAt: "",
+      deletedAtTime: 0, // 삭제되지 않았으며
+      status: ITodoListStatus.active, // 활성화 되어 있는 경우
     },
   });
 
@@ -26,7 +33,13 @@ interface IfetchTodoListProps {
 export const fetchTodoList = async ({
   id,
 }: IfetchTodoListProps): Promise<ITodoList> => {
-  const data = await axios.get(`http://localhost:5010/todoLists/${id}`);
+  const data = await axios.get(`http://localhost:5010/todoLists/${id}`, {
+    params: {
+      deletedAt: "",
+      deletedAtTime: 0, // 삭제되지 않았으며
+      status: ITodoListStatus.active, // 활성화 되어 있는 경우
+    },
+  });
 
   return data.data;
 };

@@ -5,6 +5,7 @@ import type {
   ICreateTodolistReturn,
 } from "./types";
 import { INIT_TODO_LIST } from "@/commons/init/todo-list";
+import { ITodoListStatus } from "@/commons/types/todo-list";
 
 // 리스트 등록
 export const createTodolist = async ({
@@ -13,9 +14,12 @@ export const createTodolist = async ({
   try {
     const _data: ICreateTodoList = {
       ...data,
-      checked: false,
-      createdAt: String(new Date()),
-      createdAtTime: new Date().getTime(),
+      checked: false, // 체크 여부
+      createdAt: String(new Date()), // 생성일
+      createdAtTime: new Date().getTime(), // 생성일 날짜 데이터
+      deletedAt: "", // 삭제일
+      deletedAtTime: 0, // 삭제일 날짜 데이터
+      status: ITodoListStatus.active, // 리스트 상태 (활성, 삭제 여부)
     };
 
     const result = await axios.post(`http://localhost:5010/todoLists`, _data);

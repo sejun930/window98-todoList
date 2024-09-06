@@ -1,3 +1,9 @@
+// 리스트 상태 타입
+export enum ITodoListStatus {
+  active = "Active",
+  deleted = "Deleted",
+}
+
 // Todo-list에 관련된 공통 타입
 export interface ITodoList {
   id: string; // 고유 아이디 값
@@ -6,6 +12,9 @@ export interface ITodoList {
   checked: boolean; // 체크 여부
   createdAt: string; // 작성된 날짜
   createdAtTime: number; // 작성된 날짜 Time
+  deletedAt: string; // 삭제된 날짜
+  deletedAtTime: number; // 삭제된 날짜 Time
+  status: ITodoListStatus; // 리스트 상태
 }
 
 // fetch로 받아온 todo-list 결과

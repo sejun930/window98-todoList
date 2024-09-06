@@ -39,4 +39,9 @@ export const updateTodolist = async ({
     if (err instanceof Error) throw new Error(err.message);
   }
   return INIT_TODO_LIST;
+
+  // todo-list 삭제
+  // export const updateTodolistDeletedAt = () => {
+
+  // }
 };

@@ -14,13 +14,17 @@ import type { ITodoDetailViewProps, ITodoDetailProps } from "./types";
 export default function TodoDetailView({
   dehydratedState,
   id,
-  isEmpty,
+  isDisable,
 }: ITodoDetailViewProps): ReactNode {
-  if (isEmpty) return <Error isShow errorType="404" />;
+  if (isDisable) return <Error isShow errorType="404" />;
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <TodoDetail id={id} dehydratedState={dehydratedState} isEmpty={isEmpty} />
+      <TodoDetail
+        id={id}
+        dehydratedState={dehydratedState}
+        isDisable={isDisable}
+      />
     </HydrationBoundary>
   );
 }
