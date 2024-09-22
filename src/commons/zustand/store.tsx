@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type {
+  IUseDeletedInfos,
   IUseDesktopInfo,
   IUseDialogAlertInfo,
   IUseDialogInfo,
@@ -52,5 +53,13 @@ export const useDesktopInfo: IUseDesktopInfo = create((set) => ({
     set((state) => {
       return { desktopInfo: { ...state.desktopInfo, ...newDesktop } };
     });
+  },
+}));
+
+// 삭제 선택한 리스트 정보 저장
+export const useDeletedInfos: IUseDeletedInfos = create((set) => ({
+  deletedInfos: {},
+  setDeletedInfos: (newDeletedLists) => {
+    set({ deletedInfos: newDeletedLists });
   },
 }));

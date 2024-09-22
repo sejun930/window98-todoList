@@ -61,3 +61,12 @@ export type IUseDesktopInfo = UseBoundStore<
     setDesktopInfo: (props: IDesktopInfoProps) => void;
   }>
 >;
+
+export type IDeletedInfos = Record<string, boolean>;
+// 선택된 삭제 리스트 정보
+export type IUseDeletedInfos = UseBoundStore<
+  StoreApi<{
+    deletedInfos: IDeletedInfos;
+    setDeletedInfos: (props: IDeletedInfos) => void;
+  }>
+>;
