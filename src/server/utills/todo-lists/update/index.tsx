@@ -19,7 +19,7 @@ export const useServerUtillsTodoListsUpdate = (
     updateTodolistChecked,
     updateTodolist,
     updateTodolistDeletedAt,
-    updateTodoListsNoneDeletedAt,
+    updateTodoListsRestoreDeletedAt,
   } = useUpdateTodoList();
   const callback = props?.callback;
 
@@ -207,12 +207,12 @@ export const useServerUtillsTodoListsUpdate = (
   });
 
   // 리스트 삭제 복원 업데이트 함수
-  const updateTodoListsNoneDeletedAtMutation = useMutation({
+  const updateTodoListsRestoreDeletedAtMutation = useMutation({
     mutationKey: ["todo-lists-deleted"],
     mutationFn: async ({ ids }: { ids: string[] }) => {
       // 모든 아이디를 순회하여 삭제 복원 API 실행
       return Promise.all(
-        ids.map(async (id) => updateTodoListsNoneDeletedAt({ id })),
+        ids.map(async (id) => updateTodoListsRestoreDeletedAt({ id })),
       );
     },
     onSuccess: (updateTodo) => {
@@ -273,6 +273,6 @@ export const useServerUtillsTodoListsUpdate = (
     updateTodolistCheckedMutation,
     updateTodoListMutation,
     updateTodoListDeletedAtMutation,
-    updateTodoListsNoneDeletedAtMutation,
+    updateTodoListsRestoreDeletedAtMutation,
   };
 };

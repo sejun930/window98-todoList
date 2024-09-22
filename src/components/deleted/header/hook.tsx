@@ -2,7 +2,7 @@ import {
   useServerUtillsTodoListsFetchDeleteTodoLists,
   useServerUtillsTodoListsUpdate,
 } from "@/server/utills/todo-lists";
-import { useDeletedInfos, useDialogInfoState } from "@/commons/zustand/store";
+import { useDeletedInfos } from "@/commons/zustand/store";
 
 import type { IDeletedListReturn, IToggleAllCheckProps } from "./types";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
@@ -10,10 +10,6 @@ import { useUtillsDialogAlert } from "@/commons/utills";
 
 export const useDeletedHeader = (): IDeletedListReturn => {
   const { deletedInfos, setDeletedInfos } = useDeletedInfos();
-  const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
-
-  const { updateTodoListsNoneDeletedAtMutation } =
-    useServerUtillsTodoListsUpdate();
 
   // 삭제된 리스트 데이터 조회
   const { data, isLoading } = useServerUtillsTodoListsFetchDeleteTodoLists();
@@ -46,44 +42,10 @@ export const useDeletedHeader = (): IDeletedListReturn => {
     setDeletedInfos(_deletedInfos);
   };
 
-  // 현재 선택되어 있는 리스트 조회
-  const getCheckList = () => {
-    const checkIds = Object.entries(deletedInfos)
-      .filter(([_, VALUE]) => {
-        if (VALUE) return true;
-      })
-      .map(([KEY]) => KEY);
-
-    return checkIds ?? [];
-  };
-
-  // 삭제된 리스트들 모두 복원
-  const updateNoneDeletedAt = async () => {
-    const ids = getCheckList();
-    const hasCheckList = !!ids?.length;
-
-    const text = hasCheckList
-      ? `${ids.length}개의 삭제 리스트를 복원하시겠습니까?`
-      : "1개 이상의 리스트를 선택해주세요.";
-
-    // 복원 함수
-    const event = () => {
-      updateTodoListsNoneDeletedAtMutation.mutate({ ids });
-
-      closeDialogAlert();
-    };
-
-    openDialogAlert({
-      headerInfo: { title: "삭제 리스트 복원" },
-      dialogAlertInfo: { text, okEvent: (hasCheckList && event) || undefined },
-    });
-  };
-
   return {
     isLoading,
     allData,
     toggleAllCheck,
     isAllCheck,
-    updateNoneDeletedAt,
   };
 };

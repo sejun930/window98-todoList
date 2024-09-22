@@ -10,15 +10,11 @@ import { Checkbox } from "@/commons/components/checkbox";
 import { ButtonPrimaryM } from "@/commons/components/button";
 import { useDeletedHeader } from "./hook";
 
+import { DeletedHeaderRestoreDeletedAt } from "./restore-deletedAt";
+
 // 휴지통 상단 정보
 export default function DeletedHeader(): ReactNode {
-  const {
-    allData,
-    isLoading,
-    toggleAllCheck,
-    isAllCheck,
-    updateNoneDeletedAt,
-  } = useDeletedHeader();
+  const { allData, isLoading, toggleAllCheck, isAllCheck } = useDeletedHeader();
 
   useLayoutEffect(() => {
     return () => {
@@ -55,9 +51,8 @@ export default function DeletedHeader(): ReactNode {
             <TextBody04>선택 비우기</TextBody04>
           </ButtonPrimaryM>
 
-          <ButtonPrimaryM onClick={updateNoneDeletedAt}>
-            <TextBody04>선택 복원</TextBody04>
-          </ButtonPrimaryM>
+          {/* 복원 버튼 */}
+          <DeletedHeaderRestoreDeletedAt />
         </div>
       </div>
     </section>

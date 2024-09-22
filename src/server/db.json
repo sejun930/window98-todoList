@@ -7,9 +7,9 @@
       "checked": true,
       "createdAt": "Fri Sep 06 2024 15:51:04 GMT+0900 (한국 표준시)",
       "createdAtTime": 1725605464086,
-      "deletedAt": "",
-      "deletedAtTime": 0,
-      "status": "Active"
+      "deletedAt": "Sun Sep 22 2024 20:13:28 GMT+0900 (한국 표준시)",
+      "deletedAtTime": 1727003608138,
+      "status": "Deleted"
     },
     {
       "id": "a8d6",
@@ -18,9 +18,9 @@
       "checked": true,
       "createdAt": "Fri Sep 06 2024 15:51:10 GMT+0900 (한국 표준시)",
       "createdAtTime": 1725605470267,
-      "deletedAt": "",
-      "deletedAtTime": 0,
-      "status": "Active"
+      "deletedAt": "Sun Sep 22 2024 20:13:26 GMT+0900 (한국 표준시)",
+      "deletedAtTime": 1727003606185,
+      "status": "Deleted"
     },
     {
       "id": "6efc",
@@ -66,9 +66,9 @@
       "checked": true,
       "createdAt": "Sun Sep 22 2024 17:56:21 GMT+0900 (한국 표준시)",
       "createdAtTime": 1726995381793,
-      "deletedAt": "Sun Sep 22 2024 20:04:24 GMT+0900 (한국 표준시)",
-      "deletedAtTime": 1727003064961,
-      "status": "Deleted"
+      "deletedAt": "",
+      "deletedAtTime": 0,
+      "status": "Active"
     }
   ]
 }

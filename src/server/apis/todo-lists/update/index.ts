@@ -4,7 +4,7 @@ import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 import type {
   IUpdateTodolistCheckedProps,
   IUpdateTodolistDeletedAtProps,
-  IupdateTodoListsNoneDeletedAtProps,
+  IupdateTodoListsRestoreDeletedAtProps,
   IUpdateTodolistProps,
   IUseUpdateTodoListReturn,
 } from "./types";
@@ -78,9 +78,9 @@ export const useUpdateTodoList = (): IUseUpdateTodoListReturn => {
   };
 
   // 삭제된 리스트 복원하기
-  const updateTodoListsNoneDeletedAt = async ({
+  const updateTodoListsRestoreDeletedAt = async ({
     id,
-  }: IupdateTodoListsNoneDeletedAtProps) => {
+  }: IupdateTodoListsRestoreDeletedAtProps) => {
     try {
       const result = await axios.patch(
         `http://localhost:5010/todoLists/${id}`,
@@ -102,6 +102,6 @@ export const useUpdateTodoList = (): IUseUpdateTodoListReturn => {
     updateTodolistChecked,
     updateTodolist,
     updateTodolistDeletedAt,
-    updateTodoListsNoneDeletedAt,
+    updateTodoListsRestoreDeletedAt,
   };
 };
