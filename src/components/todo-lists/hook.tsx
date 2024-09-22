@@ -39,6 +39,9 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     });
   };
 
+  // 데이터 존재 여부 반환
+  const hasItems = allData > 0 ?? false;
+
   return {
     items,
     fetchMore,
@@ -46,5 +49,6 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     openWriteDialog,
     isLoading,
     allData,
+    hasItems,
   };
 };

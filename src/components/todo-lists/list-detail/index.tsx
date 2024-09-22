@@ -12,7 +12,7 @@ import { Skeleton } from "@/commons/components/skeleton";
 import type { ITodoListsListProps } from "./types";
 
 // Todo-list에 대한 각각의 리스트 컴포넌트
-const TodoListsList = ({
+const TodoListsListDetail = ({
   info,
   classNames,
   uuid,
@@ -47,4 +47,4 @@ const TodoListsList = ({
   );
 };
 
-export default memo(TodoListsList);
+export default memo(TodoListsListDetail);

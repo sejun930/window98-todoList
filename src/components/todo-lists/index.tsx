@@ -1,32 +1,30 @@
 "use client";
 
+import { type MutableRefObject, type ReactNode, useRef } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
 import { TextBody01, TextBody04, TextTitle01 } from "@/commons/components/text";
 import { useTodoLists } from "./hook";
-import { ButtonPrimaryM } from "@/commons/components/button";
-import TodoListsList from "./list";
-import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
-import { type MutableRefObject, type ReactNode, useRef } from "react";
 import { Skeleton } from "@/commons/components/skeleton";
+
+import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
+import TodoListsListDetail from "./list-detail";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists(): ReactNode {
-  const { items, fetchMore, hasNextPage, openWriteDialog, isLoading, allData } =
-    useTodoLists();
+  // prettier-ignore
+  const { items, fetchMore, hasNextPage, 
+    openWriteDialog, isLoading, allData, hasItems } = useTodoLists();
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
-
-  // 데이터 존재 여부 반환
-  const hasItems = allData > 0 ?? false;
 
   return (
     <section className={styles.section}>
-      <div className={styles.option__wrapper}>
+      <div className={styles.option__header}>
         <Skeleton isLoading={isLoading}>
-          <TextBody01>TOTAL : {String(allData).padStart(2, "0")}</TextBody01>
+          <TextBody01>LISTS : {String(allData).padStart(2, "0")}</TextBody01>
         </Skeleton>
-        <ButtonPrimaryM onClick={openWriteDialog}>
+        <button onClick={openWriteDialog}>
           <Image
             src="/icons/new-file-small.png"
             alt="등록"
@@ -34,7 +32,7 @@ export default function TodoLists(): ReactNode {
             height={0}
           />
           <TextBody04>새 파일</TextBody04>
-        </ButtonPrimaryM>
+        </button>
       </div>
       <WithInfiniteScroll
         targetRef={listWrapperRef}
@@ -66,7 +64,7 @@ export default function TodoLists(): ReactNode {
             const uuid = `${id}-${createdAt}-${idx}`;
 
             return (
-              <TodoListsList
+              <TodoListsListDetail
                 key={uuid}
                 uuid={uuid}
                 classNames={classNames}

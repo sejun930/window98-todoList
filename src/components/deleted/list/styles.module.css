@@ -1,0 +1,35 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.option__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+
+.option__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+}
+.option__header span {
+  font-weight: 900;
+}
+.option__header button {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+  position: relative;
+}
+.option__header button img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.option__buttons {
+  display: flex;
+  gap: 0 0.5rem;
+}
