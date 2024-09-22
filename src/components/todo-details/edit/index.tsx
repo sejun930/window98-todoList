@@ -8,7 +8,7 @@ import { useFormContext } from "react-hook-form";
 import { type ReactNode, useEffect } from "react";
 import { useUtillsCheck } from "@/commons/utills/check";
 import { useRouter } from "next/navigation";
-import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
 import Error from "@/components/commons/error";
 import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/todo-lists/fetch";
 import { HydrationBoundary } from "@tanstack/react-query";
@@ -26,7 +26,7 @@ const TodoDetails = ({
 }: ITodoDetailsEditProps): ReactNode => {
   const { setValue } = useFormContext<IZodSchemaTodoListsWrite>();
   const { getIsDifferenceDatas } = useUtillsCheck();
-  const { openDialogAlert } = useUtillDialogAlert();
+  const { openDialogAlert } = useUtillsDialogAlert();
   const router = useRouter();
 
   // 서버에서 조회된 초기 데이터

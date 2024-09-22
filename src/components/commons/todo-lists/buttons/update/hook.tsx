@@ -1,7 +1,7 @@
-import { useUtillDialog } from "@/commons/utills/dialog";
+import { useUtillsDialog } from "@/commons/utills/dialog";
 
 import WithForm from "@/commons/hocs/form";
-import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
 
 import CommonsTodoListsWrite from "../../write";
 import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
@@ -12,8 +12,8 @@ import type { IuseCommonTodoListsButtonsUpdateReturn } from "./types";
 
 export const useCommonTodoListsButtonsUpdate =
   (): IuseCommonTodoListsButtonsUpdateReturn => {
-    const { openDialog, closeDialog } = useUtillDialog();
-    const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
+    const { openDialog, closeDialog } = useUtillsDialog();
+    const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
     const { getIsDifferenceDatas } = useUtillsCheck();
 
     // 수정용 dialog 창 띄우기

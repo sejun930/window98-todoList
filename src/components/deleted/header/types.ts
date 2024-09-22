@@ -7,4 +7,5 @@ export interface IDeletedListReturn {
   allData: number;
   toggleAllCheck: (props?: IToggleAllCheckProps) => void;
   isAllCheck: boolean;
+  updateNoneDeletedAt: () => Promise<void>;
 }

@@ -8,6 +8,9 @@ export interface IUseUpdateTodoListReturn {
   updateTodolistDeletedAt: (
     props: IUpdateTodolistDeletedAtProps,
   ) => Promise<ITodoList>;
+  updateTodoListsNoneDeletedAt: (
+    props: IupdateTodoListsNoneDeletedAtProps,
+  ) => Promise<ITodoList>;
 }
 
 // 리스트 체크 정보 변경
@@ -22,5 +25,9 @@ export interface IUpdateTodolistProps {
 }
 // 리스트 삭제
 export interface IUpdateTodolistDeletedAtProps {
+  id: string;
+}
+// 리스트 삭제 복원
+export interface IupdateTodoListsNoneDeletedAtProps {
   id: string;
 }

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1.25rem;
+  /* padding-bottom: 1.25rem; */
 }
 .option__header span {
   font-weight: 900;

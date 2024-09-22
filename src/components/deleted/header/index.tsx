@@ -12,7 +12,13 @@ import { useDeletedHeader } from "./hook";
 
 // 휴지통 상단 정보
 export default function DeletedHeader(): ReactNode {
-  const { allData, isLoading, toggleAllCheck, isAllCheck } = useDeletedHeader();
+  const {
+    allData,
+    isLoading,
+    toggleAllCheck,
+    isAllCheck,
+    updateNoneDeletedAt,
+  } = useDeletedHeader();
 
   useLayoutEffect(() => {
     return () => {
@@ -49,7 +55,7 @@ export default function DeletedHeader(): ReactNode {
             <TextBody04>선택 비우기</TextBody04>
           </ButtonPrimaryM>
 
-          <ButtonPrimaryM>
+          <ButtonPrimaryM onClick={updateNoneDeletedAt}>
             <TextBody04>선택 복원</TextBody04>
           </ButtonPrimaryM>
         </div>

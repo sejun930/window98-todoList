@@ -7,7 +7,7 @@ export interface IOpenDialogAlertProps {
   onlyWait?: boolean;
 }
 
-export interface IUseUtillDialogAlertReturn {
+export interface IuseUtillsDialogAlertReturn {
   openDialogAlert: (props: IOpenDialogAlertProps) => void;
   closeDialogAlert: () => void;
 }

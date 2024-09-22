@@ -9,7 +9,7 @@ export interface IcloseDialogProps {
   originData: { title: string; contents: string };
 }
 
-export interface IUseUtillDialogReturn {
+export interface IuseUtillsDialogReturn {
   openDialog: (props: IOpenDialogProps) => void;
   closeDialog: (props?: IcloseDialogProps) => void;
 }

@@ -2,7 +2,7 @@
 
 import { HydrationBoundary } from "@tanstack/react-query";
 import { type ReactNode, useEffect } from "react";
-import { useUtillDialog } from "@/commons/utills/dialog";
+import { useUtillsDialog } from "@/commons/utills/dialog";
 import TodoDetailViewDetail from "./detail";
 import Error from "@/components/commons/error";
 import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/todo-lists/fetch";
@@ -31,7 +31,7 @@ export default function TodoDetailView({
 }
 
 const TodoDetail = ({ id, dehydratedState }: ITodoDetailProps): ReactNode => {
-  const { openDialog } = useUtillDialog();
+  const { openDialog } = useUtillsDialog();
 
   // 서버에서 조회된 초기 데이터
   const initData =

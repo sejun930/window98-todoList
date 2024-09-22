@@ -1,6 +1,6 @@
 import { useCreateTodolist } from "@/server/apis/todo-lists";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useUtillDialogAlert, useUtillsError } from "@/commons/utills";
+import { useUtillsDialogAlert, useUtillsError } from "@/commons/utills";
 
 import type {
   IFetchTodoInfiniteQueryInfo,
@@ -17,7 +17,7 @@ export const useServerUtillsTodoListsCreate = ({
   const queryClient = useQueryClient();
   const { createTodolist } = useCreateTodolist();
 
-  const { closeDialogAlert } = useUtillDialogAlert();
+  const { closeDialogAlert } = useUtillsDialogAlert();
   const { showError } = useUtillsError();
 
   // 리스트 등록 함수

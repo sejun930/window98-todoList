@@ -1,11 +1,11 @@
 import { useDialogAlertInfoState } from "@/commons/zustand/store";
 import type {
-  IUseUtillDialogAlertReturn,
+  IuseUtillsDialogAlertReturn,
   IOpenDialogAlertProps,
 } from "./types";
 
 // Dialog-alert 관련 공통 함수 모음
-export const useUtillDialogAlert = (): IUseUtillDialogAlertReturn => {
+export const useUtillsDialogAlert = (): IuseUtillsDialogAlertReturn => {
   const { setDialogAlertInfo } = useDialogAlertInfoState();
   // Dialog-alert 실행
   const openDialogAlert = ({

@@ -50,9 +50,9 @@ const TodoListsListDetail = ({
         <Skeleton isLoading={isLoading}>
           <TextBody03>{contents}</TextBody03>
         </Skeleton>
-      </div>
-      <div className={styles.date}>
-        <TextBody04>{createdAt} (등록)</TextBody04>
+        <div className={styles.date}>
+          <TextBody04>{createdAt} (등록)</TextBody04>
+        </div>
       </div>
     </li>
   );

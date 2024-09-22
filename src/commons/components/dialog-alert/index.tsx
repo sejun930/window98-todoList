@@ -4,7 +4,7 @@ import windowsStyles from "../../styles/windows/styles.module.css";
 
 import { TextBody02 } from "../text";
 import { ButtonDangerousM, ButtonPrimaryM } from "../button";
-import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
 
 import type { IDialogAlertProps } from "./types";
 import type { ReactNode } from "react";
@@ -17,7 +17,7 @@ export default function DialogAlert({
   onlyWait,
 }: IDialogAlertProps): ReactNode {
   const { text } = alertInfo;
-  const { closeDialogAlert } = useUtillDialogAlert();
+  const { closeDialogAlert } = useUtillsDialogAlert();
 
   if (!isOpen) return <></>;
   return (
@@ -42,7 +42,12 @@ export default function DialogAlert({
               <ButtonDangerousM onClick={closeDialogAlert}>
                 취소
               </ButtonDangerousM>
-              <ButtonPrimaryM onClick={alertInfo?.okEvent}>확인</ButtonPrimaryM>
+
+              {alertInfo?.okEvent && (
+                <ButtonPrimaryM onClick={alertInfo?.okEvent}>
+                  확인
+                </ButtonPrimaryM>
+              )}
             </div>
           )}
         </div>

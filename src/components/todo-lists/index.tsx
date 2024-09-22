@@ -4,7 +4,7 @@ import { type MutableRefObject, type ReactNode, useRef } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-import { TextBody01, TextBody04 } from "@/commons/components/text";
+import { TextBody01, TextBody03 } from "@/commons/components/text";
 import { useTodoLists } from "./hook";
 import { Skeleton } from "@/commons/components/skeleton";
 
@@ -32,7 +32,7 @@ export default function TodoLists(): ReactNode {
             width={0}
             height={0}
           />
-          <TextBody04>새 파일</TextBody04>
+          <TextBody03>New List</TextBody03>
         </button>
       </div>
       <WithInfiniteScroll
