@@ -12,7 +12,8 @@ import DeletedListListDetail from "./list-detail";
 
 // 삭제 리스트 노출 컴포넌트
 export default function DeletedList(): ReactNode {
-  const { hasItems, isLoading, items, fetchMore } = useDeletedList();
+  const { hasItems, isLoading, items, fetchMore, toggleCheck } =
+    useDeletedList();
   const { deletedInfos } = useDeletedInfos();
 
   const listRef = useRef() as MutableRefObject<HTMLUListElement>;
@@ -45,6 +46,7 @@ export default function DeletedList(): ReactNode {
                 info={info}
                 isLoading={isLoading}
                 isChecked={isChecked}
+                toggleCheck={toggleCheck(id)}
               />
             );
           })}

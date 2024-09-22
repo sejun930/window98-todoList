@@ -6,4 +6,5 @@ export interface IDeletedListListDetailProps {
   isLast: boolean;
   isLoading: boolean;
   isChecked: boolean;
+  toggleCheck: () => void;
 }

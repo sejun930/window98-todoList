@@ -5,4 +5,5 @@ export interface IUseDeletedListReturn {
   isLoading: boolean;
   hasItems: boolean;
   fetchMore: () => void;
+  toggleCheck: (id: string) => () => void;
 }

@@ -17,3 +17,11 @@
   align-items: center;
   gap: 0 0.5rem;
 }
+
+.date__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.date__wrapper span {
+  color: var(--gray-90);
+}
