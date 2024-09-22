@@ -1,12 +1,8 @@
-import {
-  useServerUtillsTodoListsFetchDeleteTodoLists,
-  useServerUtillsTodoListsUpdate,
-} from "@/server/utills/todo-lists";
+import { useServerUtillsTodoListsFetchDeleteTodoLists } from "@/server/utills/todo-lists";
 import { useDeletedInfos } from "@/commons/zustand/store";
 
 import type { IDeletedListReturn, IToggleAllCheckProps } from "./types";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
-import { useUtillsDialogAlert } from "@/commons/utills";
 
 export const useDeletedHeader = (): IDeletedListReturn => {
   const { deletedInfos, setDeletedInfos } = useDeletedInfos();
@@ -23,6 +19,7 @@ export const useDeletedHeader = (): IDeletedListReturn => {
   // 모든 리스트가 선택되어 있는지 체크
   const isAllCheck =
     (!isLoading &&
+      !!allData &&
       items?.every((el) => {
         // 해당 리스트가 선택되어 있지 않다면 = 전체 false
         if (!deletedInfos[el?.id]) return false;

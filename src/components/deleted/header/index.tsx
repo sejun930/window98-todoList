@@ -1,16 +1,15 @@
 "use client";
 
 import { useLayoutEffect, type ReactNode } from "react";
-import Image from "next/image";
 import styles from "./styles.module.css";
 
-import { TextBody01, TextBody04 } from "@/commons/components/text";
+import { TextBody01 } from "@/commons/components/text";
 import { Skeleton } from "@/commons/components/skeleton";
 import { Checkbox } from "@/commons/components/checkbox";
-import { ButtonPrimaryM } from "@/commons/components/button";
 import { useDeletedHeader } from "./hook";
 
 import { DeletedHeaderRestoreDeletedAt } from "./restore-deletedAt";
+import DeletedHeaderDelete from "./delete";
 
 // 휴지통 상단 정보
 export default function DeletedHeader(): ReactNode {
@@ -41,16 +40,8 @@ export default function DeletedHeader(): ReactNode {
         </div>
 
         <div className={styles.option__buttons}>
-          <ButtonPrimaryM>
-            <Image
-              src="/icons/recycle-small.png"
-              alt="선택 비우기"
-              width={0}
-              height={0}
-            />
-            <TextBody04>선택 비우기</TextBody04>
-          </ButtonPrimaryM>
-
+          {/* 삭제 버튼 */}
+          <DeletedHeaderDelete />
           {/* 복원 버튼 */}
           <DeletedHeaderRestoreDeletedAt />
         </div>

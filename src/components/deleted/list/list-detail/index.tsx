@@ -6,7 +6,7 @@ import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import { Checkbox } from "@/commons/components/checkbox";
 import { useDeletedInfos } from "@/commons/zustand/store";
 import { Skeleton } from "@/commons/components/skeleton";
-import { TextBody04, TextTitle02 } from "@/commons/components/text";
+import { TextBody03, TextBody04, TextTitle02 } from "@/commons/components/text";
 import { useUtillsDate } from "@/commons/utills";
 
 // 삭제 - 리스트 상세
@@ -14,11 +14,10 @@ const DeletedListListDetail = ({
   uuid,
   isLast,
   info,
-  isLoading,
   isChecked,
   toggleCheck,
 }: IDeletedListListDetailProps) => {
-  const { title, deletedAtTime } = info;
+  const { title, deletedAtTime, contents } = info;
   const { getTimeString } = useUtillsDate();
 
   let classNames = styles.list;
@@ -30,12 +29,17 @@ const DeletedListListDetail = ({
 
   return (
     <li className={classNames}>
-      <div className={styles.title__wrapper}>
-        <Checkbox isChecked={isChecked} id={uuid} onClick={toggleCheck} />
-        <TextTitle02>{title}</TextTitle02>
+      <div className={styles.header}>
+        <div className={styles.title__wrapper}>
+          <Checkbox isChecked={isChecked} id={uuid} onClick={toggleCheck} />
+          <TextTitle02>{title}</TextTitle02>
+        </div>
+        <div className={styles.date__wrapper}>
+          <TextBody04>{deletedAt} (삭제)</TextBody04>
+        </div>
       </div>
-      <div className={styles.date__wrapper}>
-        <TextBody04>{deletedAt} (삭제)</TextBody04>
+      <div className={styles.contents}>
+        <TextBody03>{contents}</TextBody03>
       </div>
     </li>
   );
