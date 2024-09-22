@@ -1,5 +1,5 @@
 import WithForm from "@/commons/hocs/form";
-import { useUtillDialog } from "@/commons/utills/dialog";
+import { useUtillsDialog } from "@/commons/utills/dialog";
 import CommonsTodoListsWrite from "../commons/todo-lists/write";
 import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useServerUtillsTodoListsFetchTodoLists } from "@/server/utills/todo-lists/fetch";
@@ -10,7 +10,7 @@ import type { IUseTodoListsListReturn } from "./types";
 // 투두 리스트 조회 hook
 export const useTodoLists = (): IUseTodoListsListReturn => {
   // dialog 실행 제어
-  const { openDialog, closeDialog } = useUtillDialog();
+  const { openDialog, closeDialog } = useUtillsDialog();
 
   const { data, fetchNextPage, hasNextPage, isLoading } =
     useServerUtillsTodoListsFetchTodoLists();
@@ -39,6 +39,9 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     });
   };
 
+  // 데이터 존재 여부 반환
+  const hasItems = allData > 0 ?? false;
+
   return {
     items,
     fetchMore,
@@ -46,5 +49,6 @@ export const useTodoLists = (): IUseTodoListsListReturn => {
     openWriteDialog,
     isLoading,
     allData,
+    hasItems,
   };
 };

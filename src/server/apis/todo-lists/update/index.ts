@@ -4,6 +4,7 @@ import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 import type {
   IUpdateTodolistCheckedProps,
   IUpdateTodolistDeletedAtProps,
+  IupdateTodoListsRestoreDeletedAtProps,
   IUpdateTodolistProps,
   IUseUpdateTodoListReturn,
 } from "./types";
@@ -39,10 +40,12 @@ export const useUpdateTodoList = (): IUseUpdateTodoListReturn => {
     id,
     data,
   }: IUpdateTodolistProps): Promise<ITodoList> => {
+    const now = getNow();
+
     try {
       const result = await axios.patch(
         `http://localhost:5010/todoLists/${id}`,
-        data,
+        { ...data, updatedAt: now.date, updatedAtTime: now.dateTime },
       );
       return result.data;
     } catch (err) {
@@ -74,9 +77,31 @@ export const useUpdateTodoList = (): IUseUpdateTodoListReturn => {
     return INIT_TODO_LIST;
   };
 
+  // 삭제된 리스트 복원하기
+  const updateTodoListsRestoreDeletedAt = async ({
+    id,
+  }: IupdateTodoListsRestoreDeletedAtProps): Promise<ITodoList> => {
+    try {
+      const result = await axios.patch(
+        `http://localhost:5010/todoLists/${id}`,
+        {
+          deletedAt: "", // 삭제일 초기화
+          deletedAtTime: 0, // 삭제일자 초기화
+          status: ITodoListStatus.active, // 상태 초기로 복원
+        },
+      );
+      return result.data;
+    } catch (err) {
+      if (err instanceof Error) throw new Error(err.message);
+    }
+
+    return INIT_TODO_LIST;
+  };
+
   return {
     updateTodolistChecked,
     updateTodolist,
     updateTodolistDeletedAt,
+    updateTodoListsRestoreDeletedAt,
   };
 };

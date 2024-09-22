@@ -10,5 +10,7 @@ export const INIT_TODO_LIST: ITodoList = {
   createdAtTime: 0,
   deletedAt: "",
   deletedAtTime: 0,
+  updatedAt: "",
+  updatedAtTime: 0,
   status: ITodoListStatus.active,
 };

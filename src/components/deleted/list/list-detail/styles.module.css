@@ -1,0 +1,40 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: solid 0.0625rem var(--gray-50);
+  position: relative;
+}
+.isLast {
+  border-bottom: unset;
+  padding-bottom: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+
+.date__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.date__wrapper span {
+  color: var(--gray-90);
+}
+
+.contents {
+  padding-top: 0.5rem;
+}
+.contents span {
+  white-space: break-spaces;
+}

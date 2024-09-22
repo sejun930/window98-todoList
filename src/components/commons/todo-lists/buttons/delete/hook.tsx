@@ -1,5 +1,5 @@
 import { TextBody02 } from "@/commons/components/text";
-import { useUtillDialogAlert } from "@/commons/utills/dialog-alert";
+import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
 import { useServerUtillsTodoListsUpdate } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
 import { URL } from "@/commons/constants/URL";
@@ -14,7 +14,7 @@ export const useCommonTodoListsButtonDelete = ({
   info,
 }: IUseCommonTodoListsButtonsDeleteProps): IUseCommonTodoListsButtonsDeleteReturn => {
   const { id } = info;
-  const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
+  const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
   const router = useRouter();
 
   // 삭제 후 실행 callback

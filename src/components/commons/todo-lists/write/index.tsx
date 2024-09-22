@@ -7,14 +7,14 @@ import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 import { ButtonDangerousL, ButtonPrimaryL } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
-import { useUtillDialog } from "@/commons/utills/dialog";
+import { useUtillsDialog } from "@/commons/utills/dialog";
 
 import {
   useServerUtillsTodoListsCreate,
   useServerUtillsTodoListsUpdate,
 } from "@/server/utills/todo-lists";
 import { useRouter } from "next/navigation";
-import { useUtillDialogAlert } from "@/commons/utills";
+import { useUtillsDialogAlert } from "@/commons/utills";
 
 import type { ICommonsTodoListsWriteProps } from "./types";
 import type { IZodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
@@ -28,7 +28,7 @@ export default function CommonsTodoListsWrite({
 }: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
-  const { openDialogAlert, closeDialogAlert } = useUtillDialogAlert();
+  const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
 
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
@@ -63,7 +63,7 @@ export default function CommonsTodoListsWrite({
   }, [isEdit]);
 
   // dialog 종료
-  const { closeDialog } = useUtillDialog();
+  const { closeDialog } = useUtillsDialog();
 
   // 등록 & 수정 실행
   const writeTodoList = handleSubmit((data) => {

@@ -5,3 +5,4 @@ export {
   useServerUtillsTodoListsFetchTodoLists,
   useServerUtillsTodoListsFetchDeleteTodoLists,
 } from "./fetch";
+export { useServerUtillsTodoListsDelete } from "./delete";

@@ -1,8 +1,9 @@
 export interface IUseUtillsDateReturn {
-  getNow: () => IGetNowReturn;
+  getNow: () => ITimeReturn;
+  getTimeString: (dateTime: number) => string;
 }
 
-export interface IGetNowReturn {
+export interface ITimeReturn {
   date: string;
   dateTime: number;
 }

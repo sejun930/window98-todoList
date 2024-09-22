@@ -1,3 +1,17 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: solid 0.0625rem var(--gray-50);
+  position: relative;
+}
+
+.isLast {
+  border-bottom: unset;
+  padding-bottom: 0;
+}
+
 .title__wrapper {
   display: flex;
   align-items: center;
@@ -15,11 +29,23 @@
   white-space: break-spaces;
 }
 
+.date {
+  display: flex;
+  justify-content: flex-end;
+}
+.date span {
+  color: var(--gray-90);
+}
+
 /* 모바일 사이즈 */
 @media (max-width: 768px) {
   .options {
     position: absolute;
     right: 0;
     bottom: 0.5rem;
+  }
+
+  .list {
+    padding-bottom: 3rem;
   }
 }

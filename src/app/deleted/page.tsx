@@ -1,5 +1,12 @@
 import type { ReactNode } from "react";
+import DeletedHeader from "@/components/deleted/header";
+import DeletedList from "@/components/deleted/list";
 
 export default function DeletedPage(): ReactNode {
-  return <div>휴지통</div>;
+  return (
+    <>
+      <DeletedHeader />
+      <DeletedList />
+    </>
+  );
 }

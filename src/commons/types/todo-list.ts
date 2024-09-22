@@ -14,6 +14,8 @@ export interface ITodoList {
   createdAtTime: number; // 작성된 날짜 Time
   deletedAt: string; // 삭제된 날짜
   deletedAtTime: number; // 삭제된 날짜 Time
+  updatedAt: string; // 수정된 날짜
+  updatedAtTime: number; // 수정된 날짜 Time
   status: ITodoListStatus; // 리스트 상태
 }
 

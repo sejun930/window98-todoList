@@ -2,7 +2,7 @@ import { URL } from "@/commons/constants/URL";
 import { URL_INFO } from "@/commons/constants/URL_info";
 import { usePathname, useRouter } from "next/navigation";
 
-import { useUtillDialog, useUtillDialogAlert } from "@/commons/utills";
+import { useUtillsDialog, useUtillsDialogAlert } from "@/commons/utills";
 
 import type { IUseLayoutsContentsReturn } from "./types";
 import { useUtillsParams } from "@/commons/utills/params";
@@ -25,8 +25,8 @@ export const useLayoutsContents = (): IUseLayoutsContentsReturn => {
   // window 제목
   const windowTitle = currentInfo?.useWindow?.title ?? "";
 
-  const { closeDialog } = useUtillDialog();
-  const { closeDialogAlert } = useUtillDialogAlert();
+  const { closeDialog } = useUtillsDialog();
+  const { closeDialogAlert } = useUtillsDialogAlert();
 
   // 닫기 버튼 클릭시, 이동 경로 분기
   const closeContents = (): void => {

@@ -36,6 +36,15 @@
   white-space: break-spaces;
 }
 
+.date__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+}
+.date__wrapper span {
+  color: var(--gray-90);
+}
+
 /* 모바일 사이즈 */
 @media (max-width: 768px) {
   .option__wrapper {

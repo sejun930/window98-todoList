@@ -28,6 +28,8 @@ export const useCreateTodolist = (): IUseCreateTodolistReturn => {
         deletedAt: "", // 삭제일
         deletedAtTime: 0, // 삭제일 날짜 데이터
         status: ITodoListStatus.active, // 리스트 상태 (활성, 삭제 여부)
+        updatedAt: "", // 수정일
+        updatedAtTime: 0, // 수정일 날짜 데이터
       };
 
       const result = await axios.post(`http://localhost:5010/todoLists`, _data);

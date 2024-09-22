@@ -35,7 +35,7 @@ export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
   {
     name: "Github",
     src: "github",
-    href: "https://github.com/sejun930/front-assignment",
+    href: "https://github.com/sejun930/window98-todoList",
     isBlank: true,
   },
   {
