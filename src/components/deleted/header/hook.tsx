@@ -17,12 +17,15 @@ export const useDeletedHeader = (): IDeletedListReturn => {
   const allData = data?.pages[0]?.items ?? items?.length ?? 0;
 
   // 모든 리스트가 선택되어 있는지 체크
-  const isAllCheck = items?.every((el) => {
-    // 해당 리스트가 선택되어 있지 않다면 = 전체 false
-    if (!deletedInfos[el.id]) return false;
-    // 모든 리스트가 선택되어 있다면 = 전체 true
-    return true;
-  });
+  const isAllCheck =
+    (!isLoading &&
+      items?.every((el) => {
+        // 해당 리스트가 선택되어 있지 않다면 = 전체 false
+        if (!deletedInfos[el.id]) return false;
+        // 모든 리스트가 선택되어 있다면 = 전체 true
+        return true;
+      })) ??
+    false;
 
   // 전체 리스트 선택 toggle
   const toggleAllCheck = (props?: IToggleAllCheckProps): void => {

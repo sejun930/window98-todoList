@@ -4,12 +4,13 @@ import { type MutableRefObject, type ReactNode, useRef } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-import { TextBody01, TextBody04, TextTitle01 } from "@/commons/components/text";
+import { TextBody01, TextBody04 } from "@/commons/components/text";
 import { useTodoLists } from "./hook";
 import { Skeleton } from "@/commons/components/skeleton";
 
 import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
 import TodoListsListDetail from "./list-detail";
+import Notice from "../commons/notice";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists(): ReactNode {
@@ -40,37 +41,29 @@ export default function TodoLists(): ReactNode {
         disable={!hasNextPage}
       >
         <ul className={styles.list__wrapper} ref={listWrapperRef}>
-          {isLoading && (
-            <li className={styles.empty}>
-              <TextTitle01>데이터 조회 중</TextTitle01>
-            </li>
-          )}
-
-          {!hasItems && !isLoading && (
-            <li className={styles.empty}>
-              <TextTitle01>리스트가 비어있습니다.</TextTitle01>
-            </li>
-          )}
+          {/* 로딩 여부 */}
+          <Notice isShow={isLoading} text="데이터 조회 중" />
+          {/* 리스트 존재 여부 */}
+          <Notice
+            isShow={!hasItems && !isLoading}
+            text="리스트가 비어있습니다."
+          />
 
           {items?.map((info, idx) => {
             const { id, createdAt } = info;
 
             // 마지막 리스트인지 체크
             const isLast = items?.length === idx + 1;
-
-            let classNames = styles.list;
-            if (isLast) classNames += ` ${styles.isLast}`;
-
             const uuid = `${id}-${createdAt}-${idx}`;
 
             return (
               <TodoListsListDetail
                 key={uuid}
                 uuid={uuid}
-                classNames={classNames}
                 info={info}
                 allData={allData}
                 isLoading={isLoading}
+                isLast={isLast}
               />
             );
           })}

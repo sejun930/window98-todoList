@@ -3,9 +3,9 @@ import type { ITodoList } from "@/commons/types/todo-list";
 export interface ITodoListsListProps {
   info: ITodoList;
   uuid: string;
-  classNames: string;
   allData: number;
   isLoading: boolean;
+  isLast: boolean;
 }
 
 export interface IUseTodoListsListProps {

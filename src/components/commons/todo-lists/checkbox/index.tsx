@@ -36,6 +36,7 @@ export default function CommonsTodoListsCheckbox({
   };
 
   useLayoutEffect(() => {
+    // ref 값이 없으면, 스타일 추가 없음
     if (!titleItemRef?.current) return;
 
     // 체크가 되어 있다면 추가 스타일을 위한 클래스 네임 추가

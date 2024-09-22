@@ -14,11 +14,15 @@ import type { ITodoListsListProps } from "./types";
 // Todo-list에 대한 각각의 리스트 컴포넌트
 const TodoListsListDetail = ({
   info,
-  classNames,
   uuid,
   isLoading,
+  isLast,
 }: ITodoListsListProps): ReactNode => {
   const { checked, title, contents, id } = info;
+
+  let classNames = styles.list;
+  // 마지막 리스트 체크
+  if (isLast) classNames += ` ${styles.isLast}`;
 
   return (
     <li className={classNames}>
