@@ -5,13 +5,15 @@ import { useDeletedInfos } from "@/commons/zustand/store";
 import { useUtillsDialogAlert } from "@/commons/utills";
 import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
 
+import type { ReactNode } from "react";
+
 // 리스트 최종 삭제
-export default function DeletedHeaderDelete() {
+export default function DeletedHeaderDelete(): ReactNode {
   const { deletedInfos, setDeletedInfos } = useDeletedInfos();
   const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
 
   // 복원 완료 후 실행될 callback 함수
-  const callback = () => {
+  const callback = (): void => {
     // dialog 종료
     closeDialogAlert();
     // 선택 리스트 초기화
@@ -23,18 +25,16 @@ export default function DeletedHeaderDelete() {
   });
 
   // 현재 선택되어 있는 리스트 조회
-  const getCheckList = () => {
+  const getCheckList = (): string[] => {
     const checkIds = Object.entries(deletedInfos)
-      .filter(([_, VALUE]) => {
-        if (VALUE) return true;
-      })
+      .filter(([_, VALUE]) => VALUE)
       .map(([KEY]) => KEY);
 
     return checkIds ?? [];
   };
 
   // 리스트 최종 삭제
-  const updateListsDeleteConfirm = async () => {
+  const updateListsDeleteConfirm = (): void => {
     const ids = getCheckList();
     const hasCheckList = !!ids?.length;
 
@@ -43,7 +43,7 @@ export default function DeletedHeaderDelete() {
       : "1개 이상의 리스트를 선택해주세요.";
 
     // 최종 삭제 함수
-    const event = () => {
+    const event = (): void => {
       deleteTodoListsMutation.mutate({ ids });
     };
 

@@ -80,7 +80,7 @@ export const useUpdateTodoList = (): IUseUpdateTodoListReturn => {
   // 삭제된 리스트 복원하기
   const updateTodoListsRestoreDeletedAt = async ({
     id,
-  }: IupdateTodoListsRestoreDeletedAtProps) => {
+  }: IupdateTodoListsRestoreDeletedAtProps): Promise<ITodoList> => {
     try {
       const result = await axios.patch(
         `http://localhost:5010/todoLists/${id}`,

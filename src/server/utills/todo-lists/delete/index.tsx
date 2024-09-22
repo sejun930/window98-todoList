@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUtillsDialogAlert, useUtillsError } from "@/commons/utills";
+import { useDeleteTodolist } from "@/server/apis/todo-lists/delete";
 
 import type { IUseServerUtillsTodoListsDeleteReturn } from "./types";
 import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
-import { useDeleteTodolist } from "@/server/apis/todo-lists/delete";
-import {
+import type {
   IFetchTodoInfiniteQueryInfo,
   ITodoList,
 } from "@/commons/types/todo-list";
@@ -26,7 +26,9 @@ export const useServerUtillsTodoListsDelete = (
     mutationKey: ["todo-lists-checked-toggle"],
     mutationFn: async ({ ids }: { ids: string[] }) => {
       // 모든 아이디를 순회하여 삭제 API 실행
-      return Promise.all(ids.map(async (id) => deleteTodolist({ id })));
+      return await Promise.all(
+        ids.map(async (id) => await deleteTodolist({ id })),
+      );
     },
     onSuccess: (deleteDatas) => {
       // 삭제 리스트의 캐시 변경

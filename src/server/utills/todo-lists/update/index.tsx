@@ -211,8 +211,8 @@ export const useServerUtillsTodoListsUpdate = (
     mutationKey: ["todo-lists-deleted"],
     mutationFn: async ({ ids }: { ids: string[] }) => {
       // 모든 아이디를 순회하여 삭제 복원 API 실행
-      return Promise.all(
-        ids.map(async (id) => updateTodoListsRestoreDeletedAt({ id })),
+      return await Promise.all(
+        ids.map(async (id) => await updateTodoListsRestoreDeletedAt({ id })),
       );
     },
     onSuccess: (updateTodo) => {

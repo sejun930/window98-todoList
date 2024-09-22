@@ -1,6 +1,6 @@
 "use client";
 
-import { MutableRefObject, useRef, type ReactNode } from "react";
+import { useRef, type MutableRefObject, type ReactNode } from "react";
 import styles from "./styles.module.css";
 
 import { useDeletedList } from "./hook";

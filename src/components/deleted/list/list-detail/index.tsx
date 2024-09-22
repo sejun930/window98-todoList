@@ -1,11 +1,8 @@
-import { memo } from "react";
+import { memo, type ReactNode } from "react";
 import styles from "./styles.module.css";
 
 import type { IDeletedListListDetailProps } from "./types";
-import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import { Checkbox } from "@/commons/components/checkbox";
-import { useDeletedInfos } from "@/commons/zustand/store";
-import { Skeleton } from "@/commons/components/skeleton";
 import { TextBody03, TextBody04, TextTitle02 } from "@/commons/components/text";
 import { useUtillsDate } from "@/commons/utills";
 
@@ -16,7 +13,7 @@ const DeletedListListDetail = ({
   info,
   isChecked,
   toggleCheck,
-}: IDeletedListListDetailProps) => {
+}: IDeletedListListDetailProps): ReactNode => {
   const { title, deletedAtTime, contents } = info;
   const { getTimeString } = useUtillsDate();
 

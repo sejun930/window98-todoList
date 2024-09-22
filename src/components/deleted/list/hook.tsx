@@ -21,7 +21,7 @@ export const useDeletedList = (): IUseDeletedListReturn => {
   const hasItems = allData > 0 ?? false;
 
   // 다음 데이터 조회
-  const fetchMore = () => {
+  const fetchMore = (): void => {
     if (!hasNextPage) return;
     void fetchNextPage();
   };

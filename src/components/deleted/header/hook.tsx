@@ -31,7 +31,7 @@ export const useDeletedHeader = (): IDeletedListReturn => {
   // 전체 리스트 선택 toggle
   const toggleAllCheck = (props?: IToggleAllCheckProps): void => {
     const reset = props?.reset ?? false;
-    let _deletedInfos = { ...deletedInfos };
+    const _deletedInfos = { ...deletedInfos };
 
     // 현재 전체 리스트 체크 여부에 따라 전체 선택 및 해제 변환
     items.forEach((el) => (_deletedInfos[el?.id] = !reset && !isAllCheck));
