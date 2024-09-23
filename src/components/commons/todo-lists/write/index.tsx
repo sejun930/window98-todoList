@@ -28,7 +28,7 @@ export default function CommonsTodoListsWrite({
 }: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
-  const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
+  const { openDialogAlert } = useUtillsDialogAlert();
 
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();

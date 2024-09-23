@@ -6,7 +6,6 @@ import { useUtillsDialog } from "@/commons/utills/dialog";
 import TodoDetailViewDetail from "./detail";
 import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/todo-lists/fetch";
 
-import type { ITodoList } from "@/commons/types/todo-list";
 import type { ITodoDetailViewProps, ITodoDetailProps } from "./types";
 import { URL } from "@/commons/constants/URL";
 import Notice from "@/components/commons/notice";
