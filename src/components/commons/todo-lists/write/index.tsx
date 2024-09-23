@@ -39,7 +39,6 @@ export default function CommonsTodoListsWrite({
   const callback = (): void => {
     // 등록 & 수정창 닫기
     closeDialog();
-    closeDialogAlert();
 
     // 종료 후 이동할 경로가 설정되어 있다면
     if (afterMovePath) router.replace(afterMovePath);
@@ -94,6 +93,9 @@ export default function CommonsTodoListsWrite({
     }
   });
 
+  // 로딩중 여부
+  const isLoading = !info?.title || !info.contents;
+
   return (
     <div className={styles.wrapper}>
       <form
@@ -109,6 +111,7 @@ export default function CommonsTodoListsWrite({
             {...register("title")}
             id="title"
             maxLength={20}
+            readOnly={isLoading}
           />
           <textarea
             placeholder="내용 입력"
@@ -116,6 +119,7 @@ export default function CommonsTodoListsWrite({
             {...register("contents")}
             id="contents"
             maxLength={200}
+            readOnly={isLoading}
           ></textarea>
         </div>
 
