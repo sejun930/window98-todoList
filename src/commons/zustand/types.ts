@@ -18,6 +18,8 @@ export type IUseDialogInfo = UseBoundStore<
 export interface IDialogAlertInfo {
   text: string | React.ReactNode | JSX.Element;
   okEvent?: () => void | Promise<void>;
+  cancelText?: string;
+  okText?: string;
 }
 export interface IDialogAlertInfoProps {
   isOpenDialogAlert: boolean;

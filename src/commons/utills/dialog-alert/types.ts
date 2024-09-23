@@ -7,7 +7,13 @@ export interface IOpenDialogAlertProps {
   onlyWait?: boolean;
 }
 
-export interface IuseUtillsDialogAlertReturn {
+export interface IOpenConfirmDialogAlertProps {
+  headerInfo: IOpenDialogAlertProps["headerInfo"];
+  dialogAlertInfo: Pick<IDialogAlertInfo, "text" | "cancelText">;
+}
+
+export interface IUseUtillsDialogAlertReturn {
   openDialogAlert: (props: IOpenDialogAlertProps) => void;
   closeDialogAlert: () => void;
+  openConfirmDialogAlert: (props: IOpenConfirmDialogAlertProps) => void;
 }

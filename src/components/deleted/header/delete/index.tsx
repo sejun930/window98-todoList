@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ButtonPrimaryM } from "@/commons/components/button";
+import { Button } from "@/commons/components/button";
 import { TextBody04 } from "@/commons/components/text";
 import { useDeletedInfos } from "@/commons/zustand/store";
 import { useUtillsDialogAlert } from "@/commons/utills";
@@ -54,7 +54,7 @@ export default function DeletedHeaderDelete(): ReactNode {
   };
 
   return (
-    <ButtonPrimaryM onClick={updateListsDeleteConfirm}>
+    <Button onClick={updateListsDeleteConfirm} theme="primary" size="m">
       <Image
         src="/icons/recycle-small.png"
         alt="선택 비우기"
@@ -62,6 +62,6 @@ export default function DeletedHeaderDelete(): ReactNode {
         height={0}
       />
       <TextBody04>선택 비우기</TextBody04>
-    </ButtonPrimaryM>
+    </Button>
   );
 }

@@ -18,7 +18,7 @@ export const useServerUtillsTodoListsDelete = (
   const queryClient = useQueryClient();
   const { deleteTodolist } = useDeleteTodolist();
 
-  const { closeDialogAlert } = useUtillsDialogAlert();
+  const { closeDialogAlert, openConfirmDialogAlert } = useUtillsDialogAlert();
   const { showError } = useUtillsError();
 
   // 리스트 삭제 함수
@@ -68,6 +68,15 @@ export const useServerUtillsTodoListsDelete = (
       closeDialogAlert();
 
       if (callback) callback();
+
+      window.setTimeout(() => {
+        openConfirmDialogAlert({
+          headerInfo: { title: "리스트 비우기 완료" },
+          dialogAlertInfo: {
+            text: "선택된 삭제 리스트들을 비웠습니다.",
+          },
+        });
+      }, 0);
     },
   });
 

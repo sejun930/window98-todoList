@@ -1,11 +1,12 @@
 import { useDialogAlertInfoState } from "@/commons/zustand/store";
 import type {
-  IuseUtillsDialogAlertReturn,
+  IUseUtillsDialogAlertReturn,
   IOpenDialogAlertProps,
+  IOpenConfirmDialogAlertProps,
 } from "./types";
 
 // Dialog-alert 관련 공통 함수 모음
-export const useUtillsDialogAlert = (): IuseUtillsDialogAlertReturn => {
+export const useUtillsDialogAlert = (): IUseUtillsDialogAlertReturn => {
   const { setDialogAlertInfo } = useDialogAlertInfoState();
   // Dialog-alert 실행
   const openDialogAlert = ({
@@ -28,13 +29,26 @@ export const useUtillsDialogAlert = (): IuseUtillsDialogAlertReturn => {
     setDialogAlertInfo({
       isOpenDialogAlert: false,
       headerInfo: { title: "" },
-      dialogAlertInfo: { text: "", okEvent: () => {} },
+      dialogAlertInfo: { text: "" },
       onlyWait: false,
+    });
+  };
+
+  // 확인용 Dialog-alert 실행
+  const openConfirmDialogAlert = ({
+    dialogAlertInfo,
+    headerInfo,
+  }: IOpenConfirmDialogAlertProps): void => {
+    setDialogAlertInfo({
+      isOpenDialogAlert: true,
+      dialogAlertInfo: { cancelText: "확인", ...dialogAlertInfo },
+      headerInfo,
     });
   };
 
   return {
     openDialogAlert,
     closeDialogAlert,
+    openConfirmDialogAlert,
   };
 };

@@ -4,7 +4,7 @@ import { type ReactNode, useEffect } from "react";
 import styles from "./styles.module.css";
 import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
-import { ButtonDangerousL, ButtonPrimaryL } from "@/commons/components/button";
+import { Button } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
 import { useUtillsDialog } from "@/commons/utills/dialog";
@@ -121,18 +121,20 @@ export default function CommonsTodoListsWrite({
 
         <div className={styles.button__wrapper}>
           {useBackEvent && (
-            <ButtonDangerousL onClick={useBackEvent}>
+            <Button onClick={useBackEvent} theme="dangerous" size="l">
               <TextBody02>취소</TextBody02>
-            </ButtonDangerousL>
+            </Button>
           )}
 
-          <ButtonPrimaryL
+          <Button
             disable={!isValid}
             active={isValid}
             onClick={writeTodoList}
+            theme="primary"
+            size="l"
           >
             <TextBody02>{isEdit ? "수정" : "등록"}</TextBody02>
-          </ButtonPrimaryL>
+          </Button>
         </div>
       </form>
     </div>

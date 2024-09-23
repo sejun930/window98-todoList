@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { MutableRefObject, ReactNode } from "react";
 
 export interface IButtonBaseProps {
   children: ReactNode;
@@ -8,8 +8,9 @@ export interface IButtonBaseProps {
   onClick?: () => void | Promise<void>;
   disable?: boolean;
   active?: boolean;
+  ref?: MutableRefObject<HTMLButtonElement>;
 }
 
 export type IButtonCommonProps =
   // 메인 컴포넌트에서 호출할 때에는 제외할 props
-  Omit<IButtonBaseProps, "cssprop" | "theme" | "size">;
+  Omit<IButtonBaseProps, "cssprop">;
