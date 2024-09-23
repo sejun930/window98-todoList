@@ -1,4 +1,4 @@
-import { ButtonPrimaryM } from "@/commons/components/button";
+import { Button } from "@/commons/components/button";
 import { TextBody04 } from "@/commons/components/text";
 
 import { useUtillsDialogAlert } from "@/commons/utills";
@@ -54,8 +54,8 @@ export const DeletedHeaderRestoreDeletedAt = (): ReactNode => {
   };
 
   return (
-    <ButtonPrimaryM onClick={updateListsRestoreDeletedAt}>
+    <Button onClick={updateListsRestoreDeletedAt} theme="primary" size="m">
       <TextBody04>선택 복원</TextBody04>
-    </ButtonPrimaryM>
+    </Button>
   );
 };

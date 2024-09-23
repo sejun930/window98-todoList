@@ -12,11 +12,13 @@ import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
 import TodoListsListDetail from "./list-detail";
 import Notice from "../commons/notice";
 
+import type { ITodoListsListProps } from "./types";
+
 // Todo-list 리스트 노출 컴포넌트
-export default function TodoLists(): ReactNode {
+export default function TodoLists(props: ITodoListsListProps): ReactNode {
   // prettier-ignore
   const { items, fetchMore, hasNextPage, 
-    openWriteDialog, isLoading, allData, hasItems } = useTodoLists();
+    openWriteDialog, isLoading, allData, hasItems } = useTodoLists({ ...props });
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
   return (

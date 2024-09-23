@@ -1,10 +1,12 @@
 import { useServerUtillsTodoListsFetchDeleteTodoLists } from "@/server/utills/todo-lists";
 
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
-import type { IUseDeletedListReturn } from "./types";
+import type { IUseDeletedListProps, IUseDeletedListReturn } from "./types";
 import { useDeletedInfos } from "@/commons/zustand/store";
 
-export const useDeletedList = (): IUseDeletedListReturn => {
+export const useDeletedList = ({
+  initialPageParam,
+}: IUseDeletedListProps): IUseDeletedListReturn => {
   // 삭제된 리스트 데이터 조회
   const { data, isLoading, fetchNextPage, hasNextPage } =
     useServerUtillsTodoListsFetchDeleteTodoLists();

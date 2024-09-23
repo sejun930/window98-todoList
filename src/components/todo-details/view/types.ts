@@ -1,8 +1,10 @@
+import type { ITodoList } from "@/commons/types/todo-list";
 import type { DehydratedState } from "@tanstack/react-query";
 
-export interface ITodoDetailProps {
+export interface ITodoDetailViewProps {
   dehydratedState: DehydratedState;
   id: string;
-  isDisable: boolean;
+  initData: ITodoList;
 }
-export type ITodoDetailViewProps = ITodoDetailProps;
+
+export type ITodoDetailProps = Omit<ITodoDetailViewProps, "dehydratedState">;

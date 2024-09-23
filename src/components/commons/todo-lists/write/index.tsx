@@ -4,7 +4,7 @@ import { type ReactNode, useEffect } from "react";
 import styles from "./styles.module.css";
 import { INIT_TODO_LIST } from "@/commons/init/todo-list";
 
-import { ButtonDangerousL, ButtonPrimaryL } from "@/commons/components/button";
+import { Button } from "@/commons/components/button";
 import { TextBody02 } from "@/commons/components/text";
 import { useFormContext } from "react-hook-form";
 import { useUtillsDialog } from "@/commons/utills/dialog";
@@ -28,7 +28,7 @@ export default function CommonsTodoListsWrite({
 }: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
-  const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
+  const { openDialogAlert } = useUtillsDialogAlert();
 
   const { register, formState, handleSubmit, setValue } =
     useFormContext<IZodSchemaTodoListsWrite>();
@@ -39,7 +39,6 @@ export default function CommonsTodoListsWrite({
   const callback = (): void => {
     // 등록 & 수정창 닫기
     closeDialog();
-    closeDialogAlert();
 
     // 종료 후 이동할 경로가 설정되어 있다면
     if (afterMovePath) router.replace(afterMovePath);
@@ -94,6 +93,9 @@ export default function CommonsTodoListsWrite({
     }
   });
 
+  // 로딩중 여부
+  const isLoading = !info?.title || !info.contents;
+
   return (
     <div className={styles.wrapper}>
       <form
@@ -109,6 +111,7 @@ export default function CommonsTodoListsWrite({
             {...register("title")}
             id="title"
             maxLength={20}
+            readOnly={isLoading}
           />
           <textarea
             placeholder="내용 입력"
@@ -116,23 +119,26 @@ export default function CommonsTodoListsWrite({
             {...register("contents")}
             id="contents"
             maxLength={200}
+            readOnly={isLoading}
           ></textarea>
         </div>
 
         <div className={styles.button__wrapper}>
           {useBackEvent && (
-            <ButtonDangerousL onClick={useBackEvent}>
+            <Button onClick={useBackEvent} theme="dangerous" size="l">
               <TextBody02>취소</TextBody02>
-            </ButtonDangerousL>
+            </Button>
           )}
 
-          <ButtonPrimaryL
+          <Button
             disable={!isValid}
             active={isValid}
             onClick={writeTodoList}
+            theme="primary"
+            size="l"
           >
             <TextBody02>{isEdit ? "수정" : "등록"}</TextBody02>
-          </ButtonPrimaryL>
+          </Button>
         </div>
       </form>
     </div>

@@ -1,12 +1,9 @@
-import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import type { ITodoList } from "@/commons/types/todo-list";
+import type { IUseServerUtillsTodoListsFetchTodoListsProps } from "@/server/utills/todo-lists/fetch/fetchTodoLists";
 
-export interface ITodoListsListProps {
-  infos: IFetchTodoInfo;
-}
+export type ITodoListsListProps = IUseServerUtillsTodoListsFetchTodoListsProps;
+export type IUseTodoListsListProps = ITodoListsListProps;
 
-export interface IUseTodoListsListProps {
-  infos: IFetchTodoInfo;
-}
 export interface IUseTodoListsListReturn {
   items: ITodoList[];
   fetchMore: () => void;

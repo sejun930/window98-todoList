@@ -10,10 +10,15 @@ import WithInfiniteScroll from "@/commons/hocs/infinite-scroll";
 import Notice from "@/components/commons/notice";
 import DeletedListListDetail from "./list-detail";
 
+import type { IDeletedListProps } from "./types";
+
 // 삭제 리스트 노출 컴포넌트
-export default function DeletedList(): ReactNode {
-  const { hasItems, isLoading, items, fetchMore, toggleCheck } =
-    useDeletedList();
+export default function DeletedList({
+  initialPageParam,
+}: IDeletedListProps): ReactNode {
+  const { hasItems, isLoading, items, fetchMore, toggleCheck } = useDeletedList(
+    { initialPageParam },
+  );
   const { deletedInfos } = useDeletedInfos();
 
   const listRef = useRef() as MutableRefObject<HTMLUListElement>;

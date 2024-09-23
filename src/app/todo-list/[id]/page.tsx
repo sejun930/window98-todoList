@@ -1,8 +1,10 @@
 import { useFetchTodoList } from "@/server/apis/todo-lists/fetch";
-import TodoDetailView from "@/components/todo-details/view";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import type { ReactNode } from "react";
 import { ITodoListStatus, type ITodoList } from "@/commons/types/todo-list";
+import { notFound } from "next/navigation";
+
+import TodoDetailView from "@/components/todo-details/view";
+import type { ReactNode } from "react";
 
 interface ITodoListDetailPageProps {
   params: { id: string };
@@ -38,11 +40,10 @@ export default async function TodoListDetailPage(
     !!data?.deletedAtTime ||
     data?.status === ITodoListStatus.deleted;
 
+  // 없거나 삭제되었다면 에러 화면 노출
+  if (isEmpty || isDeleted) return notFound();
+  // 데이터가 조회되면 클라이언트 노출
   return (
-    <TodoDetailView
-      dehydratedState={dehydratedState}
-      id={id}
-      isDisable={isEmpty || isDeleted}
-    />
+    <TodoDetailView dehydratedState={dehydratedState} id={id} initData={data} />
   );
 }

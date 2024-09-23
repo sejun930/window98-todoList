@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUpdateTodoList } from "@/server/apis/todo-lists";
-import { useUtillsError } from "@/commons/utills";
+import { useUtillsDialogAlert, useUtillsError } from "@/commons/utills";
 
 import type { IUseServerUtillsTodoListsUpdateReturn } from "./types";
 import type {
@@ -15,6 +15,7 @@ import type { IUseServerUtillsCallback } from "@/commons/types/server-callback";
 export const useServerUtillsTodoListsUpdate = (
   props?: IUseServerUtillsCallback,
 ): IUseServerUtillsTodoListsUpdateReturn => {
+  const { openConfirmDialogAlert } = useUtillsDialogAlert();
   const {
     updateTodolistChecked,
     updateTodolist,
@@ -129,6 +130,15 @@ export const useServerUtillsTodoListsUpdate = (
     },
     onSettled: () => {
       if (callback) callback();
+
+      window.setTimeout(() => {
+        openConfirmDialogAlert({
+          headerInfo: { title: "리스트 수정 완료" },
+          dialogAlertInfo: {
+            text: "리스트가 수정되었습니다.",
+          },
+        });
+      }, 0);
     },
   });
 
@@ -203,6 +213,15 @@ export const useServerUtillsTodoListsUpdate = (
     },
     onSettled: () => {
       if (callback) callback();
+
+      window.setTimeout(() => {
+        openConfirmDialogAlert({
+          headerInfo: { title: "리스트 삭제 완료" },
+          dialogAlertInfo: {
+            text: "리스트가 삭제되었습니다.",
+          },
+        });
+      }, 0);
     },
   });
 
@@ -266,6 +285,15 @@ export const useServerUtillsTodoListsUpdate = (
     },
     onSettled: () => {
       if (callback) callback();
+
+      window.setTimeout(() => {
+        openConfirmDialogAlert({
+          headerInfo: { title: "리스트 복원 완료" },
+          dialogAlertInfo: {
+            text: "선택된 삭제 리스트의 복원이 완료되었습니다.",
+          },
+        });
+      }, 0);
     },
   });
 

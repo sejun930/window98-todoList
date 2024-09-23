@@ -3,11 +3,16 @@ import styles from "./styles.module.css";
 import windowsStyles from "../../styles/windows/styles.module.css";
 
 import { TextBody02 } from "../text";
-import { ButtonDangerousM, ButtonPrimaryM } from "../button";
+import { Button } from "../button";
 import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
 
 import type { IDialogAlertProps } from "./types";
-import type { ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  type ReactNode,
+  type MutableRefObject,
+} from "react";
 
 // Dialog-alert 공통 컴포넌트
 export default function DialogAlert({
@@ -16,8 +21,41 @@ export default function DialogAlert({
   alertInfo,
   onlyWait,
 }: IDialogAlertProps): ReactNode {
-  const { text } = alertInfo;
+  const { text, okText, cancelText, okEvent } = alertInfo;
   const { closeDialogAlert } = useUtillsDialogAlert();
+
+  const okButtonRef = useRef() as MutableRefObject<HTMLButtonElement>;
+
+  // 키 이벤트를 통한 Dialog-alert 종료 감지 이벤트
+  const leaveDialogAlertByKeyEvent = (e: KeyboardEvent): void => {
+    const KEY = e.key;
+
+    switch (KEY) {
+      case "Escape":
+        // ESC 키 입력시, 자동 Dialog-alert 닫기
+        closeDialogAlert();
+        break;
+
+      case "Enter":
+        // Enter 키 입력시,
+        // 자동 Dialog-alert 닫기
+        closeDialogAlert();
+
+        // okEvent 자동 실행
+        if (!okButtonRef?.current) return;
+        okButtonRef.current.click();
+
+        break;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keyup", leaveDialogAlertByKeyEvent, true);
+
+    return () => {
+      window.removeEventListener("keyup", leaveDialogAlertByKeyEvent);
+    };
+  }, []);
 
   if (!isOpen) return <></>;
   return (
@@ -39,14 +77,19 @@ export default function DialogAlert({
 
           {!onlyWait && (
             <div className={styles.button__options}>
-              <ButtonDangerousM onClick={closeDialogAlert}>
-                취소
-              </ButtonDangerousM>
+              <Button onClick={closeDialogAlert} theme="dangerous" size="m">
+                {cancelText ?? "취소"}
+              </Button>
 
-              {alertInfo?.okEvent && (
-                <ButtonPrimaryM onClick={alertInfo?.okEvent}>
-                  확인
-                </ButtonPrimaryM>
+              {okEvent && (
+                <Button
+                  onClick={okEvent}
+                  theme="primary"
+                  size="m"
+                  ref={okButtonRef}
+                >
+                  {okText ?? "확인"}
+                </Button>
               )}
             </div>
           )}

@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import LayoutsDesktop from "./desktop";
 import StartBar from "./startbar";
 import LayoutsContents from "./contents";
+
 import type { ReactNode } from "react";
 
 interface ILayoutsProps {

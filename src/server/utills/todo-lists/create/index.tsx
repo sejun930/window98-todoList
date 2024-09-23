@@ -17,7 +17,7 @@ export const useServerUtillsTodoListsCreate = ({
   const queryClient = useQueryClient();
   const { createTodolist } = useCreateTodolist();
 
-  const { closeDialogAlert } = useUtillsDialogAlert();
+  const { closeDialogAlert, openConfirmDialogAlert } = useUtillsDialogAlert();
   const { showError } = useUtillsError();
 
   // 리스트 등록 함수
@@ -53,6 +53,15 @@ export const useServerUtillsTodoListsCreate = ({
       closeDialogAlert();
 
       if (callback) callback();
+
+      window.setTimeout(() => {
+        openConfirmDialogAlert({
+          headerInfo: { title: "리스트 등록 완료" },
+          dialogAlertInfo: {
+            text: "리스트가 등록되었습니다.",
+          },
+        });
+      }, 0);
     },
   });
 

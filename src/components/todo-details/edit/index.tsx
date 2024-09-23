@@ -9,7 +9,6 @@ import { type ReactNode, useEffect } from "react";
 import { useUtillsCheck } from "@/commons/utills/check";
 import { useRouter } from "next/navigation";
 import { useUtillsDialogAlert } from "@/commons/utills/dialog-alert";
-import Error from "@/components/commons/error";
 import { useServerUtillsTodoListsFetchTodoListDetail } from "@/server/utills/todo-lists/fetch";
 import { HydrationBoundary } from "@tanstack/react-query";
 
@@ -17,22 +16,26 @@ import {
   type IZodSchemaTodoListsWrite,
   zodSchemaTodoListsWrite,
 } from "@/commons/zod/todo-list.zod";
-import type { ITodoList } from "@/commons/types/todo-list";
-import type { ITodoDetailsEditProps } from "./types";
+import type { ITodoDetailsEditProps, ITodoDetailsProps } from "./types";
 
-const TodoDetails = ({
-  dehydratedState,
-  id,
-}: ITodoDetailsEditProps): ReactNode => {
+// 상세 수정 컴포넌트
+export default function TodoDetailsEdit(
+  props: ITodoDetailsEditProps,
+): ReactNode {
+  return (
+    <HydrationBoundary state={props?.dehydratedState}>
+      <WithForm zodSchema={zodSchemaTodoListsWrite}>
+        <TodoDetails {...props} />
+      </WithForm>
+    </HydrationBoundary>
+  );
+}
+
+const TodoDetails = ({ id, initData }: ITodoDetailsProps): ReactNode => {
   const { setValue } = useFormContext<IZodSchemaTodoListsWrite>();
   const { getIsDifferenceDatas } = useUtillsCheck();
   const { openDialogAlert } = useUtillsDialogAlert();
   const router = useRouter();
-
-  // 서버에서 조회된 초기 데이터
-  const initData =
-    (dehydratedState?.queries[0]?.state.data as { data: ITodoList })?.data ??
-    {};
 
   // 상세 데이터 조회
   const { info } = useServerUtillsTodoListsFetchTodoListDetail({
@@ -80,18 +83,3 @@ const TodoDetails = ({
     </div>
   );
 };
-
-// 상세 수정 컴포넌트
-export default function TodoDetailsEdit(
-  props: ITodoDetailsEditProps,
-): ReactNode {
-  if (props?.isEmpty) return <Error isShow errorType="404" />;
-
-  return (
-    <HydrationBoundary state={props?.dehydratedState}>
-      <WithForm zodSchema={zodSchemaTodoListsWrite}>
-        <TodoDetails {...props} />
-      </WithForm>
-    </HydrationBoundary>
-  );
-}

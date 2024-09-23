@@ -5,15 +5,17 @@ import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useServerUtillsTodoListsFetchTodoLists } from "@/server/utills/todo-lists/fetch";
 
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
-import type { IUseTodoListsListReturn } from "./types";
+import type { IUseTodoListsListReturn, IUseTodoListsListProps } from "./types";
 
 // 투두 리스트 조회 hook
-export const useTodoLists = (): IUseTodoListsListReturn => {
+export const useTodoLists = (
+  props: IUseTodoListsListProps,
+): IUseTodoListsListReturn => {
   // dialog 실행 제어
   const { openDialog, closeDialog } = useUtillsDialog();
 
   const { data, fetchNextPage, hasNextPage, isLoading } =
-    useServerUtillsTodoListsFetchTodoLists();
+    useServerUtillsTodoListsFetchTodoLists({ ...props });
 
   // 다음 페이지의 데이터 호출
   const fetchMore = (): void => {

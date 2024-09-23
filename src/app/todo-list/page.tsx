@@ -1,6 +1,7 @@
-import TodoLists from "@/components/todo-lists";
 import { useFetchTodoList } from "@/server/apis/todo-lists";
 import { QueryClient } from "@tanstack/react-query";
+
+import TodoLists from "@/components/todo-lists";
 import type { ReactNode } from "react";
 
 export default async function TodoListPage(): Promise<ReactNode> {
@@ -15,10 +16,5 @@ export default async function TodoListPage(): Promise<ReactNode> {
     },
   });
 
-  // 데이터와 함께 렌더링
-  // const dehydratedState = dehydrate(queryClient);
-  // 서버 사이드에서 가져온 데이터 추출
-  // const infos = dehydratedState?.queries?.[0]?.state?.data ?? {};
-
-  return <TodoLists />;
+  return <TodoLists initialPageParam={2} />;
 }

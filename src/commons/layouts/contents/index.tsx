@@ -7,14 +7,12 @@ import windowsStyles from "../../styles/windows/styles.module.css";
 import WindowsHeader from "@/commons/components/windows/header";
 import Dialog from "@/commons/components/dialog";
 import DialogAlert from "@/commons/components/dialog-alert";
-import Error from "@/components/commons/error";
 
 import type { ILayoutsContentsProps } from "./types";
 import { useLayoutsContents } from "./hook";
 import {
   useDialogAlertInfoState,
   useDialogInfoState,
-  useErrorInfoState,
 } from "@/commons/zustand/store";
 
 // 메인 콘텐츠 영역
@@ -30,10 +28,6 @@ export default function LayoutsContents({
   // dialog-alert 실행 및 정보 zustand
   const { dialogAlertInfo } = useDialogAlertInfoState();
   const useDialogAlert = dialogAlertInfo.isOpenDialogAlert ?? false;
-
-  // Error 실행 및 정보 zustand
-  const { errorInfo } = useErrorInfoState();
-  const isShowError = errorInfo?.isShow ?? false;
 
   // 초기 렌더시, Dialog 종료
   useLayoutEffect(() => {
@@ -63,7 +57,6 @@ export default function LayoutsContents({
                   alertInfo={dialogAlertInfo?.dialogAlertInfo ?? {}}
                   onlyWait={dialogAlertInfo?.onlyWait ?? false}
                 />
-                <Error isShow={isShowError} errorType={errorInfo.errorType} />
               </main>
             </div>
           </div>
