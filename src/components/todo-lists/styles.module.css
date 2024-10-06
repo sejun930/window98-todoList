@@ -1,13 +1,20 @@
 .section {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: calc(100% + 2.5rem);
+  transform: translateX(-1.25rem);
 }
 
 .option__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding-bottom: 1.25rem; */
+  z-index: 1000;
+  background-color: var(--white);
+  padding: 0 1.25rem;
+  padding-bottom: 1.25rem;
+  box-shadow: 0.125rem 0.125rem 0.5rem var(--gray-150);
 }
 .option__header span {
   font-weight: 900;
@@ -26,17 +33,21 @@
 .list__wrapper {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 1.25rem 0;
-  height: 23.5rem;
   overflow-y: auto;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 1.5rem 0;
 }
 
 /* 모바일 사이즈 */
 @media (max-width: 768px) {
   .list__wrapper {
     height: 100%;
+    padding-bottom: 0;
+  }
+
+  .option__header button span {
+    display: none;
   }
 
   .main {

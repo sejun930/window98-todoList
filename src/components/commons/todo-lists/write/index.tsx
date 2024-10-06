@@ -25,6 +25,7 @@ export default function CommonsTodoListsWrite({
   info = { ...INIT_TODO_LIST },
   useBackEvent,
   afterMovePath,
+  isLoading = false,
 }: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
@@ -93,9 +94,6 @@ export default function CommonsTodoListsWrite({
     }
   });
 
-  // 로딩중 여부
-  const isLoading = !info?.title || !info.contents;
-
   return (
     <div className={styles.wrapper}>
       <form
@@ -106,7 +104,7 @@ export default function CommonsTodoListsWrite({
       >
         <div className={styles.write__wrapper}>
           <input
-            placeholder="제목 입력"
+            placeholder="Title ..."
             className={styles.title}
             {...register("title")}
             id="title"
@@ -114,7 +112,7 @@ export default function CommonsTodoListsWrite({
             readOnly={isLoading}
           />
           <textarea
-            placeholder="내용 입력"
+            placeholder="Contents ..."
             className={styles.contents}
             {...register("contents")}
             id="contents"
@@ -126,7 +124,7 @@ export default function CommonsTodoListsWrite({
         <div className={styles.button__wrapper}>
           {useBackEvent && (
             <Button onClick={useBackEvent} theme="dangerous" size="l">
-              <TextBody02>취소</TextBody02>
+              <TextBody02>Cancel</TextBody02>
             </Button>
           )}
 

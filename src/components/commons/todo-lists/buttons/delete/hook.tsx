@@ -55,7 +55,7 @@ export const useCommonTodoListsButtonDelete = ({
   // 삭제 확인용 dialog 오픈
   const openDeleteConfirm = (info: ITodoList) => () => {
     openDialogAlert({
-      headerInfo: { title: "리스트 삭제" },
+      headerInfo: { title: "Confirm List Delete" },
       dialogAlertInfo: {
         text: (
           <TextBody02>

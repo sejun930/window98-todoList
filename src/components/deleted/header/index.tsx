@@ -6,13 +6,16 @@ import styles from "./styles.module.css";
 import { TextBody01 } from "@/commons/components/text";
 import { Skeleton } from "@/commons/components/skeleton";
 import { Checkbox } from "@/commons/components/checkbox";
-import { useDeletedHeader } from "./hook";
 
-import { DeletedHeaderRestoreDeletedAt } from "./restore-deletedAt";
-import DeletedHeaderDelete from "./delete";
+import { useDeletedHeader } from "./hook";
+import { useUtillsNumber } from "@/commons/utills";
+
+import DeletedHeaderClearList from "./clear-list";
+import DeletedHeaderRecoveryList from "./recovery-list";
 
 // 휴지통 상단 정보
 export default function DeletedHeader(): ReactNode {
+  const { withZeroNumber } = useUtillsNumber();
   const { allData, isLoading, toggleAllCheck, isAllCheck } = useDeletedHeader();
 
   useLayoutEffect(() => {
@@ -34,16 +37,16 @@ export default function DeletedHeader(): ReactNode {
           />
           <Skeleton isLoading={isLoading}>
             <TextBody01>
-              DELETED : {String(allData).padStart(2, "0")}
+              DELETED : {withZeroNumber({ num: allData })}
             </TextBody01>
           </Skeleton>
         </div>
 
         <div className={styles.option__buttons}>
-          {/* 삭제 버튼 */}
-          <DeletedHeaderDelete />
-          {/* 복원 버튼 */}
-          <DeletedHeaderRestoreDeletedAt />
+          {/* 휴지통 비우기 */}
+          <DeletedHeaderClearList />
+          {/* 리스트 복원 */}
+          <DeletedHeaderRecoveryList />
         </div>
       </div>
     </section>

@@ -32,7 +32,7 @@ const DeletedListListDetail = ({
           <TextTitle02>{title}</TextTitle02>
         </div>
         <div className={styles.date__wrapper}>
-          <TextBody04>{deletedAt} (삭제)</TextBody04>
+          <TextBody04>{deletedAt}</TextBody04>
         </div>
       </div>
       <div className={styles.contents}>

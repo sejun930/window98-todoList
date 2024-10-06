@@ -30,7 +30,7 @@ export default function StartBar(): ReactNode {
       <div className={styles.start}>
         <button>
           <Image src="/icons/window.webp" alt="start" width={0} height={0} />
-          <TextBody04>시작</TextBody04>
+          <TextBody04>Start</TextBody04>
         </button>
       </div>
 

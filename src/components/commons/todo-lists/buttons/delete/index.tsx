@@ -17,8 +17,13 @@ export default function CommonTodoListsButtonsDelete({
   return (
     <div className={styles.wrapper}>
       <Button onClick={openDeleteConfirm(info)} theme="primary" size="fit">
-        <Image src="/icons/recycle-small.png" alt="삭제" width={0} height={0} />
-        <TextBody04>삭제</TextBody04>
+        <Image
+          src="/icons/recycle-small.png"
+          alt="Delete"
+          width={0}
+          height={0}
+        />
+        <TextBody04>Delete</TextBody04>
       </Button>
     </div>
   );

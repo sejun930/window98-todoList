@@ -4,3 +4,4 @@ export { useUtillsDialogAlert } from "./dialog-alert";
 export { useUtillsCheck } from "./check";
 export { useUtillsError } from "./error";
 export { useUtillsDate } from "./date";
+export { useUtillsNumber } from "./number";

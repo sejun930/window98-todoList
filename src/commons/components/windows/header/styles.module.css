@@ -23,3 +23,9 @@
   background-color: var(--gray-60);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .windows__header span {
+    max-width: 80%;
+  }
+}

@@ -3,6 +3,7 @@ export interface ITextBaseProps {
   className?: string;
   cssprop?: string;
   useLineLimit?: number;
+  title?: string;
 }
 
 export type ITextCommonProps =

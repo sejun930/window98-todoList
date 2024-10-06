@@ -78,7 +78,7 @@ export default function DialogAlert({
           {!onlyWait && (
             <div className={styles.button__options}>
               <Button onClick={closeDialogAlert} theme="dangerous" size="m">
-                {cancelText ?? "취소"}
+                {cancelText ?? "Cancel"}
               </Button>
 
               {okEvent && (

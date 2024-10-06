@@ -18,7 +18,7 @@ interface IDESKTOP_LISTS {
 // 화면에 노출될 아이콘 및 이름 정보 리스트
 export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
   {
-    name: "휴지통",
+    name: "Recycle Bin",
     src: "recycle-empty",
     href: _URL.DELETED,
     targetState: {
@@ -29,8 +29,8 @@ export const DESKTOP_LISTS: IDESKTOP_LISTS[] = [
   {
     name: "Internet",
     src: "internet",
-    href: "https://mcm-js.site/",
-    isBlank: true,
+    // href: "https://mcm-js.site/",
+    // isBlank: true,
   },
   {
     name: "Github",

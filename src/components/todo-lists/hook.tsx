@@ -32,7 +32,7 @@ export const useTodoLists = (
   // 등록 & 수정 Dialog open
   const openWriteDialog = (): void => {
     openDialog({
-      headerInfo: { title: "리스트 등록", action: closeDialog },
+      headerInfo: { title: "Add to List", action: closeDialog },
       children: (
         <WithForm zodSchema={zodSchemaTodoListsWrite}>
           <CommonsTodoListsWrite />

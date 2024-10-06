@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/buttons/delete";
-import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
+import CommonTodoListsButtonsEdit from "@/components/commons/todo-lists/buttons/edit";
 import { TextBody03, TextBody04 } from "@/commons/components/text";
 
 import type { ITodoList } from "@/commons/types/todo-list";
@@ -41,7 +41,7 @@ export default function TodoDetailViewDetail({
           isLoading={isLoading}
         />
         <div className={styles.options}>
-          <CommonTodoListsButtonsUpdate info={info} type="edit" />
+          <CommonTodoListsButtonsEdit info={info} type="edit" />
           <CommonTodoListsButtonsDelete info={info} />
         </div>
       </div>
@@ -49,8 +49,8 @@ export default function TodoDetailViewDetail({
         <TextBody03>{contents}</TextBody03>
       </div>
       <div className={styles.date__wrapper}>
-        <TextBody04>등록 | {createdAt}</TextBody04>
-        {hasUpdated && <TextBody04>수정 | {updatedAt}</TextBody04>}
+        <TextBody04>{createdAt} (Created)</TextBody04>
+        {hasUpdated && <TextBody04>{updatedAt} (Edited)</TextBody04>}
       </div>
     </section>
   );
