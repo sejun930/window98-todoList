@@ -7,6 +7,9 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Window 98 Todo-list",
   description: "Made By Sejun930",
+  icons: {
+    icon: "/logos/favicon.png",
+  },
 };
 
 export default function RootLayout({
