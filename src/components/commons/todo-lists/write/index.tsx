@@ -25,6 +25,7 @@ export default function CommonsTodoListsWrite({
   info = { ...INIT_TODO_LIST },
   useBackEvent,
   afterMovePath,
+  isLoading,
 }: ICommonsTodoListsWriteProps): ReactNode {
   const { id } = info;
   const router = useRouter();
@@ -92,9 +93,6 @@ export default function CommonsTodoListsWrite({
       if (err instanceof Error) throw new Error(err?.message);
     }
   });
-
-  // 로딩중 여부
-  const isLoading = !info?.title || !info.contents;
 
   return (
     <div className={styles.wrapper}>

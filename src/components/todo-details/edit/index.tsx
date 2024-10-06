@@ -38,7 +38,7 @@ const TodoDetails = ({ id, initData }: ITodoDetailsProps): ReactNode => {
   const router = useRouter();
 
   // 상세 데이터 조회
-  const { info } = useServerUtillsTodoListsFetchTodoListDetail({
+  const { info, isLoading } = useServerUtillsTodoListsFetchTodoListDetail({
     id,
     initData,
   });
@@ -79,6 +79,7 @@ const TodoDetails = ({ id, initData }: ITodoDetailsProps): ReactNode => {
         useBackEvent={onBackEvent}
         info={info}
         afterMovePath={`/todo-list/${info.id}`}
+        isLoading={isLoading}
       />
     </div>
   );
