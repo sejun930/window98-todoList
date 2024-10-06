@@ -48,7 +48,7 @@ export const useCommonTodoListsButtonsUpdate =
       };
 
       openDialog({
-        headerInfo: { title: "리스트 수정", action: onCloseWithConfirm },
+        headerInfo: { title: "List Update", action: onCloseWithConfirm },
         children: (
           <WithForm zodSchema={zodSchemaTodoListsWrite}>
             <CommonsTodoListsWrite isEdit info={info} />

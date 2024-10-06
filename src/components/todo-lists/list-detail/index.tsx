@@ -51,7 +51,7 @@ const TodoListsListDetail = ({
           <TextBody03>{contents}</TextBody03>
         </Skeleton>
         <div className={styles.date}>
-          <TextBody04>{createdAt} (등록)</TextBody04>
+          <TextBody04>{createdAt}</TextBody04>
         </div>
       </div>
     </li>

@@ -28,13 +28,13 @@ export const useUtillsDate = (): IUseUtillsDateReturn => {
 
     if (seconds < 60)
       // 60초 미만일 경우
-      return "방금 전";
+      return "Now";
     else if (minutes < 60)
       // 60분 미만일 경우
-      return `${minutes}분 전`;
+      return `${minutes} Minutes ago`;
     else if (hours < 24)
       // 24시간 미만일 경우
-      return `${hours}시간 전`;
+      return `${hours} Hours ago`;
     // 24시간 이상일 경우 = 년.월.일 형태로 노출
     else return `${dayjs(dateTime).format("YYYY.MM.DD")}`;
   };

@@ -5,5 +5,5 @@ export interface ICommonsTodoListsWriteProps {
   info?: ITodoList;
   useBackEvent?: () => void; // 취소 버튼 노출 및 이벤트 실행
   afterMovePath?: string; // 이벤트 실행 후 이동할 경로
-  isLoading: boolean; // 데이터 로딩 여부
+  isLoading?: boolean; // 데이터 로딩 여부
 }

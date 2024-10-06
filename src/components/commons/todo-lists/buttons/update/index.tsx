@@ -25,7 +25,7 @@ export default function CommonTodoListsButtonsUpdate({
     <div className={styles.wrapper}>
       <WithAction action={action}>
         <Image src="/icons/update-small.png" alt="수정" width={0} height={0} />
-        <TextBody04>수정</TextBody04>
+        <TextBody04>Update</TextBody04>
       </WithAction>
     </div>
   );
