@@ -13,7 +13,7 @@ export const URL_INFO = (props?: IURLIds): IURL_INFOReturn => {
   const INFOS_STATIC: Record<ValueOf<URL_Type>, IURLInfoData> = {
     "/": {},
     "/todo-list": { useWindow: { title: "Todo-List" } },
-    "/deleted": { useWindow: { title: "휴지통" } },
+    "/deleted": { useWindow: { title: "Recycle Bin" } },
   };
 
   // 동적 경로 경보
