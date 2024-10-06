@@ -6,8 +6,10 @@
   background-color: var(--gray-50);
 }
 .main {
-  width: 35rem;
+  width: 37.5rem;
   height: 25rem;
+  overflow: auto;
+  padding: 0 1.25rem;
 }
 
 .contents__item {
@@ -33,7 +35,7 @@
   border-right: 0.125rem solid var(--gray-20);
   border-bottom: 0.125rem solid var(--gray-20);
   background-color: var(--white);
-  padding: 1.25rem;
+  padding-top: 1.25rem;
   position: relative;
 }
 
