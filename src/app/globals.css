@@ -30,6 +30,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: W95FA;
 }
 
 html,
@@ -66,4 +67,11 @@ textarea {
   outline: none;
   border: unset;
   resize: none;
+}
+
+@font-face {
+  font-family: W95FA;
+  src: url("/fonts/w95fa.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
 }
