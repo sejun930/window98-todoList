@@ -55,7 +55,7 @@ export const DeletedHeaderRestoreDeletedAt = (): ReactNode => {
 
   return (
     <Button onClick={updateListsRestoreDeletedAt} theme="primary" size="m">
-      <TextBody04>선택 복원</TextBody04>
+      <TextBody04>Recovery Selection</TextBody04>
     </Button>
   );
 };

@@ -45,6 +45,11 @@
 @media (max-width: 768px) {
   .list__wrapper {
     height: 100%;
+    padding-bottom: 0;
+  }
+
+  .option__header button span {
+    display: none;
   }
 
   .main {

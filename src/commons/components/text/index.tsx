@@ -6,6 +6,7 @@ export const TextBase = ({
   children,
   cssprop,
   useLineLimit,
+  title,
 }: ITextBaseProps): JSX.Element => {
   let classNames = `${styles.common} ${cssprop}`;
   // 글자수 제한을 사용할 경우
@@ -14,7 +15,7 @@ export const TextBase = ({
   return (
     <span
       className={classNames}
-      title={typeof children === "string" ? children : ""}
+      title={title ?? (typeof children === "string" ? children : "")}
     >
       {children}
     </span>

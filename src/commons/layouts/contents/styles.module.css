@@ -4,6 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--gray-50);
+  min-width: 16.25rem;
 }
 .main {
   width: 37.5rem;

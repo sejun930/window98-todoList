@@ -3,7 +3,7 @@ import type { MutableRefObject, ReactNode } from "react";
 export interface IButtonBaseProps {
   children: ReactNode;
   className?: string;
-  theme: "primary" | "dangerous";
+  theme: "primary" | "box" | "dangerous";
   size: "s" | "m" | "l" | "fit";
   onClick?: () => void | Promise<void>;
   disable?: boolean;

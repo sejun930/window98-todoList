@@ -10,13 +10,3 @@
 .checked span {
   text-decoration: line-through;
 }
-
-/* 모바일 사이즈 */
-@media (max-width: 768px) {
-  .checkbox__wrapper span {
-    max-width: 100%;
-    overflow: unset;
-    text-overflow: unset;
-    white-space: unset;
-  }
-}

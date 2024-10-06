@@ -61,7 +61,7 @@ export default function DeletedHeaderDelete(): ReactNode {
         width={0}
         height={0}
       />
-      <TextBody04>선택 비우기</TextBody04>
+      <TextBody04 title="선택 비우기">Clear Selection</TextBody04>
     </Button>
   );
 }

@@ -11,3 +11,9 @@
   width: 1rem;
   height: 1rem;
 }
+
+@media (max-width: 768px) {
+  .wrapper span {
+    display: none;
+  }
+}

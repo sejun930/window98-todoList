@@ -2,6 +2,8 @@
 }
 
 .primary {
+}
+.box {
   border-top: 0.0625rem solid var(--gray);
   border-left: 0.0625rem solid var(--gray);
   border-right: 0.0625rem solid var(--gray);
