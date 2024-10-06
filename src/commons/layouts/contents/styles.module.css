@@ -9,8 +9,8 @@
 .main {
   width: 37.5rem;
   height: 25rem;
-  overflow: auto;
   padding: 0 1.25rem;
+  overflow: hidden;
 }
 
 .contents__item {
@@ -61,6 +61,6 @@
 
   .main {
     width: 100%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
   }
 }

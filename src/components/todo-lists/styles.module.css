@@ -14,8 +14,6 @@
   background-color: var(--white);
   padding: 0 1.25rem;
   padding-bottom: 1.25rem;
-  position: sticky;
-  top: 0rem;
   box-shadow: 0.125rem 0.125rem 0.5rem var(--gray-150);
 }
 .option__header span {

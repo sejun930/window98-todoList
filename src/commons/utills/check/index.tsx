@@ -3,7 +3,7 @@ import type {
   IUseUtillsCheckReturn,
 } from "./types";
 
-// 값 비교 등의 데이터 체크를 위한 공통 함수
+// 값 비교 등의 데이터 검증를 위한 공통 함수
 export const useUtillsCheck = (): IUseUtillsCheckReturn => {
   // 모든 값 중에서 다른 점이 있는지를 체크하는 함수
   const getIsDifferenceDatas = ({

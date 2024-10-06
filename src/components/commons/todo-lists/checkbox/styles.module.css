@@ -10,3 +10,16 @@
 .checked span {
   text-decoration: line-through;
 }
+
+@media (max-width: 768px) {
+  .checkbox__wrapper {
+    width: 100%;
+  }
+
+  .checkbox__wrapper,
+  .checkbox__wrapper a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

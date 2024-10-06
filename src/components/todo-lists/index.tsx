@@ -13,6 +13,7 @@ import TodoListsListDetail from "./list-detail";
 import Notice from "../commons/notice";
 
 import type { ITodoListsListProps } from "./types";
+import { useUtillsNumber } from "@/commons/utills";
 
 // Todo-list 리스트 노출 컴포넌트
 export default function TodoLists(props: ITodoListsListProps): ReactNode {
@@ -21,11 +22,13 @@ export default function TodoLists(props: ITodoListsListProps): ReactNode {
     openWriteDialog, isLoading, allData, hasItems } = useTodoLists({ ...props });
   const listWrapperRef = useRef() as MutableRefObject<HTMLUListElement>;
 
+  const { withZeroNumber } = useUtillsNumber();
+
   return (
     <section className={styles.section}>
       <div className={styles.option__header}>
         <Skeleton isLoading={isLoading}>
-          <TextBody01>LISTS : {String(allData).padStart(2, "0")}</TextBody01>
+          <TextBody01>LISTS : {withZeroNumber({ num: allData })}</TextBody01>
         </Skeleton>
         <button onClick={openWriteDialog}>
           <Image

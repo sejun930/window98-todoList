@@ -18,15 +18,19 @@
 
 .body01 {
   font-size: 1.125rem; /* 18px */
+  line-height: 1.875rem;
 }
 .body02 {
   font-size: 1rem; /* 16px */
+  line-height: 1.625rem;
 }
 .body03 {
   font-size: 0.875rem; /* 14px */
+  line-height: 1.5rem;
 }
 .body04 {
   font-size: 0.75rem; /* 12px */
+  line-height: 1.375rem;
 }
 
 .caption01 {

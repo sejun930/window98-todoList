@@ -28,7 +28,7 @@ export const useDeletedList = ({
     void fetchNextPage();
   };
 
-  //   각 리스트의 선택 Toggle
+  // 각 리스트의 선택 Toggle
   const toggleCheck = (id: string) => () => {
     if (isLoading) return;
 

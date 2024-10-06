@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import { TextBody04, TextBody03 } from "@/commons/components/text";
 import CommonsTodoListsCheckbox from "@/components/commons/todo-lists/checkbox";
 import CommonTodoListsButtonsDelete from "@/components/commons/todo-lists/buttons/delete";
-import CommonTodoListsButtonsUpdate from "@/components/commons/todo-lists/buttons/update";
+import CommonTodoListsButtonsEdit from "@/components/commons/todo-lists/buttons/edit";
 import { Skeleton } from "@/commons/components/skeleton";
 
 import type { ITodoListsListProps } from "./types";
@@ -40,7 +40,7 @@ const TodoListsListDetail = ({
         />
         <div className={styles.options}>
           {/* 수정 버튼 */}
-          <CommonTodoListsButtonsUpdate info={info} type="dialog" />
+          <CommonTodoListsButtonsEdit info={info} type="dialog" />
           {/* 삭제 버튼 */}
           <CommonTodoListsButtonsDelete info={info} />
         </div>

@@ -8,16 +8,16 @@ import { zodSchemaTodoListsWrite } from "@/commons/zod/todo-list.zod";
 import { useUtillsCheck } from "@/commons/utills/check";
 
 import type { ITodoList } from "@/commons/types/todo-list";
-import type { IuseCommonTodoListsButtonsUpdateReturn } from "./types";
+import type { IuseCommonTodoListsButtonsEditReturn } from "./types";
 
-export const useCommonTodoListsButtonsUpdate =
-  (): IuseCommonTodoListsButtonsUpdateReturn => {
+export const useCommonTodoListsButtonsEdit =
+  (): IuseCommonTodoListsButtonsEditReturn => {
     const { openDialog, closeDialog } = useUtillsDialog();
     const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
     const { getIsDifferenceDatas } = useUtillsCheck();
 
     // 수정용 dialog 창 띄우기
-    const openUpdateDialog = (info: ITodoList) => () => {
+    const openEditDialog = (info: ITodoList) => () => {
       // 이탈시, 데이터 변경 감지
       const onCloseWithConfirm = (): void => {
         // 수정된 내역이 있는지 조회
@@ -48,7 +48,7 @@ export const useCommonTodoListsButtonsUpdate =
       };
 
       openDialog({
-        headerInfo: { title: "List Update", action: onCloseWithConfirm },
+        headerInfo: { title: "List Edit", action: onCloseWithConfirm },
         children: (
           <WithForm zodSchema={zodSchemaTodoListsWrite}>
             <CommonsTodoListsWrite isEdit info={info} />
@@ -58,6 +58,6 @@ export const useCommonTodoListsButtonsUpdate =
     };
 
     return {
-      openUpdateDialog,
+      openEditDialog,
     };
   };

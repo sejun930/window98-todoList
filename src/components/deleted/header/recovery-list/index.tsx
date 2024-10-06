@@ -1,14 +1,13 @@
+import { TextBody03 } from "@/commons/components/text";
 import Image from "next/image";
-import { Button } from "@/commons/components/button";
-import { TextBody04 } from "@/commons/components/text";
-import { useDeletedInfos } from "@/commons/zustand/store";
-import { useUtillsDialogAlert } from "@/commons/utills";
-import { useServerUtillsTodoListsDelete } from "@/server/utills/todo-lists";
 
+import { useUtillsDialogAlert } from "@/commons/utills";
+import { useDeletedInfos } from "@/commons/zustand/store";
+import { useServerUtillsTodoListsUpdate } from "@/server/utills/todo-lists";
 import type { ReactNode } from "react";
 
-// 리스트 최종 삭제
-export default function DeletedHeaderDelete(): ReactNode {
+// 삭제 리스트 복원
+export default function DeletedHeaderRecoveryList(): ReactNode {
   const { deletedInfos, setDeletedInfos } = useDeletedInfos();
   const { openDialogAlert, closeDialogAlert } = useUtillsDialogAlert();
 
@@ -20,9 +19,10 @@ export default function DeletedHeaderDelete(): ReactNode {
     setDeletedInfos({});
   };
 
-  const { deleteTodoListsMutation } = useServerUtillsTodoListsDelete({
-    callback,
-  });
+  const { updateTodoListsRestoreDeletedAtMutation } =
+    useServerUtillsTodoListsUpdate({
+      callback,
+    });
 
   // 현재 선택되어 있는 리스트 조회
   const getCheckList = (): string[] => {
@@ -33,35 +33,35 @@ export default function DeletedHeaderDelete(): ReactNode {
     return checkIds ?? [];
   };
 
-  // 리스트 최종 삭제
-  const updateListsDeleteConfirm = (): void => {
+  // 삭제된 리스트들 모두 복원
+  const updateListsRestoreDeletedAt = (): void => {
     const ids = getCheckList();
     const hasCheckList = !!ids?.length;
 
     const text = hasCheckList
-      ? `${ids.length}개의 리스트를 최종 삭제하시겠습니까?`
+      ? `${ids.length}개의 삭제 리스트를 복원하시겠습니까?`
       : "1개 이상의 리스트를 선택해주세요.";
 
-    // 최종 삭제 함수
+    // 복원 함수
     const event = (): void => {
-      deleteTodoListsMutation.mutate({ ids });
+      updateTodoListsRestoreDeletedAtMutation.mutate({ ids });
     };
 
     openDialogAlert({
-      headerInfo: { title: "리스트 최종 삭제" },
+      headerInfo: { title: "삭제 리스트 복원" },
       dialogAlertInfo: { text, okEvent: (hasCheckList && event) || undefined },
     });
   };
 
   return (
-    <Button onClick={updateListsDeleteConfirm} theme="primary" size="m">
+    <button onClick={updateListsRestoreDeletedAt}>
       <Image
-        src="/icons/recycle-small.png"
-        alt="선택 비우기"
+        src="/icons/recovery-list-small.png"
+        alt="선택 복원"
         width={0}
         height={0}
       />
-      <TextBody04 title="선택 비우기">Clear Selection</TextBody04>
-    </Button>
+      <TextBody03 title="선택 리스트 복원">Recovery List</TextBody03>
+    </button>
   );
 }
