@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./styles.module.css";
 
 import { TextBody01 } from "@/commons/components/text";
@@ -17,13 +17,6 @@ import DeletedHeaderRecoveryList from "./recovery-list";
 export default function DeletedHeader(): ReactNode {
   const { withZeroNumber } = useUtillsNumber();
   const { allData, isLoading, toggleAllCheck, isAllCheck } = useDeletedHeader();
-
-  useLayoutEffect(() => {
-    return () => {
-      // 페이지 이탈시, 모든 체크 리스트 삭제
-      toggleAllCheck({ reset: true });
-    };
-  }, []);
 
   return (
     <section className={styles.section}>

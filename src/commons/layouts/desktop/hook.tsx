@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 
 import type { IUseLayoutsDesktopReturn, IWithLinkProps } from "./types";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 export const useLayoutsDesktop = (): IUseLayoutsDesktopReturn => {
   const { setDesktopInfo } = useDesktopInfo();
@@ -14,9 +14,9 @@ export const useLayoutsDesktop = (): IUseLayoutsDesktopReturn => {
   const { data: deleteData } = useServerUtillsTodoListsFetchDeleteTodoLists();
 
   // 리스트가 있는지 체크
-  const hasItems = !!data?.pages[0].items ?? false;
+  const hasTodoList = !!data?.pages[0].items ?? false;
   // 삭제 리스트가 있는 체크
-  const hasDeleted = !!deleteData?.pages[0].items ?? false;
+  const hasRecycle = !!deleteData?.pages[0].items ?? false;
 
   // 이동 경로가 있을 경우, Link 태그와 함께 사용
   const WithLink = ({ children, href, isBlank }: IWithLinkProps): ReactNode => {
@@ -30,26 +30,16 @@ export const useLayoutsDesktop = (): IUseLayoutsDesktopReturn => {
     return children;
   };
 
-  // 리스트 존재 여부에 따른 "Todo-list" 아이콘 분기
-  const initTodoListIcon = (): void => {
+  // 리스트 및 삭제 존재 여부에 따른 "Todo-list", "휴지통" 아이콘 분기
+  useEffect(() => {
     setDesktopInfo({
-      hasTodoList: hasItems,
+      hasTodoList,
+      hasRecycle,
     });
-  };
-
-  // 삭제 리스트 존재 여부에 따른 "휴지통" 아이콘 분기
-  const initDeleteTodoListIcon = (): void => {
-    setDesktopInfo({
-      hasRecycle: hasDeleted,
-    });
-  };
+  }, [hasTodoList, hasRecycle]);
 
   return {
     isLoading,
     WithLink,
-    hasItems,
-    initTodoListIcon,
-    hasDeleted,
-    initDeleteTodoListIcon,
   };
 };

@@ -6,6 +6,7 @@ import { useUtillsDialog, useUtillsDialogAlert } from "@/commons/utills";
 
 import type { IUseLayoutsContentsReturn } from "./types";
 import { useUtillsParams } from "@/commons/utills/params";
+import { useLayoutEffect } from "react";
 
 export const useLayoutsContents = (): IUseLayoutsContentsReturn => {
   const pathname = usePathname();
@@ -35,14 +36,12 @@ export const useLayoutsContents = (): IUseLayoutsContentsReturn => {
   };
 
   // 페이지 최초 진입 시, 모든 dialog 및 dialog-alert 제거
-  const resetDialogs = (): void => {
+  useLayoutEffect(() => {
     closeDialog();
     closeDialogAlert();
-  };
+  }, [pathname]);
 
   return {
-    resetDialogs,
-    pathname,
     closeContents,
     useWindow,
     windowTitle,

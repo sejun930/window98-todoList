@@ -3,6 +3,7 @@ import { useDeletedInfos } from "@/commons/zustand/store";
 
 import type { IDeletedListReturn, IToggleAllCheckProps } from "./types";
 import type { IFetchTodoInfo, ITodoList } from "@/commons/types/todo-list";
+import { useLayoutEffect } from "react";
 
 export const useDeletedHeader = (): IDeletedListReturn => {
   const { deletedInfos, setDeletedInfos } = useDeletedInfos();
@@ -38,6 +39,13 @@ export const useDeletedHeader = (): IDeletedListReturn => {
 
     setDeletedInfos(_deletedInfos);
   };
+
+  useLayoutEffect(() => {
+    return () => {
+      // 페이지 이탈시, 모든 체크 리스트 삭제
+      toggleAllCheck({ reset: true });
+    };
+  }, []);
 
   return {
     isLoading,

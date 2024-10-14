@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./styles.module.css";
 import windowsStyles from "../../styles/windows/styles.module.css";
 
@@ -19,8 +19,7 @@ import {
 export default function LayoutsContents({
   children,
 }: ILayoutsContentsProps): ReactNode {
-  const { resetDialogs, pathname, closeContents, useWindow, windowTitle } =
-    useLayoutsContents();
+  const { closeContents, useWindow, windowTitle } = useLayoutsContents();
 
   // dialog 실행 및 정보 zustand
   const { dialogInfo } = useDialogInfoState();
@@ -28,11 +27,6 @@ export default function LayoutsContents({
   // dialog-alert 실행 및 정보 zustand
   const { dialogAlertInfo } = useDialogAlertInfoState();
   const useDialogAlert = dialogAlertInfo.isOpenDialogAlert ?? false;
-
-  // 초기 렌더시, Dialog 종료
-  useLayoutEffect(() => {
-    resetDialogs();
-  }, [pathname]);
 
   if (!useWindow) return <></>;
   return (
