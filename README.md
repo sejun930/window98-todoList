@@ -2,7 +2,7 @@
 윈도우 98 테마 디자인의 투두리스트 프로젝트
 <br />
 <br /> 
-<img width="500" alt="스크린샷 2024-09-22 오후 9 34 23" src="https://github.com/user-attachments/assets/c393163e-f959-4c1f-98f3-06e391411ddb">
+<img width="500" alt="스크린샷 2024-10-14 오후 12 19 57" src="https://github.com/user-attachments/assets/ed864f25-4ec9-4d25-bca2-c82b9cd31e59">
 <br />
 <br />
 <br />
@@ -33,9 +33,8 @@
    <br />
    <br />
 ## 0. Apps
-  <img width="251" alt="스크린샷 2024-09-22 오후 10 09 39" src="https://github.com/user-attachments/assets/790649e0-e498-467e-af9f-72f3f3b8fc6c"> <br />
-- **휴지통** : 삭제된 리스트들이 담긴 페이지 <br />
-- **Internet** : [MCM-JS DOCS](https://mcm-js.site/) 페이지 <br />
+   <img width="250" alt="스크린샷 2024-10-14 오후 12 23 22" src="https://github.com/user-attachments/assets/07c73540-e5f3-4a8b-b5c8-f34043c0bc30"> <br />
+- **Recycle Bin** : 삭제된 리스트들이 담긴 페이지 <br />
 - **Github** : 현재 Repository 페이지 <br />
 - **Todo-List** : 등록한 리스트 조회, 등록, 삭제, 수정 페이지 <br />
   <br />
@@ -44,7 +43,7 @@
   <br />
 ## 1-1. Todo-List 홈
 **Todo-List** 아이콘 및 제목을 클릭하면 리스트 관련 페이지로 이동합니다. <br /> <br />
-<img width="500" alt="스크린샷 2024-09-22 오후 10 25 00" src="https://github.com/user-attachments/assets/0c35e242-03db-4f63-b3ad-1710b30b798f">
+<img width="500" alt="스크린샷 2024-10-14 오후 12 28 02" src="https://github.com/user-attachments/assets/fb61019f-e50c-4305-a7f6-6873a7fce1d1">
   <br />
   <br />
   <br />
