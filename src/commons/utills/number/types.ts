@@ -1,8 +1,8 @@
-export interface IUseUtillsNumberReturn {
-  withZeroNumber: (props: IwithZeroNumber) => string;
-}
-
-export interface IwithZeroNumber {
+export interface IWithZeroNumber {
   num: number;
   length?: number;
+}
+
+export interface IUseUtillsNumberReturn {
+  withZeroNumber: (props: IWithZeroNumber) => string;
 }

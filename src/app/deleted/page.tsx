@@ -6,6 +6,13 @@ import { QueryClient } from "@tanstack/react-query";
 
 import type { ReactNode } from "react";
 
+// SEO 처리를 위한 함수
+export async function generateMetadata(): Promise<{ title: string }> {
+  return {
+    title: "Recycle Bin",
+  };
+}
+
 export default async function DeletedPage(): Promise<ReactNode> {
   const queryClient = new QueryClient();
   const { fetchDeletedTodoList } = useFetchTodoList();

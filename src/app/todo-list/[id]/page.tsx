@@ -6,13 +6,32 @@ import { notFound } from "next/navigation";
 import TodoDetailView from "@/components/todo-details/view";
 import type { ReactNode } from "react";
 
-interface ITodoListDetailPageProps {
+interface IParamsProps {
   params: { id: string };
+}
+interface IGenerateMetadataReturn {
+  title: string;
+  description: string;
+}
+
+// 상세 정보 SEO 처리를 위한 함수
+export async function generateMetadata({
+  params,
+}: IParamsProps): Promise<IGenerateMetadataReturn> {
+  /* eslint-disable react-hooks/rules-of-hooks */
+  const { fetchTodoList } = useFetchTodoList();
+  const id = params?.id ?? "";
+  const data = await fetchTodoList({ id });
+
+  return {
+    title: data?.title ?? "Not Found Title",
+    description: data?.contents ?? "Not Found Contents",
+  };
 }
 
 // 리스트 상세 페이지
 export default async function TodoListDetailPage(
-  props: ITodoListDetailPageProps,
+  props: IParamsProps,
 ): Promise<ReactNode> {
   const { fetchTodoList } = useFetchTodoList();
   const queryClient = new QueryClient();
@@ -42,6 +61,7 @@ export default async function TodoListDetailPage(
 
   // 없거나 삭제되었다면 에러 화면 노출
   if (isEmpty || isDeleted) return notFound();
+
   // 데이터가 조회되면 클라이언트 노출
   return (
     <TodoDetailView dehydratedState={dehydratedState} id={id} initData={data} />

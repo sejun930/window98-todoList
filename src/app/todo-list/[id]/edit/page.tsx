@@ -6,13 +6,32 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import type { ITodoList } from "@/commons/types/todo-list";
 
-interface ITodoListDetailEditPageProps {
+interface IParamsProps {
   params: { id: string };
+}
+interface IGenerateMetadataReturn {
+  title: string;
+  description: string;
+}
+
+// 상세 정보 수정 SEO 처리를 위한 함수
+export async function generateMetadata({
+  params,
+}: IParamsProps): Promise<IGenerateMetadataReturn> {
+  /* eslint-disable react-hooks/rules-of-hooks */
+  const { fetchTodoList } = useFetchTodoList();
+  const id = params?.id ?? "";
+  const data = await fetchTodoList({ id });
+
+  return {
+    title: `${data?.title} 수정` ?? "Not Found Title",
+    description: data?.contents ?? "Not Found Contents",
+  };
 }
 
 // 리스트 상세 수정 페이지
 export default async function TodoListDetailEditPage(
-  props: ITodoListDetailEditPageProps,
+  props: IParamsProps,
 ): Promise<ReactNode> {
   const { fetchTodoList } = useFetchTodoList();
   const queryClient = new QueryClient();
