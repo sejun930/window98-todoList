@@ -9,8 +9,4 @@ export interface IWithLinkProps {
 export interface IUseLayoutsDesktopReturn {
   isLoading: boolean;
   WithLink: ({ children, href, isBlank }: IWithLinkProps) => ReactNode;
-  hasItems: boolean;
-  initTodoListIcon: () => void;
-  hasDeleted: boolean;
-  initDeleteTodoListIcon: () => void;
 }

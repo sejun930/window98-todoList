@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
@@ -12,25 +12,8 @@ import { useDesktopInfo } from "@/commons/zustand/store";
 
 // 레이아웃의 왼쪽 영역 아이콘들
 export default function LayoutsDesktop(): ReactNode {
-  const {
-    isLoading,
-    WithLink,
-    initTodoListIcon,
-    hasItems,
-    initDeleteTodoListIcon,
-    hasDeleted,
-  } = useLayoutsDesktop();
+  const { isLoading, WithLink } = useLayoutsDesktop();
   const { desktopInfo } = useDesktopInfo();
-
-  // 리스트 존재 여부에 따른 "Todo-list" 아이콘 분기
-  useEffect(() => {
-    initTodoListIcon();
-  }, [hasItems]);
-
-  // 삭제 리스트 존재 여부에 따른 "휴지통" 아이콘 분기
-  useEffect(() => {
-    initDeleteTodoListIcon();
-  }, [hasDeleted]);
 
   return (
     <article className={styles.wrapper}>
